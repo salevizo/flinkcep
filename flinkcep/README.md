@@ -37,19 +37,34 @@ APO EDW TO VRHKA, KATEVASTE AN THELETE TON KWDIKA from:https://www.youtube.com/w
 --------------------------------------------------------------------------------------------------------------------------
 
 # MY STEPS
-1)Στο φάκελο flink_1.6.2:bin/start-cluster.sh 
+1)Στο φάκελο flink_1.6.2:bin/start-cluster.sh
+
 2)Στο φάκελο του kafka2.2:bin/zookeeper-server-start.sh config/zookeeper.properties
+
 3)Στο φάκελο του kafka2.2:bin/kafka-server-start.sh config/server.properties
+
 4)Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic DEMOCP
 Εδώ φτιάχνουμε το topic με ονομα DEMOCP που θα το στείλει στο zookeeper που εχουμε ανοιξει από πάνω
+
 5)Εκει που έχουμε το Project μας παμε και κάνουμε:
+
 mvn clean install
+
 Στο φάκελο που εχει το Pom.xml
+
 Αφού τελειώσει αυτό,εκτελούμε το 
+
  sudo /home/cer/Downloads/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkce/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt
+ 
  To topic μπαινει σαν παράμετρος στο java Που έχουμε φτιάξει και παίρνει το ονομα του topic που εχουμε δημιουργήσει DEMOCP.To -out είναι το αρχείο που τρέχουμ.
+ 
  6) Στην σελίδα http://localhost:8081/#/overview εχουμε το νεο job μας,το java προγραμμα.
+ 
  7)Παμε πάλι στο Kafka2.2:bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic DEMOCP για να βλεπουμε τι μηνυματα πανε απο το Python προγραμμα που θα τρέξουμε στο consumer του kafka.
+ 
  8)Στο project μας στο φάκελο producer τρέχουμε το icu.py:./icu.py DEMOCP
+ 
+ 
+ 
  
  Κανονικα icu.py->Kafka Consumer->Flink->project μας και πρεπει το out.txt να εχει αρχίσει να έχει output.
