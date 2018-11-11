@@ -65,6 +65,12 @@ mvn clean install
  8)Στο project μας στο φάκελο producer τρέχουμε το icu.py:./icu.py DEMOCP
  
  
- 
+* Delete topic:
+Παμε πάλι στο Kafka2.2:bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic DEMOCP
  
  Κανονικα icu.py->Kafka Consumer->Flink->project μας και πρεπει το out.txt να εχει αρχίσει να έχει output.
+
+
+
+################
+An alalxeis kati sto prodcer/ais.py prepei an kanei delete to topic k meta plai create gai na parei thna llagh o consumer
