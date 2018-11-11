@@ -15,6 +15,7 @@ import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,68 +36,74 @@ public class CEPMonitor {
             setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         System.out.println("LOCO");
         // Input stream of monitoring events
-        DataStream<Measurement> messageStream = env
+        DataStream<AisMessage> messageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                                     parameterTool.getRequired("topic"),
-                                    new MeasurementDeserializer(),
+                                    new AisMessageDeserializer(),
                                     parameterTool.getProperties()))
                 .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
 
 
-        DataStream<Measurement> partitionedInput = messageStream.keyBy(
-                new KeySelector<Measurement, String>() {
+        DataStream<AisMessage> partitionedInput = messageStream.keyBy(
+                new KeySelector<AisMessage, Integer>() {
                     @Override
-                    public String getKey(Measurement value) throws Exception {
-                        return value.getUserID();
+                    public Integer getKey(AisMessage value) throws Exception {
+                        return value.getMmsi();
                     }
         });
 
 
         // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        Pattern<Measurement, ?> alarmPattern = Pattern.<Measurement>begin("first")
-                .subtype(HeartMeasurement.class)
-                .where(new SimpleCondition<HeartMeasurement>() {
+        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("first")
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
                     @Override
-                    public boolean filter(HeartMeasurement event) {
-                        return event.getRisk() >=1;
+                    public boolean filter(AisMessage event) {
+                        return event.getStatus()!=8;
                     }
                 })
                 .followedBy("middle")
-                .subtype(BloodPressureMeasurement.class)
-                .where(new SimpleCondition<BloodPressureMeasurement>() {
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
                     @Override
-                    public boolean filter(BloodPressureMeasurement event) {
-                        System.out.println("TRUE");
-                    return event.getRisk() >=2;
+                    public boolean filter(AisMessage event) {
+                        System.out.println(event.getStatus() !=8);
+                    return event.getStatus() !=8;
                     }
                 })
                 .followedBy("last")
-                .subtype(HeartMeasurement.class)
-                .where(new SimpleCondition<HeartMeasurement>() {
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
                     @Override
-                    public boolean filter(HeartMeasurement event) {
-                        return event.getRisk() >=1;
+                    public boolean filter(AisMessage event) {
+                        return event.getStatus() !=8;
                     }
                 })
                 .within(Time.seconds(10));
 
         // Create a pattern stream from alarmPattern
-        PatternStream<Measurement> patternStream = CEP.pattern(partitionedInput, alarmPattern);
+        PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
 
 
         // Generate risk warnings for each matched alarm pattern
-        DataStream<StrokeRiskAlarm> alarms = patternStream.select(new PatternSelectFunction<Measurement, StrokeRiskAlarm>() {
+        DataStream<SuspiciousTurn> alarms = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousTurn>() {
             @Override
-            public StrokeRiskAlarm select(Map<String,List<Measurement>> pattern) throws Exception {
-                HeartMeasurement first = (HeartMeasurement) pattern.get("first").get(0);
-                HeartMeasurement last = (HeartMeasurement) pattern.get("last").get(0);
-                BloodPressureMeasurement middle = (BloodPressureMeasurement) pattern.get("middle").get(0);
+            public SuspiciousTurn select(Map<String,List<AisMessage>> pattern) throws Exception {
+                AisMessage first = (AisMessage) pattern.get("first").get(0);
+                AisMessage last = (AisMessage) pattern.get("last").get(0);
+                AisMessage middle = (AisMessage) pattern.get("middle").get(0);
 
-                return new StrokeRiskAlarm(first.getUserID(), first.getRisk() + last.getRisk() + middle.getRisk());
+                LinkedList<Float> tempList=new LinkedList<Float>();
+                tempList.add(Math.abs((first.getTurn())));
+
+
+                tempList.add(Math.abs((last.getTurn())));
+                tempList.add(Math.abs((middle.getTurn())));
+                return new SuspiciousTurn(first.getMmsi(),tempList);
             }
         });
 
-        alarms.map(v -> v.toString()).writeAsText(parameterTool.getRequired("out"), WriteMode.OVERWRITE);
+        alarms.map(v -> v.zigNzag()).writeAsText(parameterTool.getRequired("out"), WriteMode.OVERWRITE);
         messageStream.map(v -> v.toString()).print();
         env.execute("Flink ICU CEP monitoring job");
 

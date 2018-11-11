@@ -15,7 +15,8 @@ import psycopg2
 
 server = "localhost:9092"
 
-
+avgerosPass="1992"
+allOtherPass="2"
 def main():
 
     ## the topic 
@@ -26,12 +27,8 @@ def main():
     db=('doi105281zenodo1167595')
 
 
-
-
-
-
     query="SELECT lat, lon, status, turn, speed, heading, course, t FROM public.nari_dynamic LIMIT 10;"
-    con = psycopg2.connect(database = "doi105281zenodo1167595", user = "postgres", password = "2", host = "127.0.0.1", port = "5432")
+    con = psycopg2.connect(database = "doi105281zenodo1167595", user = "postgres", password = avgerosPass, host = "127.0.0.1", port = "5432")
     with con:
         ais_data= pd.read_sql_query(query, con)
     con.close()

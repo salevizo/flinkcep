@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class AisMessage {
     @SerializedName("mmsi")
-    private int mmsi;
+    private Integer mmsi;
 
     @SerializedName("status")
     private int status;
 
     @SerializedName("turn")
-    private int turn;
+    private float turn;
 
     @SerializedName("course")
     private float course;
@@ -46,11 +46,11 @@ public class AisMessage {
         this.status = status;
     }
 
-    public int getTurn() {
+    public float getTurn() {
         return turn;
     }
 
-    public void setTurn(int turn) {
+    public void setTurn(float turn) {
         this.turn = turn;
     }
 
@@ -103,7 +103,7 @@ public class AisMessage {
     }
 
     public String toString(){
-        return new String("");
+        return new String("Mmsi:"+this.getMmsi());
     }
 
 }
