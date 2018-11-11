@@ -9,8 +9,6 @@ import json
 import sqlite3 as lite
 import numpy as np
 import pandas as pd
-from mpl_toolkits.basemap import Basemap
-import matplotlib.pyplot as plt
 import psycopg2
 
 
@@ -42,9 +40,10 @@ def main():
         while True:
             for i in range(len(ais_data['lon'])) :
                 ## Generate random measurements
-                meas1 = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : "227741610"}
-                producer.send(topic, meas1, key = b'%d'%i)	
-                print "Sending HR   : %s" % (json.dumps(meas1).encode('utf-8'))
+                ais = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : "227741610", "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(ais_data['t'][i])}
+
+                producer.send(topic, ais, key = b'%d'%i)	
+                print "Sending AIS messages   : %s" % (json.dumps(ais).encode('utf-8'))
     except KeyboardInterrupt:
         pass
 
