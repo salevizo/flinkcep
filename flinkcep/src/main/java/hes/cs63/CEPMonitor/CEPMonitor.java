@@ -54,56 +54,13 @@ public class CEPMonitor {
 
 
         // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("first")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        return event.getStatus()!=8;
-                    }
-                })
-                .followedBy("middle")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        System.out.println(event.getStatus() !=8);
-                    return event.getStatus() !=8;
-                    }
-                })
-                .followedBy("last")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        return event.getStatus() !=8;
-                    }
-                })
-                .within(Time.seconds(10));
-
+        Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
         // Create a pattern stream from alarmPattern
         PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-
-
         // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousTurn> alarms = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousTurn>() {
-            @Override
-            public SuspiciousTurn select(Map<String,List<AisMessage>> pattern) throws Exception {
-                AisMessage first = (AisMessage) pattern.get("first").get(0);
-                AisMessage last = (AisMessage) pattern.get("last").get(0);
-                AisMessage middle = (AisMessage) pattern.get("middle").get(0);
+        DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
 
-                LinkedList<Float> tempList=new LinkedList<Float>();
-                tempList.add(Math.abs((first.getTurn())));
-
-
-                tempList.add(Math.abs((last.getTurn())));
-                tempList.add(Math.abs((middle.getTurn())));
-                return new SuspiciousTurn(first.getMmsi(),tempList);
-            }
-        });
-
-        alarms.map(v -> v.zigNzag()).writeAsText(parameterTool.getRequired("out"), WriteMode.OVERWRITE);
+        alarms.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);
         messageStream.map(v -> v.toString()).print();
         env.execute("Flink ICU CEP monitoring job");
 
