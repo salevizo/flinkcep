@@ -53,7 +53,7 @@ public class CEPMonitor {
         });
 
 
-        // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
+       //1st 
         Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("first")
                 .subtype(AisMessage.class)
                 .where(new SimpleCondition<AisMessage>() {
@@ -83,9 +83,8 @@ public class CEPMonitor {
 
         // Create a pattern stream from alarmPattern
         PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-
-
-        // Generate risk warnings for each matched alarm pattern
+        
+        //SuspiciousTurn for each matched alarm pattern
         DataStream<SuspiciousTurn> alarms = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousTurn>() {
             @Override
             public SuspiciousTurn select(Map<String,List<AisMessage>> pattern) throws Exception {
