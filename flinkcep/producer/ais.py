@@ -27,7 +27,7 @@ def main():
     db=('doi105281zenodo1167595')
 
 
-    query="SELECT lat, lon, status, turn, speed, heading, course, t FROM public.nari_dynamic LIMIT 10;"
+    query="SELECT lat, lon, status, turn, speed, heading, course, t FROM public.nari_dynamic ORDER BY t ASC LIMIT 100;"
     con = psycopg2.connect(database = "doi105281zenodo1167595", user = "postgres", password = avgerosPass, host = "127.0.0.1", port = "5432")
     with con:
         ais_data= pd.read_sql_query(query, con)
