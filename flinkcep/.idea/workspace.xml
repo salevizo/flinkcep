@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/AisMessageDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SuspiciousTurn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/ais.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer/ais.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,27 +26,27 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="2" />
-          <entry key="java" value="10" />
+          <entry key="java" value="12" />
           <entry key="py" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="10" />
+          <entry key="JAVA" value="12" />
           <entry key="Python" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="15" />
-          <entry key="java" value="1554" />
+          <entry key="java" value="1725" />
           <entry key="py" value="239" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1554" />
+          <entry key="JAVA" value="1725" />
           <entry key="PLAIN_TEXT" value="15" />
           <entry key="Python" value="239" />
         </counts>
@@ -74,20 +67,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+            <state relative-caret-position="675">
+              <caret line="62" column="78" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
               <folding>
-                <element signature="e#2376#2389#0" expanded="true" />
-                <element signature="e#2476#2707#0" expanded="true" />
-                <element signature="e#2706#2707#0" expanded="true" />
-                <element signature="e#2818#3083#0" expanded="true" />
-                <element signature="e#3082#3083#0" expanded="true" />
-                <element signature="e#3232#3463#0" expanded="true" />
-                <element signature="e#3462#3463#0" expanded="true" />
-                <element signature="e#4170#4177#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#209#221#0" expanded="true" />
+                <element signature="e#556#776#0" expanded="true" />
+                <element signature="e#775#776#0" expanded="true" />
+                <element signature="e#882#1170#0" expanded="true" />
+                <element signature="e#1169#1170#0" expanded="true" />
+                <element signature="e#1274#1495#0" expanded="true" />
+                <element signature="e#1494#1495#0" expanded="true" />
+                <element signature="e#2005#2012#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -224,6 +227,7 @@
     <findStrings>
       <find>measurem</find>
       <find>Integer</find>
+      <find>messageStream</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -241,15 +245,16 @@
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SpeedUp.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SuspiciousTurn.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="101" />
     <option name="y" value="53" />
-    <option name="width" value="1400" />
-    <option name="height" value="858" />
+    <option name="width" value="1392" />
+    <option name="height" value="857" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -317,7 +322,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541955645281" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542031308852" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -534,19 +539,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/CEPFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="84" column="61" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
+        <state relative-caret-position="675">
+          <caret line="62" column="78" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="41" column="42" lean-forward="true" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
           <folding>
-            <element signature="e#2376#2389#0" expanded="true" />
-            <element signature="e#2476#2707#0" expanded="true" />
-            <element signature="e#2706#2707#0" expanded="true" />
-            <element signature="e#2818#3083#0" expanded="true" />
-            <element signature="e#3082#3083#0" expanded="true" />
-            <element signature="e#3232#3463#0" expanded="true" />
-            <element signature="e#3462#3463#0" expanded="true" />
-            <element signature="e#4170#4177#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#209#221#0" expanded="true" />
+            <element signature="e#556#776#0" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#882#1170#0" expanded="true" />
+            <element signature="e#1169#1170#0" expanded="true" />
+            <element signature="e#1274#1495#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#2005#2012#0" expanded="true" />
           </folding>
         </state>
       </provider>
