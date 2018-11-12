@@ -54,33 +54,7 @@ public class CEPMonitor {
 
 
 
-       //1st 
-        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("first")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        return event.getStatus()!=8;
-                    }
-                })
-                .followedBy("middle")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        System.out.println(event.getStatus() !=8);
-                    return event.getStatus() !=8;
-                    }
-                })
-                .followedBy("last")
-                .subtype(AisMessage.class)
-                .where(new SimpleCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event) {
-                        return event.getStatus() !=8;
-                    }
-                })
-                .within(Time.seconds(10));
+       
 
   
 
