@@ -65,6 +65,12 @@ public class CEPMonitor {
         // Generate risk warnings for each matched alarm pattern
         DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
 
+        
+        
+        
+        
+        
+        
         alarms.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);
         messageStream.map(v -> v.toString()).print();
         env.execute("Flink ICU CEP monitoring job");
