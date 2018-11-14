@@ -169,4 +169,57 @@ public  class CEPFunction {
        return alarms;   
        }
     
+    
+    
+    //Pause
+    //GAP FOR 10 MINS
+    static Pattern<AisMessage, ?> patternPause(){
+        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("first")
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
+                    @Override
+                    public boolean filter(AisMessage event) {
+                        return event.getT()>=0;
+                    }
+                })
+                .followedBy("middle")
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
+                    @Override
+                    public boolean filter(AisMessage event) {
+                      return event.getT()>0;
+                    }
+                })
+                .followedBy("last")
+                .subtype(AisMessage.class)
+                .where(new SimpleCondition<AisMessage>() {
+                    @Override
+                    public boolean filter(AisMessage event) {
+                    	  return event.getT()>0;
+                    }
+                })
+                .within(Time.seconds(10));
+        return alarmPattern;
+    }
+    
+    
+    static DataStream<Pause> alarmsPause(PatternStream<AisMessage> patternStream){
+        DataStream<Pause>  alarms = patternStream.select(new PatternSelectFunction<AisMessage, Pause>() {
+            @Override
+            public Pause select(Map<String,List<AisMessage>> pattern) throws Exception {
+                AisMessage first = (AisMessage) pattern.get("first").get(0);
+                AisMessage last = (AisMessage) pattern.get("last").get(0);
+                AisMessage middle = (AisMessage) pattern.get("middle").get(0);
+
+                LinkedList<Float> tempList=new LinkedList<Float>();
+                tempList.add(Math.abs((first.getSpeed())));
+
+                tempList.add(Math.abs((last.getSpeed())));
+                tempList.add(Math.abs((middle.getSpeed())));
+                return new Pause(first.getMmsi(),tempList);
+            }
+        });
+       return alarms;   
+       }
+    
 }

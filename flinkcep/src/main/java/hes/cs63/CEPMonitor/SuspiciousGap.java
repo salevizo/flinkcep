@@ -64,7 +64,7 @@ public class SuspiciousGap {
 
     @Override
     public String toString() {
-        return "Ship Acceleration : { MMSI : " + getMmsi()+"}";
+        return "Ship Gap : { MMSI : " + getMmsi()+"}";
     }
 
 }

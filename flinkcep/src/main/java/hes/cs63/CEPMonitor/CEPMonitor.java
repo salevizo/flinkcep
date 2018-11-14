@@ -83,9 +83,19 @@ public class CEPMonitor {
         DataStream<SuspiciousGap> alarmsSuspiciousGap= CEPFunction.alarmsSuspiciousGap(patternStreamSuspiciousGap);
         
         
+        
+        //Pause
+        Pattern<AisMessage, ?> alarmPatternPause = CEPFunction.patternSuspiciousGap();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamPause = CEP.pattern(partitionedInput, alarmPatternPause);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<Pause> alarmsPause= CEPFunction.alarmsPause(patternStreamPause);
+        
+        
         alarmsZigZag.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);   
         alarmsSuspiciousAccelarate.map(v -> v.highAccelarate()).writeAsText("/home/cer/Desktop/highAccelarate.txt", WriteMode.OVERWRITE);   
         alarmsSuspiciousGap.map(v -> v.gap()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);   
+        alarmsPause.map(v -> v.pause()).writeAsText("/home/cer/Desktop/pause.txt", WriteMode.OVERWRITE);   
         
        
         

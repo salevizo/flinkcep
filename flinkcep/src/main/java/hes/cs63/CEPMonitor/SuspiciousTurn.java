@@ -61,7 +61,7 @@ public class SuspiciousTurn {
 
     @Override
     public String toString() {
-        return "Ship Acceleration : { MMSI : " + getMmsi()+"}";
+        return "Ship Turn : { MMSI : " + getMmsi()+"}";
     }
 
 }
