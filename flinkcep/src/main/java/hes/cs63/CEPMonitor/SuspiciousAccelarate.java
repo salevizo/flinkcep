@@ -48,7 +48,7 @@ public class SuspiciousAccelarate {
         }
     }
 
-    public String zigNzag(){
+    public String highAccelarate(){
         boolean suspiciousAccel=false;
         
         if(
