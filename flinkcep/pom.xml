@@ -89,7 +89,11 @@
             <version>1.6.2</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>geo</artifactId>
+            <version>0.7.1</version>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-cep -->

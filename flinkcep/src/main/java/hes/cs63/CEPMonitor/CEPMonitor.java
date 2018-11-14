@@ -1,5 +1,7 @@
 package hes.cs63.CEPMonitor;
 
+import hes.cs63.CEPMonitor.SimpleEvents.Gap;
+import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousGap;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
@@ -54,14 +56,19 @@ public class CEPMonitor {
 
 
         // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
+        //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
         // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
+        //PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
         // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
+       // DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
 
-        alarms.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);
-        messageStream.map(v -> v.toString()).print();
+
+        Pattern<AisMessage, ?> alarmPattern = Gap.patternGap();
+        PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
+        DataStream<SuspiciousGap> alarms = Gap.alarmsGap(patternStream);
+        alarms.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);
+
+        //messageStream.map(v -> v.toString()).print();
         env.execute("Flink ICU CEP monitoring job");
 
     }
