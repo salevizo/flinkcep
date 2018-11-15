@@ -1,32 +1,19 @@
 package hes.cs63.CEPMonitor;
 
-import hes.cs63.CEPMonitor.SimpleEvents.Gap;
-import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousGap;
+import hes.cs63.CEPMonitor.Gaps.Gap;
+import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
-import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
-import org.apache.flink.cep.pattern.conditions.SimpleCondition;
-import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
-import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
-import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
-import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by sahbi on 5/7/16.
@@ -61,39 +48,33 @@ public class CEPMonitor {
                     }
         });
 
-
-
-        // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        //PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-        // Generate risk warnings for each matched alarm pattern
-       // DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
-
-
-        Pattern<AisMessage, ?> alarmPattern = Gap.patternGap();
-        PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
-        DataStream<SuspiciousGap> alarms = Gap.alarmsGap(patternStream);
-        //alarms.map(v -> v.findGapSer()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);
-        //alarms.map(v -> v.findGapSer());
-        //DataStream<Gap>  gaps = Gap.alarmsGap(patternStream);
-        final SingleOutputStreamOperator<SuspiciousGap> process = alarms.map(v -> v.findGapObj());
-
-                // our trigger should probably be smarter;
-
-        FlinkKafkaProducer09<SuspiciousGap> myProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+        Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
+        PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
+        DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
+        FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
                 parameterTool.getRequired("topic_output"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
-        process.addSink(myProducer);
+        topic_2.addSink(gapProducer);
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
-        //messageStream.map(v -> v.toString()).print();
 
+        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
+        /*Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
+        PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
+        DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
+        FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+                parameterTool.getRequired("topic_output"),    // target topic
+                new GapMessageSerializer(),
+                parameterTool.getProperties());   // serialization schema
 
-       
+        topic_2.addSink(gapProducer);*/
+        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
 
-  
 /*
        //ZIGZAG
         Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();

@@ -1,7 +1,6 @@
 package hes.cs63.CEPMonitor;
 
-import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousGap;
-import org.apache.flink.api.java.tuple.Tuple2;
+import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
 import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
 
 public class GapMessageSerializer implements KeyedSerializationSchema<SuspiciousGap> {

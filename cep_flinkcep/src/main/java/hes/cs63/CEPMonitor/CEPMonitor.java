@@ -13,8 +13,6 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
-import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
-import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
 
 /**
  * Created by sahbi on 5/7/16.
@@ -48,21 +46,12 @@ public class CEPMonitor {
                         return value.getMmsi();
                     }
         });
-
-
-        // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        //PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-        // Generate risk warnings for each matched alarm pattern
-       // DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
-
-
-        Pattern<GapMessage, ?> alarmPattern = RendezVouz.patternGap();
-        PatternStream<GapMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
-        DataStream<SuspiciousRendezVouz> alarms = RendezVouz.alarmsGap(patternStream);
-        alarms.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
-
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+        Pattern<GapMessage, ?>rendezvouzPattern = RendezVouz.patternGap();
+        PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(partitionedInput,rendezvouzPattern);
+        DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
+        rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
 
         //messageStream.map(v -> v.toString()).print();
