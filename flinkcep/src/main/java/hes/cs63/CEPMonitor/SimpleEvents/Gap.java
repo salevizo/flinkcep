@@ -1,5 +1,6 @@
 package hes.cs63.CEPMonitor.SimpleEvents;
 
+import com.github.davidmoten.geo.GeoHash;
 import hes.cs63.CEPMonitor.AisMessage;
 import hes.cs63.CEPMonitor.SuspiciousTurn;
 import org.apache.flink.cep.PatternSelectFunction;
@@ -47,7 +48,8 @@ public class Gap {
 
                 LinkedList<Float> tempList=new LinkedList<Float>();
                 tempList.add(Math.abs((gap_start.getTurn())));
-                return new SuspiciousGap(gap_start.getMmsi(),gap_start.getT(),gap_end.getT());
+                String geoHash= GeoHash.encodeHash(gap_end.getLat(),gap_end.getLon());
+                return new SuspiciousGap(gap_start.getMmsi(),gap_end.getLat(),gap_end.getLon(),gap_start.getT(),gap_end.getT(),geoHash);
             }
         });
 

@@ -38,9 +38,9 @@ def main():
             for i in range(len(ais_data['lon'])) :
                 ## Generate random measurements
                 if(i%30==0):
-                    ais = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(ais_data['t'][i]-10000)}
+                    ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(1)}
                 elif(i%29==0):
-                    ais = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(ais_data['t'][i]+10000)}
+                    ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(10000)}
                 else:
                     ais = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : int(1992+(i%30)), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(ais_data['t'][i])}
                 producer.send(topic, ais, key = b'%d'%i)

@@ -3,6 +3,7 @@ package hes.cs63.CEPMonitor;
 import hes.cs63.CEPMonitor.SimpleEvents.Gap;
 import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousGap;
 import org.apache.flink.api.java.functions.KeySelector;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternSelectFunction;
@@ -12,10 +13,16 @@ import org.apache.flink.cep.pattern.conditions.SimpleCondition;
 import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
+import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
+import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
+import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
+import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -66,7 +73,19 @@ public class CEPMonitor {
         Pattern<AisMessage, ?> alarmPattern = Gap.patternGap();
         PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
         DataStream<SuspiciousGap> alarms = Gap.alarmsGap(patternStream);
-        alarms.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);
+        //alarms.map(v -> v.findGapSer()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);
+        //alarms.map(v -> v.findGapSer());
+        //DataStream<Gap>  gaps = Gap.alarmsGap(patternStream);
+        final SingleOutputStreamOperator<SuspiciousGap> process = alarms.map(v -> v.findGapObj());
+
+                // our trigger should probably be smarter;
+
+        FlinkKafkaProducer09<SuspiciousGap> myProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+                parameterTool.getRequired("topic_output"),    // target topic
+                new GapMessageSerializer(),
+                parameterTool.getProperties());   // serialization schema
+
+        process.addSink(myProducer);
 
         //messageStream.map(v -> v.toString()).print();
         env.execute("Flink ICU CEP monitoring job");
