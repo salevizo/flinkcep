@@ -74,3 +74,11 @@ mvn clean install
 
 ################
 An alalxeis kati sto prodcer/ais.py prepei an kanei delete to topic k meta plai create gai na parei thna llagh o consumer
+# ΑΛΛΑΓΕΣ 15/11
+/home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/cep_flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar -topic DEMOCP2 --bootstrap.servers localhost:9092 --zookeeper.connect localhost:218
+Ετσι τρέχεις το δευτερο job του flink που ειναι υπευθυνο για να πάρει τα gaps/speeds κλπ   και τα να τα επεξεργαστει για να βγάλει τα αποτελέσματα του complex event.
+
+
+/home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --topic_output DEMOCP2
+
+Ετσι ξεκινάει το βασικό job που έιχμαε και πριν μονο που εχει μια έξτρα παράμετρο που έβαλα την --topic_output DEMOCP2 που είναι το topic του kafka που γράφει το flink job το αποτέλεσμα
