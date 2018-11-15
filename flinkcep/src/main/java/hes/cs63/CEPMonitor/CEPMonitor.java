@@ -62,6 +62,7 @@ public class CEPMonitor {
         });
 
 
+
         // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
         //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
         // Create a pattern stream from alarmPattern
@@ -88,6 +89,55 @@ public class CEPMonitor {
         process.addSink(myProducer);
 
         //messageStream.map(v -> v.toString()).print();
+
+
+       
+
+  
+/*
+       //ZIGZAG
+        Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamZigZag = CEP.pattern(partitionedInput, alarmPatternZigZag);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<SuspiciousTurn> alarmsZigZag = CEPFunction.alarmsZigZag(patternStreamZigZag);
+
+        
+        
+        //SuspiciousAccelarate
+        Pattern<AisMessage, ?> alarmPatternSuspiciousAccelarate = CEPFunction.patternSuspiciousAccelarate();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamSuspiciousAccelarate = CEP.pattern(partitionedInput, alarmPatternSuspiciousAccelarate);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<SuspiciousAccelarate> alarmsSuspiciousAccelarate = CEPFunction.alarmsSuspiciousAccelarate(patternStreamSuspiciousAccelarate);
+        
+        
+        //SuspiciousGap
+        Pattern<AisMessage, ?> alarmPatternSuspiciousGap = CEPFunction.patternSuspiciousGap();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamSuspiciousGap = CEP.pattern(partitionedInput, alarmPatternSuspiciousGap);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<SuspiciousGap> alarmsSuspiciousGap= CEPFunction.alarmsSuspiciousGap(patternStreamSuspiciousGap);
+        
+        
+        
+        //Pause
+        Pattern<AisMessage, ?> alarmPatternPause = CEPFunction.patternSuspiciousGap();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamPause = CEP.pattern(partitionedInput, alarmPatternPause);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<Pause> alarmsPause= CEPFunction.alarmsPause(patternStreamPause);
+        
+        
+        alarmsZigZag.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);   
+        alarmsSuspiciousAccelarate.map(v -> v.highAccelarate()).writeAsText("/home/cer/Desktop/highAccelarate.txt", WriteMode.OVERWRITE);   
+        alarmsSuspiciousGap.map(v -> v.gap()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);   
+        alarmsPause.map(v -> v.pause()).writeAsText("/home/cer/Desktop/pause.txt", WriteMode.OVERWRITE);   
+        
+       
+        
+        messageStream.map(v -> v.toString()).print();
+        */
         env.execute("Flink ICU CEP monitoring job");
 
     }

@@ -1,0 +1,21 @@
+Events
+Pause: speed< 1.852km/h 
+Speed Change:Speed differentiate more than 0.25 KNOTS (Km/h==1 KNOT) 
+TurnPoint: Max heading difference between successive points more than 15 degrees (vesse change its route direction)
+
+
+Rules in order to avoid noise events and don’t add them at the CEP system for detecting patterns.
+Noise Events are:
+•	Max acceleration during a speed change > 10 degrees . Cant happen in real conditions, possible with high waves, so considered as outlier
+•	Max difference in vessels heading between successive points> 60 degrees . Cant happen in real conditions, possible with high waves, so considered as outlier
+•	If the spped is 55.6 =30KNOTS cant happe, outlier
+
+Patterns:
+1-> Assign: start, middle, finish
+
+
+TO DO;
+Remove noise events from dataset
+
+
+
