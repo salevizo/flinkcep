@@ -66,8 +66,7 @@ public class CEPMonitor {
 
 
         topic_2.addSink(gapProducer);
-        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
-
+      
 
         ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
         /*Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
@@ -80,31 +79,13 @@ public class CEPMonitor {
                 parameterTool.getProperties());   // serialization schema
 
         topic_2.addSink(gapProducer);*/
-        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
-
-/*
-       //ZIGZAG
-        Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamZigZag = CEP.pattern(partitionedInput, alarmPatternZigZag);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousTurn> alarmsZigZag = CEPFunction.alarmsZigZag(patternStreamZigZag);
-
-        
-        
-        //SuspiciousAccelarate
-        Pattern<AisMessage, ?> alarmPatternSuspiciousAccelarate = CEPFunction.patternSuspiciousAccelarate();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamSuspiciousAccelarate = CEP.pattern(partitionedInput, alarmPatternSuspiciousAccelarate);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousAccelarate> alarmsSuspiciousAccelarate = CEPFunction.alarmsSuspiciousAccelarate(patternStreamSuspiciousAccelarate);
-
+    
         
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
         
         
 ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
-    
+    /*
 		Pattern<AisMessage, ?> alarmPatternAccelaration= Acceleration.patternAcceleration();
 		PatternStream<AisMessage> patternStreamAccelaration = CEP.pattern(partitionedInput,alarmPatternAccelaration);
 		DataStream<SuspiciousAcceleration> alarmsAcceleration = Acceleration.alarmsAcceleration(patternStreamAccelaration);
