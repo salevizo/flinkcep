@@ -48,35 +48,23 @@ public class CEPMonitor {
                     }
         });
 
-<<<<<<< HEAD
+
 
 
        
-///////////////////////////////////Gaps in the messages of a single vessel////////////////////////////////////////////
-        Pattern<AisMessage, ?> alarmPattern = Gap.patternGap();
-        PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
-        DataStream<SuspiciousGap> alarms = Gap.alarmsGap(patternStream);
- 
-        final SingleOutputStreamOperator<SuspiciousGap> process = alarms.map(v -> v.findGapObj());
 
-        //Give data to be used from kafka producer
-        FlinkKafkaProducer09<SuspiciousGap> myProducer = new FlinkKafkaProducer09<SuspiciousGap>(
-=======
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
         DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
         final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
         FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
->>>>>>> 5edc484ba86fbcc4fe4a31b7956011c9e22811f7
+
                 parameterTool.getRequired("topic_output"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
-<<<<<<< HEAD
-        System.out.println("Gaps in the messages of a single vessel");
-        process.addSink(myProducer);
-=======
+
         topic_2.addSink(gapProducer);
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
@@ -110,13 +98,13 @@ public class CEPMonitor {
         PatternStream<AisMessage> patternStreamSuspiciousAccelarate = CEP.pattern(partitionedInput, alarmPatternSuspiciousAccelarate);
         // Generate risk warnings for each matched alarm pattern
         DataStream<SuspiciousAccelarate> alarmsSuspiciousAccelarate = CEPFunction.alarmsSuspiciousAccelarate(patternStreamSuspiciousAccelarate);
->>>>>>> 5edc484ba86fbcc4fe4a31b7956011c9e22811f7
+
         
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
         
         
 ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
-        /*
+    
 		Pattern<AisMessage, ?> alarmPatternAccelaration= Acceleration.patternAcceleration();
 		PatternStream<AisMessage> patternStreamAccelaration = CEP.pattern(partitionedInput,alarmPatternAccelaration);
 		DataStream<SuspiciousAcceleration> alarmsAcceleration = Acceleration.alarmsAcceleration(patternStreamAccelaration);

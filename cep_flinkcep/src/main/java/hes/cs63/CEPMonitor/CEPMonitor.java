@@ -46,18 +46,15 @@ public class CEPMonitor {
                         return value.getMmsi();
                     }
         });
-
-
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
-        Pattern<GapMessage, ?>rendezvouzPattern = RendezVouz.patternGap();
+        Pattern<GapMessage, ?> rendezvouzPattern = RendezVouz.patternRendezvouz();
         PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(partitionedInput,rendezvouzPattern);
         DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
         rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
 
-
-        
+        //messageStream.map(v -> v.toString()).print();
         env.execute("Suspicious RendezVouz");
 
     }
