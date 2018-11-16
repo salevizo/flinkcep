@@ -1,32 +1,19 @@
 package hes.cs63.CEPMonitor;
 
-import hes.cs63.CEPMonitor.SimpleEvents.Gap;
-import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousGap;
+import hes.cs63.CEPMonitor.Gaps.Gap;
+import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
-import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
-import org.apache.flink.cep.pattern.conditions.SimpleCondition;
-import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
-import org.apache.flink.streaming.api.windowing.assigners.GlobalWindows;
-import org.apache.flink.streaming.api.windowing.time.Time;
-import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
-import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
-import org.apache.flink.streaming.api.windowing.triggers.ContinuousProcessingTimeTrigger;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 
 //import hes.cs63.CEPMonitor.SimpleEvents.Acceleration;
@@ -61,6 +48,7 @@ public class CEPMonitor {
                     }
         });
 
+<<<<<<< HEAD
 
 
        
@@ -73,12 +61,56 @@ public class CEPMonitor {
 
         //Give data to be used from kafka producer
         FlinkKafkaProducer09<SuspiciousGap> myProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+=======
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+        Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
+        PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
+        DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
+        FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+>>>>>>> 5edc484ba86fbcc4fe4a31b7956011c9e22811f7
                 parameterTool.getRequired("topic_output"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
+<<<<<<< HEAD
         System.out.println("Gaps in the messages of a single vessel");
         process.addSink(myProducer);
+=======
+        topic_2.addSink(gapProducer);
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+
+
+        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
+        /*Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
+        PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
+        DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
+        FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
+                parameterTool.getRequired("topic_output"),    // target topic
+                new GapMessageSerializer(),
+                parameterTool.getProperties());   // serialization schema
+
+        topic_2.addSink(gapProducer);*/
+        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
+
+/*
+       //ZIGZAG
+        Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamZigZag = CEP.pattern(partitionedInput, alarmPatternZigZag);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<SuspiciousTurn> alarmsZigZag = CEPFunction.alarmsZigZag(patternStreamZigZag);
+
+        
+        
+        //SuspiciousAccelarate
+        Pattern<AisMessage, ?> alarmPatternSuspiciousAccelarate = CEPFunction.patternSuspiciousAccelarate();
+        // Create a pattern stream from alarmPattern
+        PatternStream<AisMessage> patternStreamSuspiciousAccelarate = CEP.pattern(partitionedInput, alarmPatternSuspiciousAccelarate);
+        // Generate risk warnings for each matched alarm pattern
+        DataStream<SuspiciousAccelarate> alarmsSuspiciousAccelarate = CEPFunction.alarmsSuspiciousAccelarate(patternStreamSuspiciousAccelarate);
+>>>>>>> 5edc484ba86fbcc4fe4a31b7956011c9e22811f7
         
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
         

@@ -1,10 +1,5 @@
-package hes.cs63.CEPMonitor.SimpleEvents;
+package hes.cs63.CEPMonitor.Gaps;
 import com.github.davidmoten.geo.GeoHash;
-import com.github.davidmoten.geo.GeoHash.*;
-import hes.cs63.CEPMonitor.GapMessageSerializer;
-import org.apache.flink.api.java.tuple.Tuple2;
-
-import java.util.LinkedList;
 
 public class SuspiciousGap {
 
@@ -82,15 +77,7 @@ public class SuspiciousGap {
         String geoHash=GeoHash.encodeHash(getLat(),getLon(),4);
         return "Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }";
     }
-    /*
-    public byte[] findGapSer(){
-        int gap=gapEnd-gapStart;
-        String geoHash=GeoHash.encodeHash(this.lat,this.lon,4);
-        Tuple2 tuple=new Tuple2(null,this);
-        return new GapMessageSerializer().serializeValue(tuple);
-    }
-    */
-    public SuspiciousGap findGapObj(){
+    public SuspiciousGap getGapObj(){
         return this;
     }
 }
