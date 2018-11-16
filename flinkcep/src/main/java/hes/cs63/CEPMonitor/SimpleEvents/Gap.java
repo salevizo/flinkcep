@@ -2,7 +2,6 @@ package hes.cs63.CEPMonitor.SimpleEvents;
 
 import com.github.davidmoten.geo.GeoHash;
 import hes.cs63.CEPMonitor.AisMessage;
-import hes.cs63.CEPMonitor.SuspiciousTurn;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;

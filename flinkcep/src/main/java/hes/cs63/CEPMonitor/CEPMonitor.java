@@ -28,9 +28,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by sahbi on 5/7/16.
- */
+
+//import hes.cs63.CEPMonitor.SimpleEvents.Acceleration;
+//import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousAcceleration;
 public class CEPMonitor {
 
     public static void main(String[] args) throws Exception {
@@ -63,82 +63,48 @@ public class CEPMonitor {
 
 
 
-        // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        //PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-        // Generate risk warnings for each matched alarm pattern
-       // DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
-
-
+       
+///////////////////////////////////Gaps in the messages of a single vessel////////////////////////////////////////////
         Pattern<AisMessage, ?> alarmPattern = Gap.patternGap();
         PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
         DataStream<SuspiciousGap> alarms = Gap.alarmsGap(patternStream);
-        //alarms.map(v -> v.findGapSer()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);
-        //alarms.map(v -> v.findGapSer());
-        //DataStream<Gap>  gaps = Gap.alarmsGap(patternStream);
+ 
         final SingleOutputStreamOperator<SuspiciousGap> process = alarms.map(v -> v.findGapObj());
 
-                // our trigger should probably be smarter;
-
+        //Give data to be used from kafka producer
         FlinkKafkaProducer09<SuspiciousGap> myProducer = new FlinkKafkaProducer09<SuspiciousGap>(
                 parameterTool.getRequired("topic_output"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
+        System.out.println("Gaps in the messages of a single vessel");
         process.addSink(myProducer);
+        
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
+        
+        
+///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
+        /*
+		Pattern<AisMessage, ?> alarmPatternAccelaration= Acceleration.patternAcceleration();
+		PatternStream<AisMessage> patternStreamAccelaration = CEP.pattern(partitionedInput,alarmPatternAccelaration);
+		DataStream<SuspiciousAcceleration> alarmsAcceleration = Acceleration.alarmsAcceleration(patternStreamAccelaration);
 
-        //messageStream.map(v -> v.toString()).print();
+		final SingleOutputStreamOperator<SuspiciousAcceleration> process1 = alarmsAcceleration.map(v -> v.findAccelerationObj());
 
-
-       
-
-  
-/*
-       //ZIGZAG
-        Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamZigZag = CEP.pattern(partitionedInput, alarmPatternZigZag);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousTurn> alarmsZigZag = CEPFunction.alarmsZigZag(patternStreamZigZag);
-
+		FlinkKafkaProducer09<SuspiciousAcceleration> myProducerAcceleration = new FlinkKafkaProducer09<SuspiciousAcceleration>(
+		        parameterTool.getRequired("topic_output"),    // target topic
+		        new AccelerationMessageSerializer(),
+		        parameterTool.getProperties());   // serialization schema
+		
+				System.out.println("High acceleration in a single vessel");
+		        process1.addSink(myProducerAcceleration);
+		        */
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
         
         
-        //SuspiciousAccelarate
-        Pattern<AisMessage, ?> alarmPatternSuspiciousAccelarate = CEPFunction.patternSuspiciousAccelarate();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamSuspiciousAccelarate = CEP.pattern(partitionedInput, alarmPatternSuspiciousAccelarate);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousAccelarate> alarmsSuspiciousAccelarate = CEPFunction.alarmsSuspiciousAccelarate(patternStreamSuspiciousAccelarate);
+      
         
-        
-        //SuspiciousGap
-        Pattern<AisMessage, ?> alarmPatternSuspiciousGap = CEPFunction.patternSuspiciousGap();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamSuspiciousGap = CEP.pattern(partitionedInput, alarmPatternSuspiciousGap);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousGap> alarmsSuspiciousGap= CEPFunction.alarmsSuspiciousGap(patternStreamSuspiciousGap);
-        
-        
-        
-        //Pause
-        Pattern<AisMessage, ?> alarmPatternPause = CEPFunction.patternSuspiciousGap();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamPause = CEP.pattern(partitionedInput, alarmPatternPause);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<Pause> alarmsPause= CEPFunction.alarmsPause(patternStreamPause);
-        
-        
-        alarmsZigZag.map(v -> v.zigNzag()).writeAsText("/home/cer/Desktop/zigzag.txt", WriteMode.OVERWRITE);   
-        alarmsSuspiciousAccelarate.map(v -> v.highAccelarate()).writeAsText("/home/cer/Desktop/highAccelarate.txt", WriteMode.OVERWRITE);   
-        alarmsSuspiciousGap.map(v -> v.gap()).writeAsText("/home/cer/Desktop/gap.txt", WriteMode.OVERWRITE);   
-        alarmsPause.map(v -> v.pause()).writeAsText("/home/cer/Desktop/pause.txt", WriteMode.OVERWRITE);   
-        
-       
-        
-        messageStream.map(v -> v.toString()).print();
-        */
-        env.execute("Flink ICU CEP monitoring job");
+        env.execute("Trajentory evens");
 
     }
 }

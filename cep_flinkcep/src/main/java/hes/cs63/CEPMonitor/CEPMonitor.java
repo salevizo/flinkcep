@@ -50,13 +50,6 @@ public class CEPMonitor {
         });
 
 
-        // Warning pattern: 2 high heart rate events with a high blood pressure within 10 seconds
-        //Pattern<AisMessage, ?> alarmPattern = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        //PatternStream<AisMessage> patternStream = CEP.pattern(partitionedInput, alarmPattern);
-        // Generate risk warnings for each matched alarm pattern
-       // DataStream<SuspiciousTurn> alarms = CEPFunction.alarmsZigZag(patternStream);
-
 
         Pattern<GapMessage, ?> alarmPattern = RendezVouz.patternGap();
         PatternStream<GapMessage> patternStream = CEP.pattern(partitionedInput,alarmPattern);
@@ -65,7 +58,7 @@ public class CEPMonitor {
 
 
 
-        //messageStream.map(v -> v.toString()).print();
+        
         env.execute("Suspicious RendezVouz");
 
     }
