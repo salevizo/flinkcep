@@ -2,63 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/producer/ais.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/producer/gap.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/producer/icu.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/GapMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousRendezVouz.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/resources/META_INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/META_INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Deserializers/CoTravelDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/receivedClasses/CoTravelInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producer/coTravel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/producer/coTravelVessel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/GapMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/receivedClasses/GapMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/GapMessageDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Deserializers/GapMessageDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousRendezVouz.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/GapMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/GapMessageDeserializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousRendezVouz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/gap.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer/gap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/BloodPressureMeasurement.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/HeartMeasurement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Measurement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/MeasurementDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/GapMessageDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/StrokeRiskAlarm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/TempMeasurement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/BloodPressureMeasurement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/HeartMeasurement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Measurement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/MeasurementDeserializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/StrokeRiskAlarm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/TempMeasurement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/flinkicu-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/flinkicu-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/GapMessageSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/GapMessageSerializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/Gap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,33 +59,34 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="3" />
-          <entry key="java" value="24" />
-          <entry key="py" value="6" />
+          <entry key="class" value="4" />
+          <entry key="java" value="30" />
+          <entry key="py" value="8" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="3" />
-          <entry key="JAVA" value="24" />
-          <entry key="Python" value="6" />
+          <entry key="CLASS" value="4" />
+          <entry key="JAVA" value="30" />
+          <entry key="Python" value="8" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="26" />
-          <entry key="java" value="3360" />
-          <entry key="py" value="380" />
+          <entry key="SuspiciousCoTraveljava" value="4" />
+          <entry key="dummy" value="46" />
+          <entry key="java" value="5444" />
+          <entry key="py" value="557" />
           <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3360" />
-          <entry key="PLAIN_TEXT" value="26" />
-          <entry key="Python" value="380" />
+          <entry key="JAVA" value="5444" />
+          <entry key="PLAIN_TEXT" value="50" />
+          <entry key="Python" value="557" />
           <entry key="XML" value="10" />
         </counts>
       </usages-collector>
@@ -118,33 +97,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+            <state relative-caret-position="400">
+              <caret line="80" column="41" lean-forward="true" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4039#4054#0" expanded="true" />
+                <element signature="e#3025#3040#0" expanded="true" />
+                <element signature="e#4192#4206#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/RendezVous.java">
+        <entry file="file://$PROJECT_DIR$/producer/coTravel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-44">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/producer/coTravelVessel.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Pause.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="105">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/GapMessageSerializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#367#368#0" expanded="true" />
@@ -155,76 +150,85 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelSerializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+            <state relative-caret-position="295">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="63" />
+            <state relative-caret-position="372">
+              <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="35" column="62" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+              <folding>
+                <element signature="e#910#1188#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#859#2030#0" expanded="true" />
+                <element signature="e#2029#2030#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+              <folding>
+                <element signature="e#682#683#0" expanded="true" />
+                <element signature="e#711#712#0" expanded="true" />
+                <element signature="e#756#757#0" expanded="true" />
+                <element signature="e#792#793#0" expanded="true" />
+                <element signature="e#826#827#0" expanded="true" />
+                <element signature="e#855#856#0" expanded="true" />
+                <element signature="e#900#901#0" expanded="true" />
+                <element signature="e#936#937#0" expanded="true" />
+                <element signature="e#966#967#0" expanded="true" />
+                <element signature="e#993#994#0" expanded="true" />
+                <element signature="e#1032#1033#0" expanded="true" />
+                <element signature="e#1064#1065#0" expanded="true" />
+                <element signature="e#1094#1095#0" expanded="true" />
+                <element signature="e#1121#1122#0" expanded="true" />
+                <element signature="e#1160#1161#0" expanded="true" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1222#1223#0" expanded="true" />
+                <element signature="e#1249#1250#0" expanded="true" />
+                <element signature="e#1288#1289#0" expanded="true" />
+                <element signature="e#1320#1321#0" expanded="true" />
+                <element signature="e#1350#1351#0" expanded="true" />
+                <element signature="e#1377#1378#0" expanded="true" />
+                <element signature="e#1416#1417#0" expanded="true" />
+                <element signature="e#1448#1449#0" expanded="true" />
+                <element signature="e#1485#1486#0" expanded="true" />
+                <element signature="e#1517#1518#0" expanded="true" />
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1610#1611#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="57" column="60" lean-forward="true" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
               <folding>
                 <element signature="e#1115#1116#0" expanded="true" />
                 <element signature="e#1155#1156#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/producer/ais.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="29" column="101" selection-end-line="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/producer/gap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#656#876#0" expanded="true" />
-                <element signature="e#875#876#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/AisMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="15" selection-start-line="32" selection-start-column="15" selection-end-line="32" selection-end-column="15" />
-              <folding>
-                <element signature="e#942#943#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -271,11 +275,24 @@
         <option value="$PROJECT_DIR$/producer/ais.py" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/ComplexEvents/Gap.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java" />
         <option value="$PROJECT_DIR$/producer/gap.py" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/Gap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciousGap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciousCoTraveljava" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciouCoTravelInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciousCoTravel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciousCoTravelInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/SuspiciousCoTravelSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelSerializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" />
+        <option value="$PROJECT_DIR$/producer/coTravel.py" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" />
+        <option value="$PROJECT_DIR$/producer/coTravelVessel.py" />
       </list>
     </option>
   </component>
@@ -338,7 +355,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="CEPMonitor" type="462c0819:PsiDirectoryNode" />
-              <item name="SimpleEvents" type="462c0819:PsiDirectoryNode" />
+              <item name="Gaps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flinkicu" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flinkcep" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="CEPMonitor" type="462c0819:PsiDirectoryNode" />
+              <item name="VesselsCoTravel" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -347,14 +373,19 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542290293803" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542469365153" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../cep_flinkcep" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="hes.cs63.CEPMonitor.VesselsCoTravel" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/producer" />
+      <recent name="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel" />
       <recent name="$PROJECT_DIR$/.." />
       <recent name="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/ComplexEvents" />
     </key>
@@ -385,10 +416,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="28" width="1922" height="947" extended-state="7" />
+    <frame x="-1" y="28" width="1922" height="899" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -396,14 +427,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32885087" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4994664" weight="0.32597402" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32885087" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="8" sideWeight="0.50053364" side_tool="true" visible="true" weight="0.32597402" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -441,13 +472,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.6.2/flink-core-1.6.2.jar!/org/apache/flink/api/common/functions/MapFunction.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -541,8 +565,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/producer/ais.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="101" selection-end-line="56" />
+        <state relative-caret-position="975">
+          <caret line="70" column="8" selection-end-line="88" />
         </state>
       </provider>
     </entry>
@@ -563,40 +587,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/producer/gap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="192">
+          <caret line="160" column="71" lean-forward="true" selection-start-line="160" selection-start-column="71" selection-end-line="160" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#656#876#0" expanded="true" />
-            <element signature="e#875#876#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-core/1.6.2/flink-core-1.6.2.jar!/org/apache/flink/api/common/functions/MapFunction.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
+        <state relative-caret-position="135">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="57" column="60" lean-forward="true" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4039#4054#0" expanded="true" />
+            <element signature="e#1115#1116#0" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/RendezVouz.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Pause.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/GapMessageSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#367#368#0" expanded="true" />
@@ -605,28 +648,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousGap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="8" selection-end-line="68" selection-end-column="63" />
+        <state relative-caret-position="360">
+          <caret line="35" column="62" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
           <folding>
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#910#1188#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#859#2030#0" expanded="true" />
+            <element signature="e#2029#2030#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/Gap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelSerializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        <state relative-caret-position="295">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/producer/gap.py">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="372">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+          <folding>
+            <element signature="e#682#683#0" expanded="true" />
+            <element signature="e#711#712#0" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#855#856#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#936#937#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#993#994#0" expanded="true" />
+            <element signature="e#1032#1033#0" expanded="true" />
+            <element signature="e#1064#1065#0" expanded="true" />
+            <element signature="e#1094#1095#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1222#1223#0" expanded="true" />
+            <element signature="e#1249#1250#0" expanded="true" />
+            <element signature="e#1288#1289#0" expanded="true" />
+            <element signature="e#1320#1321#0" expanded="true" />
+            <element signature="e#1350#1351#0" expanded="true" />
+            <element signature="e#1377#1378#0" expanded="true" />
+            <element signature="e#1416#1417#0" expanded="true" />
+            <element signature="e#1448#1449#0" expanded="true" />
+            <element signature="e#1485#1486#0" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="80" column="41" lean-forward="true" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3025#3040#0" expanded="true" />
+            <element signature="e#4192#4206#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer/coTravel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer/coTravelVessel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
         </state>
       </provider>
     </entry>

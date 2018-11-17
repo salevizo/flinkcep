@@ -1,7 +1,11 @@
 package hes.cs63.CEPMonitor;
 
 import hes.cs63.CEPMonitor.Gaps.Gap;
+import hes.cs63.CEPMonitor.Gaps.GapMessageSerializer;
 import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
+import hes.cs63.CEPMonitor.VesselsCoTravel.coTravelInfo;
+import hes.cs63.CEPMonitor.VesselsCoTravel.coTravel;
+import hes.cs63.CEPMonitor.VesselsCoTravel.coTravelSerializer;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
@@ -48,32 +52,40 @@ public class CEPMonitor {
                     }
         });
 
+        DataStream<AisMessage> nonPartitionedInput = messageStream;
+
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
         DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
-        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2_gap = gaps.map(v -> v.getGapObj());
         FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
                 parameterTool.getRequired("topic_output"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
-        topic_2.addSink(gapProducer);
+        topic_2_gap.addSink(gapProducer);
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
 
-        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
-        /*Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
-        PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
-        DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
-        final SingleOutputStreamOperator<SuspiciousGap> topic_2 = gaps.map(v -> v.getGapObj());
-        FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
-                parameterTool.getRequired("topic_output"),    // target topic
-                new GapMessageSerializer(),
+
+
+        ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
+        Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
+        PatternStream<AisMessage> patternCoTravelStream = CEP.pattern(nonPartitionedInput,coTravelPattern);
+        DataStream<coTravelInfo> coTravel = hes.cs63.CEPMonitor.VesselsCoTravel.coTravel.suspiciousCoTravelStream(patternCoTravelStream);
+        //coTravel.map(v ->v.getSuspiciousCoTravelInfo()).writeAsText("/home/cer/Desktop/suspicious.txt", FileSystem.WriteMode.OVERWRITE);
+        final SingleOutputStreamOperator<coTravelInfo> topic_2_co = coTravel.map(v -> v.getSuspiciousCoTravelInfo());
+        FlinkKafkaProducer09<coTravelInfo> coProducer = new FlinkKafkaProducer09<coTravelInfo>(
+                parameterTool.getRequired("topic_output_co"),    // target topic
+                new coTravelSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
-        topic_2.addSink(gapProducer);*/
-        ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
+        topic_2_gap.addSink(gapProducer);
+        topic_2_co.addSink(coProducer);
+        ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
+
+
 
 /*
        //ZIGZAG

@@ -1,7 +1,13 @@
 package hes.cs63.CEPMonitor;
 
-import hes.cs63.CEPMonitor.SimpleEvents.RendezVouz;
-import hes.cs63.CEPMonitor.SimpleEvents.SuspiciousRendezVouz;
+import hes.cs63.CEPMonitor.CoTravellingVessels.SuspiciousCoTravellingVessels;
+import hes.cs63.CEPMonitor.CoTravellingVessels.coTravellingVessels;
+import hes.cs63.CEPMonitor.Deserializers.CoTravelDeserializer;
+import hes.cs63.CEPMonitor.Deserializers.GapMessageDeserializer;
+import hes.cs63.CEPMonitor.Rendezvouz.RendezVouz;
+import hes.cs63.CEPMonitor.Rendezvouz.SuspiciousRendezVouz;
+import hes.cs63.CEPMonitor.receivedClasses.CoTravelInfo;
+import hes.cs63.CEPMonitor.receivedClasses.GapMessage;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
@@ -31,7 +37,9 @@ public class CEPMonitor {
             setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         System.out.println("LOCO2");
         // Input stream of monitoring events
-        DataStream<GapMessage> messageStream = env
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DataStream<GapMessage> gapMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                                     parameterTool.getRequired("topic"),
                                     new GapMessageDeserializer(),
@@ -39,19 +47,44 @@ public class CEPMonitor {
                 .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
 
 
-        DataStream<GapMessage> partitionedInput = messageStream.keyBy(
+        DataStream<GapMessage> gapPartitionedInput = gapMessageStream.keyBy(
                 new KeySelector<GapMessage, Integer>() {
                     @Override
                     public Integer getKey(GapMessage value) throws Exception {
                         return value.getMmsi();
                     }
         });
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DataStream<CoTravelInfo> coTravelMessageStream = env
+                .addSource(new FlinkKafkaConsumer09<>(
+                        parameterTool.getRequired("topic_co"),
+                        new CoTravelDeserializer(),
+                        parameterTool.getProperties()))
+                .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
+
+
+       DataStream<CoTravelInfo> coTravelPartitionedInput = coTravelMessageStream.keyBy(
+                new KeySelector<CoTravelInfo, Integer>() {
+                    @Override
+                    public Integer getKey(CoTravelInfo value) throws Exception {
+                        return value.getMmsi_1();
+                    }
+                });
+
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
-        Pattern<GapMessage, ?>rendezvouzPattern = RendezVouz.patternGap();
-        PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(partitionedInput,rendezvouzPattern);
+        Pattern<GapMessage, ?>rendezvouzPattern = RendezVouz.patternRendezvouz();
+        PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
         DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
         rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+
+        //////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+        Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
+        PatternStream<CoTravelInfo> coTravelPatternStream = CEP.pattern(coTravelPartitionedInput,coTravelpattern);
+        DataStream<SuspiciousCoTravellingVessels> coTravelStream = coTravellingVessels.coTravellingDatastream(coTravelPatternStream);
+        coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/cotravel.txt", WriteMode.OVERWRITE);
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+
 
 
         //messageStream.map(v -> v.toString()).print();
