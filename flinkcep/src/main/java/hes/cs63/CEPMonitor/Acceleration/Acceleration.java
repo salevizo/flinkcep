@@ -29,13 +29,13 @@ public class Acceleration {
                       //TO CHANGE IT
                         	
                         if (ev.getT()>event.getT()) {
-                        	if(((ev.getSpeed()-event.getSpeed())>=10 && (ev.getT()-event.getT())<50)){
+                        	if((Math.abs(ev.getSpeed()-event.getSpeed())>=20 && (ev.getT()-event.getT())<50)){
                             	
                                 
                                     return true;
                                 }
                         }else if (ev.getT()<=event.getT()) {
-                        	if(((event.getSpeed()-ev.getSpeed())>=10 && (event.getT()-ev.getT())<50)){
+                        	if((Math.abs(event.getSpeed()-ev.getSpeed())>=20 && (event.getT()-ev.getT())<50)){
                             	
                                 
                                     return true;

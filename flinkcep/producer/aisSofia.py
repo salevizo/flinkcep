@@ -62,7 +62,7 @@ def main():
     producer = KafkaProducer(value_serializer=lambda v: json.dumps(v).encode('utf-8'),bootstrap_servers=server)
     print "*** Starting measurements stream on " + server + ", topic : " + topic
     csv_ctx=[]
-    with open('mycsvfile.csv', 'rb') as csvfile:
+    with open('mycsvfileSOFIA.csv', 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         for row in reader:
             csv_ctx.append((row[0].split(',')))

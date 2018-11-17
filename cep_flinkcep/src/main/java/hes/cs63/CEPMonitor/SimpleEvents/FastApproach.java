@@ -25,6 +25,8 @@ import java.io.*;
 
 public class FastApproach {
 	
+public static Float distanceFor2vessels=Float.valueOf("0");
+
 	 public static  ArrayList<ArrayList<Float>>readcsv(){
 		 ArrayList<ArrayList<Float>> listOfPorts = new ArrayList<ArrayList<Float>>();
 		 ArrayList<Float> singleList = new ArrayList<Float>();
@@ -74,21 +76,28 @@ public class FastApproach {
 					dist = dist * 60 * 1.1515;
 					
 						dist = dist * 1.609344;
-			    
-			    if (dist<=1) {
+			    //20km away form port
+			    if (dist<20) {
 			    	return true;
 			    }
 		 }
-		 return false;
-		  
-	
-			
-			
-		    
-		  
+		 return false; 
 	 }
 	
 	
+	 
+	 public static Float distanceVessels(Float lon1, Float lat1,Float lon2, Float lat2) {
+		
+		
+				 Float theta = lon1 - lon2;
+				 Double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
+					dist = Math.acos(dist);
+					dist = Math.toDegrees(dist);
+					dist = dist * 60 * 1.1515;
+					
+			
+		 return Float.valueOf(dist.toString());
+	 }
 	
 	
 	
@@ -101,9 +110,19 @@ public class FastApproach {
                     @Override
                     public boolean filter(AccelerationMessage event, Context<AccelerationMessage> ctx) throws Exception {
                         for (AccelerationMessage ev : ctx.getEventsForPattern("Vessel_1")) {
-                            if(Math.abs(ev.getAccelerationEnd())-event.getAccelerationStart()<10
-                            && ( distance(ev.getLon(), ev.getLat(), readcsv()))==false){
-                                return true;
+                        	
+                            if(( distance(ev.getLon(), ev.getLat(), readcsv()))==false && ( distance(event.getLon(), event.getLat(), readcsv()))==false){
+                            	Float distanceNow= distanceVessels(ev.getLon(), ev.getLat(),event.getLon(), event.getLat());
+                            	if (distanceFor2vessels==0.0) {
+                            		distanceFor2vessels=distanceNow;
+                            	}else {
+                            		if (distanceNow<distanceFor2vessels) {
+                            			 return true;
+                            		}else {
+                            			return false;
+                            		}
+                            	}
+                               
                             }
                             else{
                                 return false;

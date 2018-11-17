@@ -41,10 +41,7 @@ public class CEPMonitor {
 
     public static void main(String[] args) throws Exception {
     	
-    	
-    	
     	String sql = "SELECT * FROM `stackoverflow`";
-    
     
         System.getenv("APP_HOME");
         StreamExecutionEnvironment env =
@@ -76,7 +73,7 @@ public class CEPMonitor {
 
 
 
-       
+     
 
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
@@ -91,7 +88,7 @@ public class CEPMonitor {
 
 
         topic_2.addSink(gapProducer);
-      
+    
         
        
         ///////////////////////////////////Vessels moving closely for a lot of time////////////////////////////////////////////
@@ -127,7 +124,7 @@ public class CEPMonitor {
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
 		  System.out.println("LOCO3");
 		final SingleOutputStreamOperator<SuspiciousAcceleration> topic_22 = accelerations.map(v -> v.findAccelerationObj());
-		  accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/GAMW.txt", WriteMode.OVERWRITE);
+		  accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/GAMWTOKERATO.txt", WriteMode.OVERWRITE);
 	
 		  System.out.println("LOCO4");
 		
