@@ -53,9 +53,28 @@ public class SuspiciousGap {
         this.gapEnd = gapEnd;
     }
 
+    
+    
+    public Float getLon() {
+        return lon;
+    }
+
+    public void setLon(Float lon) {
+        this.lon = lon;
+    }
+    
+    
+    public Float getLat() {
+        return lat;
+    }
+
+    public void setLat(Float lat) {
+        this.lat = lat;
+    }
+    
     public String findGap(){
         int gap=gapEnd-gapStart;
-        String geoHash=GeoHash.encodeHash(this.lat,this.lon,4);
+        String geoHash=GeoHash.encodeHash(getLat(),getLon(),4);
         return "Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }";
     }
     public SuspiciousGap getGapObj(){
