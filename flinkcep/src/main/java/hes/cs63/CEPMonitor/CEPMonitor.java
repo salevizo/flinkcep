@@ -1,5 +1,6 @@
 package hes.cs63.CEPMonitor;
 
+import hes.cs63.CEPMonitor.Acceleration.AccelerationMessageSerializer;
 import hes.cs63.CEPMonitor.Gaps.Gap;
 import hes.cs63.CEPMonitor.Gaps.GapMessageSerializer;
 import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
@@ -11,7 +12,6 @@ import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
-import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -20,18 +20,8 @@ import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
 
-import com.github.davidmoten.geo.GeoHash;
-
 import hes.cs63.CEPMonitor.Acceleration.Acceleration;
 import hes.cs63.CEPMonitor.Acceleration.SuspiciousAcceleration;
-
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class CEPMonitor {
@@ -39,7 +29,7 @@ public class CEPMonitor {
     public static void main(String[] args) throws Exception {
     	
     	String sql = "SELECT * FROM `stackoverflow`";
-    
+        //Acceleration.readcsv();
         System.getenv("APP_HOME");
         StreamExecutionEnvironment env =
                 StreamExecutionEnvironment.getExecutionEnvironment();
@@ -49,7 +39,7 @@ public class CEPMonitor {
         // Use ingestion time => TimeCharacteristic == EventTime + IngestionTimeExtractor
         env.enableCheckpointing(1000).
             setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-        System.out.println("LOCO0000");
+
         // Input stream of monitoring events
         DataStream<AisMessage> messageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
@@ -68,40 +58,36 @@ public class CEPMonitor {
         });
 
         DataStream<AisMessage> nonPartitionedInput = messageStream;
-
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
         DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
+
         final SingleOutputStreamOperator<SuspiciousGap> topic_2_gap = gaps.map(v -> v.getGapObj());
+
         FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
 
-                parameterTool.getRequired("topic_output"),    // target topic
+                parameterTool.getRequired("topic_output_gap"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
         topic_2_gap.addSink(gapProducer);
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
-
-
-
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
         Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
         PatternStream<AisMessage> patternCoTravelStream = CEP.pattern(nonPartitionedInput,coTravelPattern);
         DataStream<coTravelInfo> coTravel = hes.cs63.CEPMonitor.VesselsCoTravel.coTravel.suspiciousCoTravelStream(patternCoTravelStream);
-        //coTravel.map(v ->v.getSuspiciousCoTravelInfo()).writeAsText("/home/cer/Desktop/suspicious.txt", FileSystem.WriteMode.OVERWRITE);
+
         final SingleOutputStreamOperator<coTravelInfo> topic_2_co = coTravel.map(v -> v.getSuspiciousCoTravelInfo());
+
         FlinkKafkaProducer09<coTravelInfo> coProducer = new FlinkKafkaProducer09<coTravelInfo>(
                 parameterTool.getRequired("topic_output_co"),    // target topic
                 new coTravelSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
-        topic_2_gap.addSink(gapProducer);
         topic_2_co.addSink(coProducer);
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
-
-
 
 /*
        //ZIGZAG
@@ -114,39 +100,25 @@ public class CEPMonitor {
         
 */       
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-        
-       
-        
-        
-      
 
-     
-
-
-        
-        
-///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
+    ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
+        //Acceleration acc=new Acceleration();
         Pattern<AisMessage, ?> Accelarationattern= Acceleration.patternAcceleration();
-        System.out.println("LOCO1");
-		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(partitionedInput,Accelarationattern);
-		  System.out.println("LOCO2");
+		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
-		  System.out.println("LOCO3");
-		final SingleOutputStreamOperator<SuspiciousAcceleration> topic_22 = accelerations.map(v -> v.findAccelerationObj());
-		  accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/GAMWTOKERATO.txt", WriteMode.OVERWRITE);
-	
-		  System.out.println("LOCO4");
-		
-	
+
+		final SingleOutputStreamOperator<SuspiciousAcceleration> topic_2_acc = accelerations.map(v -> v.findAccelerationObj());
+
 		FlinkKafkaProducer09<SuspiciousAcceleration> AccelerationProducer = new FlinkKafkaProducer09<SuspiciousAcceleration>(
-		        parameterTool.getRequired("topic_output"),    // target topic
+		        parameterTool.getRequired("topic_output_acc"),    // target topic
 		        new AccelerationMessageSerializer(),
 		        parameterTool.getProperties());   // serialization schema
 		
 				
-		        topic_22.addSink(AccelerationProducer);
-		       
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+        topic_2_acc.addSink(AccelerationProducer);
+
+    ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
+
         
         
       

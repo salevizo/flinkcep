@@ -23,6 +23,8 @@ public class coTravellingVessels {
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
                 .subtype(CoTravelInfo.class)
+                .oneOrMore()
+                .followedByAny("msg_2")
                 .where(new IterativeCondition<CoTravelInfo>() {
                     @Override
                     public boolean filter(CoTravelInfo event, Context<CoTravelInfo> ctx) throws Exception {
@@ -35,25 +37,26 @@ public class coTravellingVessels {
                             System.out.println("LENGTH IS1 ="+l.size());
                             //allagi seiras,prota na mpei to mmsi check
 
-                            if(Math.abs(currTime-ev.getTimestamp())<30
-                                    && event.getMmsi_2()==ev.getMmsi_2()){
-                                if((base-ev.getTimestamp())>60){
-                                    String f="";
-                                    f=f+ev.getTimestamp();
-                                    for (String m:s){
-                                        f=f+"-"+m;
-                                    }
+                            if(Math.abs(currTime-ev.getTimestamp())<30) {
+                                if (event.getMmsi_2() == ev.getMmsi_2()) {
+                                    if ((base - ev.getTimestamp()) > 60) {
+                                        String f = "";
+                                        f = f + ev.getTimestamp();
+                                        for (String m : s) {
+                                            f = f + "-" + m;
+                                        }
 
-                                    System.out.println("ACCEPTED MALAKA="+f);
-                                    System.out.println("ALEKARAS123="+event.getMmsi_1()+"-"+ev.getMmsi_2());
-                                    return true;
-                                }
-                                else{
-                                    //System.out.println("ELSE INNER");
-                                    s.add(Float.toString(ev.getTimestamp()));
-                                    currTime=ev.getTimestamp();
+                                        System.out.println("ACCEPTED MALAKA=" + f);
+                                        System.out.println("ALEKARAS123=" + event.getMmsi_1() + "-" + ev.getMmsi_2());
+                                        return true;
+                                    } else {
+                                        //System.out.println("ELSE INNER");
+                                        s.add(Float.toString(ev.getTimestamp()));
+                                        currTime = ev.getTimestamp();
+                                    }
                                 }
                             }
+
                             else{
                                 //isos prepei na vgei giati tha akirwnei an vrw ena akiro id endiamesa
                                 //System.out.println("ELSE OUTER");

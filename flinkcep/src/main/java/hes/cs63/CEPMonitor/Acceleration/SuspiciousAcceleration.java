@@ -1,7 +1,6 @@
 package hes.cs63.CEPMonitor.Acceleration;
 import com.github.davidmoten.geo.GeoHash;
 import com.github.davidmoten.geo.GeoHash.*;
-import hes.cs63.CEPMonitor.GapMessageSerializer;
 import org.apache.flink.api.java.tuple.Tuple2;
 
 import java.util.LinkedList;

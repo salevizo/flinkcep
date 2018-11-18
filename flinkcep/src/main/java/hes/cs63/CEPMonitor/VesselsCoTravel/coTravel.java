@@ -32,7 +32,6 @@ public class coTravel {
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         int base=event.getT();
                         int time=0;
-                        System.out.println("ALERKOS");
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
                             String geoHash1=GeoHash.encodeHash(ev.getLat(),ev.getLon(),4);
                             String geoHash2=GeoHash.encodeHash(event.getLat(),event.getLon(),4);
