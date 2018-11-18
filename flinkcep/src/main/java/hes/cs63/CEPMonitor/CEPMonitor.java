@@ -1,6 +1,8 @@
 package hes.cs63.CEPMonitor;
 
 import hes.cs63.CEPMonitor.Acceleration.AccelerationMessageSerializer;
+import hes.cs63.CEPMonitor.Fishing.IllegalFishing;
+import hes.cs63.CEPMonitor.Fishing.SuspiciousFishing;
 import hes.cs63.CEPMonitor.Gaps.Gap;
 import hes.cs63.CEPMonitor.Gaps.GapMessageSerializer;
 import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
@@ -12,6 +14,7 @@ import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
+import org.apache.flink.core.fs.FileSystem;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -84,42 +87,31 @@ public class CEPMonitor {
         FlinkKafkaProducer09<coTravelInfo> coProducer = new FlinkKafkaProducer09<coTravelInfo>(
                 parameterTool.getRequired("topic_output_co"),    // target topic
                 new coTravelSerializer(),
-                parameterTool.getProperties());   // serialization schema
+                parameterTool.getProperties());
 
         topic_2_co.addSink(coProducer);
+
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
 
-/*
-       //ZIGZAG
-        Pattern<AisMessage, ?> alarmPatternZigZag = CEPFunction.patternZigZag();
-        // Create a pattern stream from alarmPattern
-        PatternStream<AisMessage> patternStreamZigZag = CEP.pattern(partitionedInput, alarmPatternZigZag);
-        // Generate risk warnings for each matched alarm pattern
-        DataStream<SuspiciousTurn> alarmsZigZag = CEPFunction.alarmsZigZag(patternStreamZigZag);
+        //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
-        
-*/       
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////      
-
-    ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
-        //Acceleration acc=new Acceleration();
         Pattern<AisMessage, ?> Accelarationattern= Acceleration.patternAcceleration();
 		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
 
-		final SingleOutputStreamOperator<SuspiciousAcceleration> topic_2_acc = accelerations.map(v -> v.findAccelerationObj());
+		accelerations.map(v -> v.findAccelerationObj()).writeAsText(parameterTool.getRequired("/home/cer/Desktop/fast_approach.txt"), FileSystem.WriteMode.OVERWRITE);
 
-		FlinkKafkaProducer09<SuspiciousAcceleration> AccelerationProducer = new FlinkKafkaProducer09<SuspiciousAcceleration>(
-		        parameterTool.getRequired("topic_output_acc"),    // target topic
-		        new AccelerationMessageSerializer(),
-		        parameterTool.getProperties());   // serialization schema
-		
-				
-        topic_2_acc.addSink(AccelerationProducer);
+        //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
-    ///////////////////////////////////High acceleration in a single vessel////////////////////////////////////////////
+        //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
-        
+        Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
+        PatternStream<AisMessage> patternFishingStream = CEP.pattern(nonPartitionedInput,fishingPattern);
+        DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
+
+        fishing.map(v -> v.findFishing()).writeAsText(parameterTool.getRequired("/home/cer/Desktop/fishing.txt"), FileSystem.WriteMode.OVERWRITE);
+
+        //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         
       
         

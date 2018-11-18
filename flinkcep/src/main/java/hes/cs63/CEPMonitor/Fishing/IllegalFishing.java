@@ -13,9 +13,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Gap {
-    public static Pattern<AisMessage, ?> patternGap(){
-        Pattern<AisMessage, ?> rendezvouzPattern = Pattern.<AisMessage>begin("start")
+public class IllegalFishing {
+    public static Pattern<AisMessage, ?> patternFishing(){
+        Pattern<AisMessage, ?> fishingPattern = Pattern.<AisMessage>begin("start")
                 .subtype(AisMessage.class)
                 .followedBy("change in heading")
                 .subtype(AisMessage.class)
@@ -34,6 +34,7 @@ public class Gap {
                 }})
                 .subtype(AisMessage.class)
                 .followedBy("gap_start")
+                .subtype(AisMessage.class)
                 .followedBy("gap_end")
                 .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
@@ -49,22 +50,39 @@ public class Gap {
                         }
                         return false;
                     }})
+                .followedBy("start again")
+                .subtype(AisMessage.class)
                 .followedBy("change in heading")
+                .subtype(AisMessage.class)
+                .where(new IterativeCondition<AisMessage>() {
+                    @Override
+                    public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
+                        for (AisMessage ev : ctx.getEventsForPattern("start")) {
+                            if(Math.abs(ev.getHeading()-event.getHeading())>60){
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }
+                        }
+                        return false;
+                    }})
                 .within(Time.seconds(10));
-        return rendezvouzPattern;
+        return fishingPattern;
     }
 
-    public static DataStream<SuspiciousGap> suspiciousGapsStream(PatternStream<AisMessage> patternStream){
-        DataStream<SuspiciousGap>  rendezvouz  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousGap>() {
+    public static DataStream<SuspiciousFishing> suspiciousFishingStream(PatternStream<AisMessage> patternStream){
+        DataStream<SuspiciousFishing>  rendezvouz  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousFishing>() {
             @Override
-            public SuspiciousGap select(Map<String,List<AisMessage>> pattern) throws Exception {
+            public SuspiciousFishing select(Map<String,List<AisMessage>> pattern) throws Exception {
                 AisMessage gap_start = (AisMessage) pattern.get("gap_start").get(0);
                 AisMessage gap_end = (AisMessage) pattern.get("gap_end").get(0);
+                AisMessage change = (AisMessage) pattern.get("change in heading").get(0);
 
                 LinkedList<Float> tempList=new LinkedList<Float>();
                 tempList.add(Math.abs((gap_start.getTurn())));
-                String geoHash= GeoHash.encodeHash(gap_end.getLat(),gap_end.getLon());
-                return new SuspiciousGap(gap_start.getMmsi(),gap_end.getLat(),gap_end.getLon(),gap_start.getT(),gap_end.getT(),geoHash);
+                String geoHash= GeoHash.encodeHash(change.getLat(),change.getLon());
+                return new SuspiciousFishing(gap_start.getMmsi(),gap_start.getLon(),gap_start.getLat(),gap_end.getLon(),gap_end.getLat(),geoHash,gap_start.getT(),gap_end.getT());
             }
         });
 

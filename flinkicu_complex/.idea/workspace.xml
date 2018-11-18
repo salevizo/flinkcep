@@ -2,63 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e09fdae5-d245-466d-a11d-b0e82ac7d740" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../flinkcep/producer/acc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/Gap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/GapMessageSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousGap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Accelaration/AccelerationMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/receivedClasses/AccelerationMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Accelaration/AccelerationMessageDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Deserializers/AccelerationMessageDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/FastApproach.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/FastApproach.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousFishing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/wpi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/wpi.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/wpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/wpi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SuspiciousAcceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SuspiciousAcceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/AccelerationMessageSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/AccelerationMessageSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$12.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$13.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$14.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$15.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$16.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPFunction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/Pause.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/RendezVous.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/SuspiciousAccelarate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/SuspiciousGap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/SuspiciousTurn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/flinkicu-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/flinkicu-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/GapMessageSerializer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousGap.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/../cep_flinkcep/target/" />
@@ -246,7 +195,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="101" />
     <option name="y" value="53" />
     <option name="width" value="1392" />
@@ -442,7 +391,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="28" width="1922" height="899" extended-state="6" />
+    <frame x="-1" y="28" width="1922" height="899" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
