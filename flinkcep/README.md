@@ -8,10 +8,10 @@
 3)Στο φάκελο του kafka2.2:bin/kafka-server-start.sh config/server.properties
 
 4)Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic DEMOCP
-Εδώ φτιάχνουμε το topic με ονομα DEMOCP used for ais data
+Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic DEMOCP2
+Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic  DEMOCP_CO
+Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic  DEMO_ACC
 
-5)Στο φάκελο του kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic DEMOCP2
-Used for traanectory events, used from the second producer
 
 5)Εκει που έχουμε τa Project μας παμε και κάνουμε:
 
@@ -23,11 +23,15 @@ mvn clean install
 
 
 7)run the jars
+
+RUN IT AS SUDO USER!!!!!
+TO SEE LOGS: GO AT flink_1.6.2/log and check flink-cer-taskexecutor-0-cer.out, you will see all systemOut logs
 1st--run the project for topic DEMOCP2
-sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/flinkproj/flinkcep/cep_flinkcep/target/flinkicu_cep-1.0-jar-with-dependencies.jar -topic DEMOCP2 --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181
+sudo /home/cer/Desktop/flink-1.6.2/bin/flink run  /home/cer/flinkcep/flinkcep/cep_flinkcep/target/flinkicu_cep-1.0-jar-with-dependencies.jar --topic_gap DEMOCP2 --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --topic_co DEMOCP_CO
 
 2d--run th project for DEMOCP whose results will be ised as input for topic DEMOCP2
-sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/flinkproj/flinkcep/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --topic_output DEMOCP2
+sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/flinkcep/flinkcep/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt --topic_output_acc DEMO_ACC --topic_output_gap DEMOCP2 --topic_output_co DEMOCP_CO
+
 
  
  8) Στην σελίδα http://localhost:8081/#/overview εχουμε τa job μας.
@@ -38,6 +42,7 @@ sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/flinkproj/flinkcep/fl
  
 
  8)Στο project μας στο φάκελο producer τρέχουμε το ./ais.py DEMOCP --topic_output DEMOCP2
+or ./gap.py DEMOCP  (hardcoded data to test our implemented scenarios)
 που είναι το topic του kafka που γράφει το flink job το αποτέλεσμα
 here the ais messages start to produce
 
@@ -52,5 +57,3 @@ flink-1.6.2$ bin/flink cancel 833958573e917dd87a42a7dec1f7310f
 An alalxeis kati sto prodcer/ais.py prepei an kanei delete to topic k meta plai create gai na parei thn allagh o consumer
 
 
-note:
-cahnage pom.xml to have different artifactory id

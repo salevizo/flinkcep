@@ -1,2 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: hes.cs63.CEPMonitor.CEPMonitor
