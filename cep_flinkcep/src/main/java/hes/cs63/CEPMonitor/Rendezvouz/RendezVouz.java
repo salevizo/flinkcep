@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 public class RendezVouz {
+    public static int gapTime=60;
+    public static int patternTime=10;
     public static Pattern<GapMessage, ?> patternRendezvouz(){
         Pattern<GapMessage, ?> rendevouzPattern = Pattern.<GapMessage>begin("Vessel_1")
                 .subtype(GapMessage.class)
@@ -22,8 +24,11 @@ public class RendezVouz {
                     @Override
                     public boolean filter(GapMessage event, Context<GapMessage> ctx) throws Exception {
                         for (GapMessage ev : ctx.getEventsForPattern("Vessel_1")) {
-                            if(Math.abs(ev.getGapEnd()-event.getGapEnd())<60
-                            && ev.getGeoHash().equals(event.getGeoHash())){
+                            //System.out.println("AUDIT="+ev.getMmsi()+"//"+ev.getGapEnd()+"//"+event.getMmsi()+"//"+event.getGapEnd());
+                            if(Math.abs(ev.getGapEnd()-event.getGapEnd())<gapTime
+                            && ev.getGeoHash().equals(event.getGeoHash())==true
+                            && ev.getMmsi()!=event.getMmsi()){
+
                                 return true;
                             }
                             else{
@@ -32,7 +37,7 @@ public class RendezVouz {
                         }
                         return false;
                 }})
-                .within(Time.seconds(10));
+                .within(Time.seconds(patternTime));
         return rendevouzPattern;
     }
 

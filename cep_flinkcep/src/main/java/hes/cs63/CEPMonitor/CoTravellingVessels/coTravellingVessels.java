@@ -20,11 +20,14 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
+    static int coTravelTime=30;
+    static int coTravellingTotalTime=60;
+    static int patternTime=10;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
                 .subtype(CoTravelInfo.class)
                 .oneOrMore()
-                .followedByAny("msg_2")
+                .followedBy("msg_2")
                 .where(new IterativeCondition<CoTravelInfo>() {
                     @Override
                     public boolean filter(CoTravelInfo event, Context<CoTravelInfo> ctx) throws Exception {
@@ -33,21 +36,21 @@ public class coTravellingVessels {
                         List<CoTravelInfo> l=Lists.newArrayList(ctx.getEventsForPattern("msg_1"));
                         LinkedList<String> s=new LinkedList<String>();
                         for (CoTravelInfo ev : Lists.reverse(l)) {
-                            System.out.println("ALEKARAS112="+event.getMmsi_1()+"-"+ev.getMmsi_2()+"-"+ev.getTimestamp()+"-(base event)"+base+"-(previterationEvenTime)"+currTime);
-                            System.out.println("LENGTH IS1 ="+l.size());
+                            //System.out.println("ALEKARAS112="+event.getMmsi_1()+"-"+ev.getMmsi_2()+"-"+ev.getTimestamp()+"-(base event)"+base+"-(previterationEvenTime)"+currTime);
+                            //System.out.println("LENGTH IS1 ="+l.size());
                             //allagi seiras,prota na mpei to mmsi check
 
-                            if(Math.abs(currTime-ev.getTimestamp())<30) {
+                            if((currTime-ev.getTimestamp())<coTravelTime) {
                                 if (event.getMmsi_2() == ev.getMmsi_2()) {
-                                    if ((base - ev.getTimestamp()) > 60) {
-                                        String f = "";
-                                        f = f + ev.getTimestamp();
-                                        for (String m : s) {
+                                    if ((base - ev.getTimestamp()) > coTravellingTotalTime) {
+                                        //String f = "";
+                                        //f = f + ev.getTimestamp();
+                                        /*for (String m : s) {
                                             f = f + "-" + m;
                                         }
 
                                         System.out.println("ACCEPTED MALAKA=" + f);
-                                        System.out.println("ALEKARAS123=" + event.getMmsi_1() + "-" + ev.getMmsi_2());
+                                        System.out.println("ALEKARAS123=" + event.getMmsi_1() + "-" + ev.getMmsi_2());*/
                                         return true;
                                     } else {
                                         //System.out.println("ELSE INNER");
@@ -65,7 +68,7 @@ public class coTravellingVessels {
                         }
                         return false;
                     }})
-                .within(Time.seconds(10));
+                .within(Time.seconds(patternTime));
         return coTravelattern;
     }
 
@@ -75,7 +78,7 @@ public class coTravellingVessels {
             public SuspiciousCoTravellingVessels select(Map<String,List<CoTravelInfo>> pattern) throws Exception {
                 //SuspiciousCoTravellingVessels vessel_1 = (SuspiciousCoTravellingVessels) pattern.get("Vessel_1").get(0);
                 CoTravelInfo msg = (CoTravelInfo) pattern.get("msg_2").get(0);
-                System.out.println("RETURNING="+msg.getMmsi_1()+"\\"+msg.getMmsi_2()+"\\"+msg.getLon1()+"\\"+msg.getTimestamp());
+                //System.out.println("RETURNING="+msg.getMmsi_1()+"\\"+msg.getMmsi_2()+"\\"+msg.getLon1()+"\\"+msg.getTimestamp());
                 return new SuspiciousCoTravellingVessels(msg.getMmsi_1(),msg.getMmsi_2(),msg.getLon1(),msg.getLat1(),msg.getLon2(),msg.getLon2(),msg.getTimestamp());
             }
         });

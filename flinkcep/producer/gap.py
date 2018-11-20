@@ -33,23 +33,31 @@ def main():
         ais_data= pd.read_sql_query(query, con)
     con.close()
 
-    try:
-        while True:
-            for i in range(len(ais_data['lon'])) :
-                ## Generate random measurements
-                if(i%30==0):
-                    ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(1)}
-                elif(i%29==0):
-                    ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(10000)}
-                else:
-                    ais = { "lat" : float(ais_data['lat'][i]), "lon" : float(ais_data['lon'][i]),"mmsi" : int(1992+(i%30)), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(ais_data['t'][i])}
-                producer.send(topic, ais, key = b'%d'%i)
-                print "Sending AIS messages   : %s" % (json.dumps(ais).encode('utf-8'))
-                if(i%30==0):
-                    sleep(2)
+    for i in range(9) :
+        ## Generate random measurements
+        if(i==0):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(1)}
+        elif(i==1):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(29)}
+        elif(i==2):
+            ais = { "lat" : float(2.541122), "lon" : float(3.90484),"mmsi" : int(2), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(39)}
 
-    except KeyboardInterrupt:
-        pass
+        elif(i==3):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(45)}
+        elif(i==4):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(49)}
+        elif(i==5):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(74)}
+        elif(i==6):
+            ais = { "lat" : float(2.541122), "lon" : float(6.90484),"mmsi" : int(2), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(78)}
+
+        elif(i==7):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(87)}
+
+        else:
+            ais = { "lat" : float(7.541122), "lon" : float(6.90484),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(122),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(100)}
+        producer.send(topic, ais, key = b'%d'%i)
+        print "[%d]Sending AIS messages   : %s" % (i,json.dumps(ais).encode('utf-8'))
 
 
     print "\nIntercepted user interruption ..\nBlock until all pending messages are sent.."

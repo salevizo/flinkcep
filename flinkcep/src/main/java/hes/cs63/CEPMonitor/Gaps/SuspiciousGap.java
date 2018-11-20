@@ -74,7 +74,7 @@ public class SuspiciousGap {
     
     public String findGap(){
         int gap=gapEnd-gapStart;
-        String geoHash=GeoHash.encodeHash(getLat(),getLon(),4);
+        //String geoHash=GeoHash.encodeHash(getLat(),getLon(),4);
         return "Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }";
     }
     public SuspiciousGap getGapObj(){

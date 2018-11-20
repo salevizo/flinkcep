@@ -1,13 +1,12 @@
 package hes.cs63.CEPMonitor;
 import hes.cs63.CEPMonitor.CoTravellingVessels.SuspiciousCoTravellingVessels;
 import hes.cs63.CEPMonitor.CoTravellingVessels.coTravellingVessels;
-import hes.cs63.CEPMonitor.Deserializers.AccelerationMessageDeserializer;
 import hes.cs63.CEPMonitor.Deserializers.CoTravelDeserializer;
 import hes.cs63.CEPMonitor.Deserializers.GapMessageDeserializer;
 import hes.cs63.CEPMonitor.Rendezvouz.RendezVouz;
 import hes.cs63.CEPMonitor.Rendezvouz.SuspiciousRendezVouz;
-import hes.cs63.CEPMonitor.SimpleEvents.*;
-import hes.cs63.CEPMonitor.receivedClasses.AccelerationMessage;
+
+
 import hes.cs63.CEPMonitor.receivedClasses.CoTravelInfo;
 import hes.cs63.CEPMonitor.receivedClasses.GapMessage;
 import org.apache.flink.api.java.functions.KeySelector;
@@ -49,13 +48,7 @@ public class CEPMonitor {
                 .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
 
 
-        DataStream<GapMessage> gapPartitionedInput = gapMessageStream.keyBy(
-                new KeySelector<GapMessage, Integer>() {
-                    @Override
-                    public Integer getKey(GapMessage value) throws Exception {
-                        return value.getMmsi();
-                    }
-        });
+        DataStream<GapMessage> gapPartitionedInput = gapMessageStream;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DataStream<CoTravelInfo> coTravelMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
@@ -73,7 +66,7 @@ public class CEPMonitor {
                     }
                 });
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        DataStream<AccelerationMessage> messageStreamFastApproach = env
+        /*DataStream<AccelerationMessage> messageStreamFastApproach = env
                 .addSource(new FlinkKafkaConsumer09<>(
                         parameterTool.getRequired("topic_acc"),
                         new AccelerationMessageDeserializer(),
@@ -89,7 +82,7 @@ public class CEPMonitor {
                     }
                 });
 
-
+           */
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<GapMessage, ?> rendezvouzPattern = RendezVouz.patternRendezvouz();
         PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
@@ -105,11 +98,12 @@ public class CEPMonitor {
 	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
         ///////////////////////////////////High acceleration a single vessell////////////////////////////////////////////
-
+        /*
         Pattern<AccelerationMessage, ?> fastApproachPattern = FastApproach.patternFastApproach();
         PatternStream<AccelerationMessage> fastForwardPatternStream = CEP.pattern(partitionedInputFastApproach,fastApproachPattern);
         DataStream<SuspiciousFastApproach> fastApproachStream = FastApproach.fastApproachDatastream(fastForwardPatternStream);
         fastApproachStream.map(v -> v.findFastApproach()).writeAsText("/home/cer/Desktop/fastApproach.txt", WriteMode.OVERWRITE);
+        */
         ///////////////////////////////////High acceleration a single vessell////////////////////////////////////////////
 
         //messageStream.map(v -> v.toString()).print();

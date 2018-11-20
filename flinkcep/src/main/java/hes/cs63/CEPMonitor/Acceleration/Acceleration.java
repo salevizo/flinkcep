@@ -20,9 +20,6 @@ public class Acceleration {
 
     public static HashSet<String> readCsv(){
         listOfPorts = new HashSet<String>();
-
-
-        System.out.println("KALESTHIKA");
         String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/wpi.csv";
         String line = "";
         String cvsSplitBy = ",";

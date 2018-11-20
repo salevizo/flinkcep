@@ -14,35 +14,34 @@ import java.util.List;
 import java.util.Map;
 
 public class coTravel {
+    static int minSpeed=1;
+    static int geoHashLength=4;
+    static int timeBetweenVesselsMsgs=30;
+    static int patternTime=10;
     public static Pattern<AisMessage, ?> patternCoTravel(){
         Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1")
                 .subtype(AisMessage.class)
-                .where(
-                        new SimpleCondition<AisMessage>() {
-                            @Override
-                            public boolean filter(AisMessage event) {
-                                System.out.println("YAYA19921="+event.getMmsi());
-                                return true;
-                            }
-                        }
-                ).followedByAny("vessel_2")
+                .followedByAny("vessel_2")
                 .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-                        int base=event.getT();
                         int time=0;
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
-                            String geoHash1=GeoHash.encodeHash(ev.getLat(),ev.getLon(),4);
-                            String geoHash2=GeoHash.encodeHash(event.getLat(),event.getLon(),4);
-                            System.out.println("YAYA19922:geoHash="+geoHash1+"|"+geoHash2+"||[TIMESTAMPS="+ev.getT()+"__"+event.getT()+"__"+Math.abs(ev.getT()-event.getT())+"]|||"+ev.getSpeed()+"|||"+event.getSpeed()+"--|"+time+"..(2)"+event.getMmsi()+"(1)"+ev.getMmsi()+"--|");
-                            System.out.println("YAYA19923:|"+(Math.abs(ev.getT()-event.getT())<30)+"-"+(geoHash1.equals(geoHash2)==true)+"-"+(ev.getSpeed()>1)+"-"+(ev.getSpeed()>1)+"|");
-                            if(Math.abs(ev.getT()-event.getT())<30
-                            && geoHash1.equals(geoHash2)==true
-                            && ev.getSpeed()>1
-                            && event.getSpeed()>1
+                            //System.out.println("YAYA19922:geoHash="+geoHash1+"|"+geoHash2+"||[TIMESTAMPS="+ev.getT()+"__"+event.getT()+"__"+Math.abs(ev.getT()-event.getT())+"]|||"+ev.getSpeed()+"|||"+event.getSpeed()+"--|"+time+"..(2)"+event.getMmsi()+"(1)"+ev.getMmsi()+"--|");
+                            //System.out.println("YAYA19923:|"+(Math.abs(ev.getT()-event.getT())<30)+"-"+(geoHash1.equals(geoHash2)==true)+"-"+(ev.getSpeed()>1)+"-"+(ev.getSpeed()>1)+"|");
+                            if(event.getT()-ev.getT()<timeBetweenVesselsMsgs
+                            && ev.getSpeed()>minSpeed
+                            && event.getSpeed()>minSpeed
                             && ev.getMmsi()!=event.getMmsi()){
-                                return true;
+                                String geoHash1=GeoHash.encodeHash(ev.getLat(),ev.getLon(),geoHashLength);
+                                String geoHash2=GeoHash.encodeHash(event.getLat(),event.getLon(),geoHashLength);
+                                 if(geoHash1.equals(geoHash2)==true){
+                                     return true;
+                                 }
+                                else{
+                                    return false;
+                                 }
                             }
                             else{
                                 return false;
@@ -50,7 +49,7 @@ public class coTravel {
                         }
                         return false;
                 }})
-                .within(Time.seconds(10));
+                .within(Time.seconds(patternTime));
         return coTravelPattern;
     }
 

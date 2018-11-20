@@ -99,17 +99,17 @@ public class CEPMonitor {
 		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
 
-		accelerations.map(v -> v.findAccelerationObj()).writeAsText(parameterTool.getRequired("/home/cer/Desktop/fast_approach.txt"), FileSystem.WriteMode.OVERWRITE);
+		accelerations.map(v -> v.findAccelerationObj()).writeAsText("/home/cer/Desktop/fast_approach.txt", FileSystem.WriteMode.OVERWRITE);
 
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
         Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
-        PatternStream<AisMessage> patternFishingStream = CEP.pattern(nonPartitionedInput,fishingPattern);
+        PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
 
-        fishing.map(v -> v.findFishing()).writeAsText(parameterTool.getRequired("/home/cer/Desktop/fishing.txt"), FileSystem.WriteMode.OVERWRITE);
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/fishing.txt", FileSystem.WriteMode.OVERWRITE);
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         

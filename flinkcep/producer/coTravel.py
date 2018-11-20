@@ -33,7 +33,7 @@ def main():
         ais_data= pd.read_sql_query(query, con)
     con.close()
 
-    for i in range(5) :
+    for i in range(9) :
         ## Generate random measurements
         if(i==0):
             ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(1)}
@@ -43,14 +43,22 @@ def main():
             ais = { "lat" : float(2.541122), "lon" : float(3.90484),"mmsi" : int(2), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(39)}
 
         elif(i==3):
-            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(3), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(45)}
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(45)}
+        elif(i==4):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(59)}
+        elif(i==5):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(74)}
+        elif(i==6):
+            ais = { "lat" : float(2.541122), "lon" : float(6.90484),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(78)}
+
+        elif(i==7):
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(0), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(87)}
 
         else:
-            ais = { "lat" : float(2.541122), "lon" : float(3.90484),"mmsi" : int(4), "status":int(ais_data['status'][i]), "speed":float(ais_data['speed'][i]),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(79)}
+            ais = { "lat" : float(7.541122), "lon" : float(6.90484),"mmsi" : int(1), "status":int(ais_data['status'][i]), "speed":float(122),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(100)}
         producer.send(topic, ais, key = b'%d'%i)
         print "[%d]Sending AIS messages   : %s" % (i,json.dumps(ais).encode('utf-8'))
-        if(i%30==0):
-            sleep(5)
+
     print "\nIntercepted user interruption ..\nBlock until all pending messages are sent.."
     producer.flush()
 
