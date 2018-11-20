@@ -105,7 +105,7 @@ public class CEPMonitor {
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-/*
+
         Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
