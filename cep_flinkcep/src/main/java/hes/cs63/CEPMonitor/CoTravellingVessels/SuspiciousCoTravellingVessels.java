@@ -81,4 +81,9 @@ public class SuspiciousCoTravellingVessels {
     public String findVessels(){
         return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , time: "+timestamp+"}";
     }
+    
+    public String findVesselsQGIS(){
+        return "" + mmsi_1+","+mmsi_2+","+timestamp+","+lon1+","+lat1+","+lon2+","+lat2+"}";
+   }
+
 }

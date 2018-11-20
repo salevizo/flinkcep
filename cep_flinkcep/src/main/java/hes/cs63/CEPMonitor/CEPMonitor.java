@@ -75,6 +75,7 @@ public class CEPMonitor {
         PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
         DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
         rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
+      
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 	
 	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
@@ -82,7 +83,9 @@ public class CEPMonitor {
         PatternStream<CoTravelInfo> coTravelPatternStream = CEP.pattern(coTravelPartitionedInput,coTravelpattern);
         DataStream<SuspiciousCoTravellingVessels> coTravelStream = coTravellingVessels.coTravellingDatastream(coTravelPatternStream);
         coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/cotravel.txt", WriteMode.OVERWRITE);
-	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
+	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
+	    
+        //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
     
         //messageStream.map(v -> v.toString()).print();

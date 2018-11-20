@@ -56,4 +56,9 @@ flink-1.6.2$ bin/flink cancel 833958573e917dd87a42a7dec1f7310f
  
 An alalxeis kati sto prodcer/ais.py prepei an kanei delete to topic k meta plai create gai na parei thn allagh o consumer
 
-
+############visualize################################
+Vazeis ta apotelesmata twn events se ena csv, oi diafores times xwrizontai me koma
+pas qgis Destop, sundeesai sth vash,kaneis drag and drop ena shapefile apo auta pou einai diathesima aristera
+epeita add new layer, add delimited text layer kai vazeis to txt sou ,diallegeis poia tis lat kai poia lon sthles k oti to arxeio einai seperated me koma,
+epeita patas next kai ws coordinate systme selector epilegeis: WGS 84
+etsi  de xreiazetai na ta valeis sth vash

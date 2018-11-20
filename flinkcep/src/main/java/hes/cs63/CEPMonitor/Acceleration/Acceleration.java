@@ -63,7 +63,7 @@ public class Acceleration {
                             }
                             System.out.println("HASHISH="+h);
                             System.out.println("1st="+(Math.abs(ev.getSpeed()-event.getSpeed())>=20)+"2nd:"+((event.getT()-ev.getT())<50) +"3d="+listOfPorts.contains(GeoHash.encodeHash(event.getLat(),event.getLon(),6)));
-                            if((Math.abs(ev.getSpeed()-event.getSpeed())>=20 &&
+                            if(((event.getSpeed()-ev.getSpeed())>=20 &&
                                     (event.getT()-ev.getT())<50) &&
                                      listOfPorts.contains(GeoHash.encodeHash(event.getLat(),event.getLon(),6))==false
                             && ev.getMmsi()==event.getMmsi()){
