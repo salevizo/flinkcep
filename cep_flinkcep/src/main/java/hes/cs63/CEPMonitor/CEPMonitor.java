@@ -66,23 +66,10 @@ public class CEPMonitor {
                     }
                 });
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*DataStream<AccelerationMessage> messageStreamFastApproach = env
-                .addSource(new FlinkKafkaConsumer09<>(
-                        parameterTool.getRequired("topic_acc"),
-                        new AccelerationMessageDeserializer(),
-                        parameterTool.getProperties()))
-                .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
+      
 
 
-        DataStream<AccelerationMessage> partitionedInputFastApproach  = messageStreamFastApproach.keyBy(
-                new KeySelector<AccelerationMessage, Integer>() {
-                    @Override
-                    public Integer getKey(AccelerationMessage value) throws Exception {
-                        return value.getMmsi();
-                    }
-                });
-
-           */
+         
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<GapMessage, ?> rendezvouzPattern = RendezVouz.patternRendezvouz();
         PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
@@ -97,15 +84,7 @@ public class CEPMonitor {
         coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/cotravel.txt", WriteMode.OVERWRITE);
 	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
-        ///////////////////////////////////High acceleration a single vessell////////////////////////////////////////////
-        /*
-        Pattern<AccelerationMessage, ?> fastApproachPattern = FastApproach.patternFastApproach();
-        PatternStream<AccelerationMessage> fastForwardPatternStream = CEP.pattern(partitionedInputFastApproach,fastApproachPattern);
-        DataStream<SuspiciousFastApproach> fastApproachStream = FastApproach.fastApproachDatastream(fastForwardPatternStream);
-        fastApproachStream.map(v -> v.findFastApproach()).writeAsText("/home/cer/Desktop/fastApproach.txt", WriteMode.OVERWRITE);
-        */
-        ///////////////////////////////////High acceleration a single vessell////////////////////////////////////////////
-
+    
         //messageStream.map(v -> v.toString()).print();
         env.execute("Suspicious RendezVouz");
 

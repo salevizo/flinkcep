@@ -23,6 +23,6 @@ public class AccelerationMessageSerializer implements KeyedSerializationSchema<S
     @Override
     public String getTargetTopic(SuspiciousAcceleration element) {
         // use always the default topic
-        return "DEMOCP2";
+        return "DEMO_ACC";
     }
 }

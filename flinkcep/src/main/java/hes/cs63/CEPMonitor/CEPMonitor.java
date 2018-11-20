@@ -15,6 +15,7 @@ import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.core.fs.FileSystem;
+import org.apache.flink.core.fs.FileSystem.WriteMode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -99,12 +100,12 @@ public class CEPMonitor {
 		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
 
-		accelerations.map(v -> v.findAccelerationObj()).writeAsText("/home/cer/Desktop/fast_approach.txt", FileSystem.WriteMode.OVERWRITE);
-
+		accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/fast_approach.txt", WriteMode.OVERWRITE);
+		
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-
+/*
         Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
