@@ -40,7 +40,7 @@ public class coTravellingVessels {
                             //System.out.println("LENGTH IS1 ="+l.size());
                             //allagi seiras,prota na mpei to mmsi check
 
-                            if((currTime-ev.getTimestamp())<coTravelTime) {
+                            if((currTime-ev.getTimestamp())<coTravelTime && (currTime-ev.getTimestamp())>0) {
                                 if (event.getMmsi_2() == ev.getMmsi_2()) {
                                     if ((base - ev.getTimestamp()) > coTravellingTotalTime) {
                                         //String f = "";

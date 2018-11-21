@@ -28,9 +28,8 @@ public class coTravel {
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         int time=0;
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
-                            //System.out.println("YAYA19922:geoHash="+geoHash1+"|"+geoHash2+"||[TIMESTAMPS="+ev.getT()+"__"+event.getT()+"__"+Math.abs(ev.getT()-event.getT())+"]|||"+ev.getSpeed()+"|||"+event.getSpeed()+"--|"+time+"..(2)"+event.getMmsi()+"(1)"+ev.getMmsi()+"--|");
-                            //System.out.println("YAYA19923:|"+(Math.abs(ev.getT()-event.getT())<30)+"-"+(geoHash1.equals(geoHash2)==true)+"-"+(ev.getSpeed()>1)+"-"+(ev.getSpeed()>1)+"|");
                             if(event.getT()-ev.getT()<timeBetweenVesselsMsgs
+                            && (event.getT()-ev.getT())>0
                             && ev.getSpeed()>minSpeed
                             && event.getSpeed()>minSpeed
                             && ev.getMmsi()!=event.getMmsi()){

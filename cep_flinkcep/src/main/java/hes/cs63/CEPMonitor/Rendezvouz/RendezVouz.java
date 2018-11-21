@@ -25,7 +25,7 @@ public class RendezVouz {
                     public boolean filter(GapMessage event, Context<GapMessage> ctx) throws Exception {
                         for (GapMessage ev : ctx.getEventsForPattern("Vessel_1")) {
                             //System.out.println("AUDIT="+ev.getMmsi()+"//"+ev.getGapEnd()+"//"+event.getMmsi()+"//"+event.getGapEnd());
-                            if(Math.abs(ev.getGapEnd()-event.getGapEnd())<gapTime
+                            if((event.getGapEnd()-ev.getGapEnd())<gapTime && (event.getGapEnd()-ev.getGapEnd()>0)
                             && ev.getGeoHash().equals(event.getGeoHash())==true
                             && ev.getMmsi()!=event.getMmsi()){
 
