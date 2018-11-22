@@ -7,13 +7,18 @@ public class SuspiciousRendezVouz {
     private String geoHash;
     private Integer gapEnd_1;
     private Integer gapEnd_2;
-
+    private float lon;
+    private float lat;
+    
+    //public SuspiciousRendezVouz(Integer mmsi_1, Integer mmsi_2, String geoHash_, Integer gapEnd_1, Integer gapEnd_2,float lon_, float lat_){ 
     public SuspiciousRendezVouz(Integer mmsi_1, Integer mmsi_2, String geoHash_, Integer gapEnd_1, Integer gapEnd_2){
         this.mmsi_1 = mmsi_1;
         this.mmsi_2=mmsi_2;
         this.geoHash=geoHash_;
         this.gapEnd_1=gapEnd_1;
         this.gapEnd_2=gapEnd_2;
+      //  this.lon=lon_;
+      //  this.lat=lat_;
 
     }
 
@@ -57,7 +62,30 @@ public class SuspiciousRendezVouz {
         this.gapEnd_2 = gapEnd_2;
     }
 
-    public String findGap(){
-        return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , Gap_End_1 : "+gapEnd_1+" , Gap_End_1 : "+gapEnd_2+" GeoHash : "+geoHash+" }";
+    
+    public float getLon() {
+        return lon;
     }
+
+    public void setLon(float lon) {
+        this.lon = lon;
+    }
+
+    public float getLat() {
+        return lat;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+    
+    public String findGap(){
+        return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , Gap_End_1 : "+gapEnd_1+" , Gap_End_1 : "+gapEnd_2+", GeoHash : "+geoHash+" }";
+    }
+    /*
+    public String findGapQGIS(){
+   return "" + mmsi_1+","+mmsi_2+","+gapEnd_1+","+gapEnd_2+","+geoHash+","+lon+","+lat+"";
+    }
+*/
 }
+

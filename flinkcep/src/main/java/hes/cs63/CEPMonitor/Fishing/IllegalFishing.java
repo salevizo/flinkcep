@@ -27,7 +27,7 @@ public class IllegalFishing {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("start")) {
-                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange){
+                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange && (event.getT()-ev.getT())>0){
                                 //System.out.println("CHANGE IN HEADING 1:"+event.getT());
                                 return true;
                             }
@@ -44,10 +44,8 @@ public class IllegalFishing {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
-                            if(Math.abs(ev.getT()-event.getT())>gapTime){
-                                //System.out.println("gap start:"+ev.getT());
-                                //System.out.println("gap end:"+event.getT());
-
+                            if((event.getT()-ev.getT())>gapTime &&     (event.getT()-ev.getT())>0 ){
+                             
                                 return true;
                             }
                             else{

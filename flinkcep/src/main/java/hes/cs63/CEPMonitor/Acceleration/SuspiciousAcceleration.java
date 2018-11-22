@@ -97,7 +97,13 @@ public class SuspiciousAcceleration {
  
  
  public String findAccelerationObjToString(){
-	  return "Suspicious Acceleration : { MMSI : " + getMmsi()+", AccelerationStart : "+getAccelerationStart()+" , AccelerationEnd : "+getAccelerationEnd()+" GeoHash : "+geoHash+"  , t_start :"+t_start+" t_end : "+t_end+" , lat :"+lat+" lon : "+lon+" }";
+	  return "Suspicious Acceleration : { MMSI : " + getMmsi()+", AccelerationStart : "+getAccelerationStart()+" , AccelerationEnd : "+getAccelerationEnd()+" , GeoHash : "+geoHash+"  , t_start :"+t_start+" , t_end : "+t_end+" , lat :"+lat+" , lon : "+lon+" }";
  
  }
+
+ public String findAccelerationObjQGIS(){
+	  return "" + getMmsi()+","+getAccelerationStart()+","+getAccelerationEnd()+","+geoHash+","+t_start+","+t_end+","+lat+","+lon+"";
+ 
+ }
+
 }

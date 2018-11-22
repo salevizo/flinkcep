@@ -25,7 +25,7 @@ public class Gap {
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
                             //VARIABLE THINK:TIME
-                            if((event.getT()-ev.getT())>gapTime){
+                            if((event.getT()-ev.getT())>gapTime && (event.getT()-ev.getT())>0){
                                 return true;
                             }
                             else{

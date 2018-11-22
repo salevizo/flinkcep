@@ -101,6 +101,7 @@ public class CEPMonitor {
 		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
 
 		accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/fast_approach.txt", WriteMode.OVERWRITE);
+     	accelerations.map(v -> v.findAccelerationObjQGIS()).writeAsText("/home/cer/Desktop/fast_approachQGIS.csv", WriteMode.OVERWRITE);
 		
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
@@ -111,6 +112,7 @@ public class CEPMonitor {
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
 
         fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/fishing.txt", FileSystem.WriteMode.OVERWRITE);
+        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         

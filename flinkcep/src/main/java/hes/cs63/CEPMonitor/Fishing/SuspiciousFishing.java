@@ -39,6 +39,12 @@ public class SuspiciousFishing {
 
                 '}';
     }
+    
+    public String findFishingQGIS() {
+               
+        return "" + mmsi+","+gapStart+","+gapStartLot+","+gapStartLat+","+gapEnd+","+gapEndLot+","+gapEndLat+","+geoHash+"";
+        
+    }
 
     public int getGapStart() {
         return gapStart;
