@@ -13,8 +13,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Gap {
-    private static int gapTime=10;
-    private static int geoHashLen=4;
+    private static int gapTime=600;
+    private static int geoHashLen=5;
+    private static int patternTime=600;
     public static Pattern<AisMessage, ?> patternGap(){
         Pattern<AisMessage, ?> rendezvouzPattern = Pattern.<AisMessage>begin("gap_start")
                 .subtype(AisMessage.class)
@@ -34,7 +35,7 @@ public class Gap {
                         }
                         return false;
                 }})
-                .within(Time.seconds(10));
+                .within(Time.seconds(patternTime));
         return rendezvouzPattern;
     }
 

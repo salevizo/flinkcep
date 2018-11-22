@@ -20,9 +20,9 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
-    static int coTravelTime=30;
+    static int coTravelTime=600;
     static int coTravellingTotalTime=60;
-    static int patternTime=10;
+    static int patternTime=600;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
                 .subtype(CoTravelInfo.class)
@@ -40,7 +40,7 @@ public class coTravellingVessels {
                             //System.out.println("LENGTH IS1 ="+l.size());
                             //allagi seiras,prota na mpei to mmsi check
 
-                            if((currTime-ev.getTimestamp())<coTravelTime && (currTime-ev.getTimestamp())>0) {
+                            if((currTime-ev.getTimestamp())<coTravelTime) {
                                 if (event.getMmsi_2() == ev.getMmsi_2()) {
                                     if ((base - ev.getTimestamp()) > coTravellingTotalTime) {
                                         //String f = "";

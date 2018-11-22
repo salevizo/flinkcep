@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class coTravel {
     static int minSpeed=1;
-    static int geoHashLength=4;
-    static int timeBetweenVesselsMsgs=30;
-    static int patternTime=10;
+    static int geoHashLength=7;
+    static int timeBetweenVesselsMsgs=60;
+    static int patternTime=600;
     public static Pattern<AisMessage, ?> patternCoTravel(){
         Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1")
                 .subtype(AisMessage.class)
