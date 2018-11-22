@@ -2,65 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/producer/fishing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Deserializers/AccelerationMessageDeserializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/FastApproach.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousFastApproach.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/src/main/java/hes/cs63/CEPMonitor/receivedClasses/AccelerationMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Accelaration/AccelerationMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Accelaration/AccelerationMessageDeserializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/FastApproach$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/FastApproach$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/FastApproach.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/classes/hes/cs63/CEPMonitor/SimpleEvents/SuspiciousFastApproach.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu_cep-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu_cep-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu_cep-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/flinkicu_cep-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/coTravel.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer/coTravel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/gap.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer/gap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/producer/ais.py" beforeDir="false" afterPath="$PROJECT_DIR$/producer/ais.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Acceleration/Acceleration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/CEPMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/Gap$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/Gap$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/Gap$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/Gap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/GapMessageSerializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Fishing/SuspiciousGap.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/Gaps/Gap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/flinkicu-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/flinkicu-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/flinkicu-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkicu_complex/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkicu_complex/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -78,8 +23,9 @@
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.55" value="1" />
+          <entry key="project.open.time.68" value="1" />
           <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -87,7 +33,7 @@
           <entry key="class" value="4" />
           <entry key="csv" value="2" />
           <entry key="java" value="46" />
-          <entry key="py" value="16" />
+          <entry key="py" value="17" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
@@ -96,7 +42,7 @@
           <entry key="CLASS" value="4" />
           <entry key="JAVA" value="46" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="16" />
+          <entry key="Python" value="17" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -104,16 +50,16 @@
         <counts>
           <entry key="SuspiciousCoTraveljava" value="4" />
           <entry key="dummy" value="46" />
-          <entry key="java" value="8811" />
-          <entry key="py" value="775" />
+          <entry key="java" value="8812" />
+          <entry key="py" value="889" />
           <entry key="xml" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8811" />
+          <entry key="JAVA" value="8812" />
           <entry key="PLAIN_TEXT" value="50" />
-          <entry key="Python" value="775" />
+          <entry key="Python" value="889" />
           <entry key="XML" value="10" />
         </counts>
       </usages-collector>
@@ -124,8 +70,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="1335">
+              <caret line="104" column="64" lean-forward="true" selection-start-line="104" selection-start-column="64" selection-end-line="104" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -133,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/producer/gap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
+            <state relative-caret-position="300">
+              <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -144,10 +93,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="585">
               <caret line="49" column="95" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="95" />
-              <folding>
-                <element signature="e#864#1505#0" expanded="true" />
-                <element signature="e#1504#1505#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -155,7 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
+            <state relative-caret-position="750">
               <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
               <folding>
                 <element signature="e#1205#1206#0" expanded="true" />
@@ -168,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            <state relative-caret-position="90">
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -177,8 +122,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+            <state relative-caret-position="360">
+              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/producer/ais.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -222,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPFunction.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/RendezVous.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gap.java" />
-        <option value="$PROJECT_DIR$/producer/ais.py" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/ComplexEvents/Gap.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/GapMessageSerializer.java" />
@@ -249,14 +202,15 @@
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" />
         <option value="$PROJECT_DIR$/producer/coTravel.py" />
-        <option value="$PROJECT_DIR$/producer/gap.py" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" />
+        <option value="$PROJECT_DIR$/producer/ais.py" />
+        <option value="$PROJECT_DIR$/producer/gap.py" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="101" />
     <option name="y" value="53" />
     <option name="width" value="1392" />
@@ -268,6 +222,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -347,11 +302,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542638593109" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542723733878" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../cep_flinkcep" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -396,8 +350,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="28" width="1922" height="899" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26307365" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26627535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -476,13 +431,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/producer/ais.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="70" column="8" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/flink/flink-cep_2.11/1.6.2/flink-cep_2.11-1.6.2.jar!/org/apache/flink/cep/CEP.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -511,9 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -552,9 +497,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -565,13 +507,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/GapMessageSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/GapMessageSerializer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousFishing.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -653,30 +589,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/producer/gap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="42" column="92" selection-start-line="42" selection-start-column="92" selection-end-line="42" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
+        <state relative-caret-position="750">
           <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
           <folding>
             <element signature="e#1205#1206#0" expanded="true" />
@@ -689,17 +604,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="49" column="95" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer/ais.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/producer/gap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="29" column="4" lean-forward="true" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1335">
+          <caret line="104" column="64" lean-forward="true" selection-start-line="104" selection-start-column="64" selection-end-line="104" selection-end-column="64" />
           <folding>
-            <element signature="e#864#1505#0" expanded="true" />
-            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="33" column="53" lean-forward="true" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
+        <state relative-caret-position="360">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
         </state>
       </provider>
     </entry>

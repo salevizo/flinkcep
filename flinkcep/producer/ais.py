@@ -74,6 +74,8 @@ def main():
                 ais = { "lat" : float(csv_ctx[i][0]), "lon" : float(csv_ctx[i][1]),"mmsi" :int(csv_ctx[i][2]), "status":int(csv_ctx[i][3]), "speed":float(csv_ctx[i][4]),"turn":float(csv_ctx[i][5]),"heading":float(csv_ctx[i][6]), "course":float(csv_ctx[i][7]), "t":int(csv_ctx[i][8])}
                 producer.send(topic, ais, key = b'%d'%i)	
                 print "Sending AIS messages   : %s" % (json.dumps(ais).encode('utf-8'))
+                if (i%20==0):
+                    sleep(2)
                 sleep(2)
     except KeyboardInterrupt:
         pass
