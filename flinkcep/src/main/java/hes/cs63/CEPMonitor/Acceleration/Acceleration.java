@@ -34,6 +34,7 @@ public class Acceleration {
             String gHash="";
             while ((line = br.readLine()) != null) {
                 // use comma as separator
+            	//create the geohash for all ports of brittany
                 String[] coordinates = line.split(cvsSplitBy);
                 gHash=GeoHash.encodeHash(Float.valueOf(coordinates[0]),Float.valueOf(coordinates[1]),5);
                 listOfPorts.add(gHash);
@@ -56,7 +57,7 @@ public class Acceleration {
                         System.out.println("accelaration");
                         for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
                             
-                         //high acceleration in less than 50secs and not near port, dont count out of order events
+                         //high acceleration in less than 80secs and not near port, dont count out of order events
                             if((event.getSpeed()-ev.getSpeed())>=maxSpeed &&
                                     (event.getT()-ev.getT())<accelerationTime &&  
                                     (event.getT()-ev.getT())>0 && 
@@ -79,7 +80,7 @@ public class Acceleration {
 
                         for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
                         	 if(((GeoHash.encodeHash(ev.getLat(),ev.getLon(),indexNearVessels).equals(GeoHash.encodeHash(ship.getLat(),ship.getLon(),indexNearVessels)))==true
-                            && (ev.getT()-ship.getT())<accelerationTime && ev.getT()-ship.getT()>0)){
+                            &&  ev.getT()-ship.getT()>0)){
                               
                                 return true;
                             }
