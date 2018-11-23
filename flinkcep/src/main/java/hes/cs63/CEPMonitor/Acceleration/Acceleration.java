@@ -17,11 +17,13 @@ import java.util.*;
 
 public class Acceleration {
     public  static HashSet <String> listOfPorts=readCsv();
-    static int accelerationTime=180;
+    static float accepted_acceleration=25/100;
+    static int accelerationTime= Math.round(20/(accepted_acceleration));
     static int indexNearVessels=6;
     static int accelerationTimeSec=50;
     static int indexNearPorts=6;
     static int maxSpeed=20;
+    static int patternTime=10;
     
     
     public static HashSet<String> readCsv(){
@@ -45,7 +47,7 @@ public class Acceleration {
     }
 
     public static Pattern<AisMessage, ?> patternAcceleration(){
-        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("accelaration_start")
+        Pattern<AisMessage, ?> fastForwardPattern = Pattern.<AisMessage>begin("accelaration_start")
                 .subtype(AisMessage.class)
                 .oneOrMore()
                 .followedBy("speed change")
@@ -86,8 +88,8 @@ public class Acceleration {
                         return false;
 
                 }})
-                .within(Time.seconds(10));
-        return alarmPattern;
+                .within(Time.seconds(patternTime));
+        return fastForwardPattern;
     }
 
     public static DataStream<SuspiciousAcceleration> suspiciousAccelerationsStream(PatternStream<AisMessage> patternStream){

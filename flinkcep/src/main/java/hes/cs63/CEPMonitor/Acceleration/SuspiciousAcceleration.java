@@ -15,8 +15,7 @@ public class SuspiciousAcceleration {
     private String geoHash;
     private Integer t_start;
     private Integer t_end;;
-    private Integer thresholdTime=60;
-    private Integer thresholdSpeed=100;
+   
     public SuspiciousAcceleration(Integer mmsi_,Float lon_,Float lat_,Float accelerationStart_,Float accelerationEnd_,String geoHash, Integer t_start, Integer t_end){
         this.mmsi = mmsi_;
         this.lon=lon_;
