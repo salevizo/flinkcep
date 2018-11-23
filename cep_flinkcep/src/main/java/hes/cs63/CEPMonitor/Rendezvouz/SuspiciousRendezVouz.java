@@ -80,7 +80,7 @@ public class SuspiciousRendezVouz {
     }
     
     public String findGap(){
-        return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , Gap_End_1 : "+gapEnd_1+" , Gap_End_1 : "+gapEnd_2+", GeoHash : "+geoHash+" }";
+        return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , Gap_End_1 : "+gapEnd_1+" , Gap_End_2 : "+gapEnd_2+", GeoHash : "+geoHash+" }";
     }
     /*
     public String findGapQGIS(){
