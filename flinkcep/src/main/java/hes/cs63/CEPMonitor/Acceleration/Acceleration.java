@@ -20,7 +20,6 @@ public class Acceleration {
     static float accepted_acceleration=25/100;
     static int accelerationTime= Math.round(20/(accepted_acceleration));
     static int indexNearVessels=6;
-    static int accelerationTimeSec=50;
     static int indexNearPorts=6;
     static int maxSpeed=20;
     static int patternTime=10;
@@ -59,7 +58,7 @@ public class Acceleration {
                             
                          //high acceleration in less than 50secs and not near port, dont count out of order events
                             if((event.getSpeed()-ev.getSpeed())>=maxSpeed &&
-                                    (event.getT()-ev.getT())<accelerationTimeSec &&  
+                                    (event.getT()-ev.getT())<accelerationTime &&  
                                     (event.getT()-ev.getT())>0 && 
                                     listOfPorts.contains(GeoHash.encodeHash(event.getLat(),event.getLon(),indexNearPorts))==false && 
                                     ev.getMmsi()==event.getMmsi()){
