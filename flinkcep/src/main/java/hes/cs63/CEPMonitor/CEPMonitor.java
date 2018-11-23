@@ -1,6 +1,6 @@
 package hes.cs63.CEPMonitor;
 
-import hes.cs63.CEPMonitor.Acceleration.AccelerationMessageSerializer;
+
 import hes.cs63.CEPMonitor.Fishing.IllegalFishing;
 import hes.cs63.CEPMonitor.Fishing.SuspiciousFishing;
 import hes.cs63.CEPMonitor.Gaps.Gap;

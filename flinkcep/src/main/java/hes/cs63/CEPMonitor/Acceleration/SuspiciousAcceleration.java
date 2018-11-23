@@ -87,10 +87,6 @@ public class SuspiciousAcceleration {
     }   
    
  public SuspiciousAcceleration findAccelerationObj(){
-//      public String findAccelerationObj(){
-  //   return "Suspicious SuspiciousAcceleration : { mmsi : " + mmsi+", accelerationStart : "+accelerationStart+" }";
-        
-    	
       return this;
     }
  
