@@ -73,7 +73,7 @@ public class Acceleration {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                  
-                        ArrayList<AisMessage> aises=Lists.newArrayList(ctx.getEventsForPattern("speed change"));
+                        ArrayList<AisMessage> aises=Lists.newArrayList(ctx.getEventsForPattern("nearby vessel"));
                         AisMessage ship=null;
                       
 
