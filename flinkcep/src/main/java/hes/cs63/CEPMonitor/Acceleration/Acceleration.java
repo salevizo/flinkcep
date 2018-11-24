@@ -17,11 +17,12 @@ import java.util.*;
 
 public class Acceleration {
     public  static HashSet <String> listOfPorts=readCsv();
-    static int accelerationTime=180;
+    static float accepted_acceleration=25/100;
+    static int accelerationTime= Math.round(20/(accepted_acceleration));
     static int indexNearVessels=6;
-    static int accelerationTimeSec=50;
     static int indexNearPorts=6;
     static int maxSpeed=20;
+    static int patternTime=10;
     
     
     public static HashSet<String> readCsv(){
@@ -33,6 +34,7 @@ public class Acceleration {
             String gHash="";
             while ((line = br.readLine()) != null) {
                 // use comma as separator
+            	//create the geohash for all ports of brittany
                 String[] coordinates = line.split(cvsSplitBy);
                 gHash=GeoHash.encodeHash(Float.valueOf(coordinates[0]),Float.valueOf(coordinates[1]),5);
                 listOfPorts.add(gHash);
@@ -45,7 +47,7 @@ public class Acceleration {
     }
 
     public static Pattern<AisMessage, ?> patternAcceleration(){
-        Pattern<AisMessage, ?> alarmPattern = Pattern.<AisMessage>begin("accelaration_start")
+        Pattern<AisMessage, ?> fastForwardPattern = Pattern.<AisMessage>begin("accelaration_start")
                 .subtype(AisMessage.class)
                 .oneOrMore()
                 .followedBy("speed change")
@@ -55,9 +57,9 @@ public class Acceleration {
                         //System.out.println("accelaration");
                         for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
                             
-                         //high acceleration in less than 50secs and not near port, dont count out of order events
+                         //high acceleration in less than 80secs and not near port, dont count out of order events
                             if((event.getSpeed()-ev.getSpeed())>=maxSpeed &&
-                                    (event.getT()-ev.getT())<accelerationTimeSec &&  
+                                    (event.getT()-ev.getT())<accelerationTime &&  
                                     (event.getT()-ev.getT())>0 && 
                                     listOfPorts.contains(GeoHash.encodeHash(event.getLat(),event.getLon(),indexNearPorts))==false && 
                                     ev.getMmsi()==event.getMmsi()){
@@ -78,7 +80,7 @@ public class Acceleration {
 
                         for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
                         	 if(((GeoHash.encodeHash(ev.getLat(),ev.getLon(),indexNearVessels).equals(GeoHash.encodeHash(ship.getLat(),ship.getLon(),indexNearVessels)))==true
-                            && (ev.getT()-ship.getT())<accelerationTime && ev.getT()-ship.getT()>0)){
+                            &&  ev.getT()-ship.getT()>0)){
                               
                                 return true;
                             }
@@ -86,8 +88,8 @@ public class Acceleration {
                         return false;
 
                 }})
-                .within(Time.seconds(10));
-        return alarmPattern;
+                .within(Time.seconds(patternTime));
+        return fastForwardPattern;
     }
 
     public static DataStream<SuspiciousAcceleration> suspiciousAccelerationsStream(PatternStream<AisMessage> patternStream){
