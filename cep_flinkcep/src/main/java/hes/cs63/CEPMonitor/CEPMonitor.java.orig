@@ -40,7 +40,7 @@ public class CEPMonitor {
         // Use ingestion time => TimeCharacteristic == EventTime + IngestionTimeExtractor
         env.enableCheckpointing(1000).
             setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-        System.out.println("LOCO2");
+        //System.out.println("LOCO2");
         // Input stream of monitoring events
 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

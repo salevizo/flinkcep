@@ -36,7 +36,7 @@ public class coTravelSerializer implements KeyedSerializationSchema<coTravelInfo
                     " \"time\": "+ element.getTimestamp()+
                     "}";
         }
-        System.out.println("AVGEROS1992="+value);
+        //System.out.println("AVGEROS1992="+value);
         return value.getBytes();
     }
 

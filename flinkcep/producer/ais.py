@@ -22,9 +22,9 @@ allOtherPass="2"
 def write_csv(x):
     db=('doi105281zenodo1167595')
     if(x==0):
-        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic LIMIT 10;"
+        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic LIMIT 10000;"
     else:
-        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic OFFSET "+ str(x*10)+" ROWS FETCH NEXT "+str(10)+"ROWS ONLY;"
+        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic OFFSET "+ str(x*10000)+" ROWS FETCH NEXT "+str(10000)+"ROWS ONLY;"
     con = psycopg2.connect(database = "doi105281zenodo1167595", user = "postgres", password = avgerosPass, host = "127.0.0.1", port = "5432")
     with con:
         ais_data= pd.read_sql_query(query, con)
@@ -45,13 +45,11 @@ def write_csv(x):
             ais_data['mmsi'][i]=0.0
         #print ais_data['status'][i]
         if ais_data['status'][i]==None:
-            print 4
             ais_data['status'][i]=0
         if ais_data['speed'][i]==None:
             print 5
             ais_data['speed'][i]=0.0
         if ais_data['turn'][i]==None:
-            print 6
             ais_data['turn'][i]=0.0
         if ais_data['heading'][i]==None:
             print 7
@@ -81,7 +79,7 @@ def main():
     print "*** Starting measurements stream on " + server + ", topic : " + topic
     csv_ctx=[]
     counter=0
-    while(counter<3):
+    while(counter<10000):
         print "counter="+str(counter)
         csv_ctx=write_csv(counter)
         counter=counter+1
@@ -91,7 +89,7 @@ def main():
         for i in range(len(csv_ctx)) :
             ais = { "lat" : float(csv_ctx[i]["lat"]), "lon" : float(csv_ctx[i]["lon"]),"mmsi" :int(csv_ctx[i]["mmsi"]), "status":int(csv_ctx[i]["status"]), "speed":float(csv_ctx[i]["speed"]),"turn":float(csv_ctx[i]["turn"]),"heading":float(csv_ctx[i]["heading"]), "course":float(csv_ctx[i]["course"]), "t":int(csv_ctx[i]["t"])}
             producer.send(topic, ais, key = b'%d'%i)
-            print "Sending AIS messages   : %s" % (json.dumps(ais).encode('utf-8'))
+            #print "Sending AIS messages   : %s" % (json.dumps(ais).encode('utf-8'))
             #print i
                 #sleep(2)
 

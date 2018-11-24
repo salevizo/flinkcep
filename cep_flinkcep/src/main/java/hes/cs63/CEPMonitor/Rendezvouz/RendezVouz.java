@@ -13,12 +13,12 @@ import java.util.List;
 import java.util.Map;
 
 public class RendezVouz {
-    public static int gapTime=600;
-    public static int patternTime=600;
+    public static int gapTime=120;
+    public static int patternTime=1200;
     public static Pattern<GapMessage, ?> patternRendezvouz(){
         Pattern<GapMessage, ?> rendevouzPattern = Pattern.<GapMessage>begin("Vessel_1")
                 .subtype(GapMessage.class)
-                .followedBy("Vessel_2")
+                .followedByAny("Vessel_2")
                 .subtype(GapMessage.class)
                 .where(new IterativeCondition<GapMessage>() {
                     @Override

@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 public class IllegalFishing {
-    static int headingChange=60;
-    static int gapTime=600;
-    static int patternTime=10;
+    static int headingChange=20;
+    static int gapTime=120;
+    static int patternTime=1200;
     public static Pattern<AisMessage, ?> patternFishing(){
         Pattern<AisMessage, ?> fishingPattern = Pattern.<AisMessage>begin("start")
                 .subtype(AisMessage.class)

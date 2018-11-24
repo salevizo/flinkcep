@@ -52,7 +52,7 @@ public class Acceleration {
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-                        System.out.println("accelaration");
+                        //System.out.println("accelaration");
                         for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
                             
                          //high acceleration in less than 50secs and not near port, dont count out of order events

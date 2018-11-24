@@ -74,7 +74,7 @@ public class CEPMonitor {
         Pattern<GapMessage, ?> rendezvouzPattern = RendezVouz.patternRendezvouz();
         PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
         DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
-        rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/rendezvouz.txt", WriteMode.OVERWRITE);
+        rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/temp/rendezvouz.txt", WriteMode.OVERWRITE);
       
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 	
@@ -82,8 +82,8 @@ public class CEPMonitor {
         Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
         PatternStream<CoTravelInfo> coTravelPatternStream = CEP.pattern(coTravelPartitionedInput,coTravelpattern);
         DataStream<SuspiciousCoTravellingVessels> coTravelStream = coTravellingVessels.coTravellingDatastream(coTravelPatternStream);
-        coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/cotravel.txt", WriteMode.OVERWRITE);
-	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
+        coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/temp/cotravel.txt", WriteMode.OVERWRITE);
+	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/temp/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
 	    
         //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 

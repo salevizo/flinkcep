@@ -20,9 +20,9 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
-    static int coTravelTime=600;
-    static int coTravellingTotalTime=60;
-    static int patternTime=600;
+    static int coTravelTime=360;
+    static int coTravellingTotalTime=120;
+    static int patternTime=1200;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
                 .subtype(CoTravelInfo.class)
@@ -34,7 +34,6 @@ public class coTravellingVessels {
                         int base=event.getTimestamp();
                         int currTime=event.getTimestamp();
                         List<CoTravelInfo> l=Lists.newArrayList(ctx.getEventsForPattern("msg_1"));
-                        LinkedList<String> s=new LinkedList<String>();
                         for (CoTravelInfo ev : Lists.reverse(l)) {
                             //System.out.println("ALEKARAS112="+event.getMmsi_1()+"-"+ev.getMmsi_2()+"-"+ev.getTimestamp()+"-(base event)"+base+"-(previterationEvenTime)"+currTime);
                             //System.out.println("LENGTH IS1 ="+l.size());
@@ -54,7 +53,7 @@ public class coTravellingVessels {
                                         return true;
                                     } else {
                                         //System.out.println("ELSE INNER");
-                                        s.add(Float.toString(ev.getTimestamp()));
+
                                         currTime = ev.getTimestamp();
                                     }
                                 }
