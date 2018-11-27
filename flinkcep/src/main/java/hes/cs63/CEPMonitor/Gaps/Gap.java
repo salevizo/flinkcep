@@ -32,8 +32,6 @@ public class Gap {
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
             String gHash="";
             while ((line = br.readLine()) != null) {
-                // use comma as separator
-                //create the geohash for all ports of brittany
                 String[] coordinates = line.split(cvsSplitBy);
                 gHash=GeoHash.encodeHash(Float.valueOf(coordinates[0]),Float.valueOf(coordinates[1]),geoHashLen);
                 listOfPorts.add(gHash);
@@ -50,8 +48,7 @@ public class Gap {
                 .followedBy("gap_end")
                 .where(new IterativeCondition<AisMessage>() {
                            @Override
-                           public boolean filter(AisMessage event, Context<AisMessage> ctx) {
-                               try {
+                           public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                                    for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
                                        //VARIABLE THINK:TIME
                                        if ((event.getT() - ev.getT()) > gapTime && (event.getT() - ev.getT()) > 0
@@ -62,26 +59,6 @@ public class Gap {
                                        }
                                    }
                                    return false;
-                               } catch (Exception e) {
-                                   System.out.println("Ignore exception...");
-                                   if (ctx == null) {
-                                       System.out.println("NULL");
-                                   } else {
-                                       System.out.println("NOT NULL");
-                                   }
-                                   try {
-                                       if (ctx.getEventsForPattern("gap_start") == null) {
-                                           System.out.println("Definitely Null");
-                                       }
-                                   } catch (Exception e1) {
-                                       System.out.println("Definitely not Null");
-                                       return false;
-                                   }
-
-
-                                   e.printStackTrace();
-                                   return false;
-                               }
                                }
 
                            }

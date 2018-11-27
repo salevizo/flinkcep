@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/WatermarksGaps.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Watermarks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/receivedClasses/GapMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/receivedClasses/GapMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/ais.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/ais.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/Acceleration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/GapMessageSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/GapMessageSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,7 +102,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="160">
               <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -336,7 +321,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543352782649" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543353110017" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -617,7 +602,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="160">
           <caret line="46" column="10" selection-start-line="46" selection-start-column="10" selection-end-line="46" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
