@@ -5,6 +5,7 @@ import hes.cs63.CEPMonitor.receivedClasses.CoTravelInfo;
 import hes.cs63.CEPMonitor.receivedClasses.GapMessage;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
+import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
@@ -20,52 +21,58 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
-    static int coTravelTime=360;
-    static int coTravellingTotalTime=120;
-    static int patternTime=1200;
+    static int coTravelTime=120;
+    static int coTravellingTotalTime=60;
+    static int patternTime=600;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
-        Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
+        Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1", AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(CoTravelInfo.class)
                 .oneOrMore()
                 .followedBy("msg_2")
                 .where(new IterativeCondition<CoTravelInfo>() {
                     @Override
-                    public boolean filter(CoTravelInfo event, Context<CoTravelInfo> ctx) throws Exception {
-                        int base=event.getTimestamp();
-                        int currTime=event.getTimestamp();
-                        List<CoTravelInfo> l=Lists.newArrayList(ctx.getEventsForPattern("msg_1"));
-                        for (CoTravelInfo ev : Lists.reverse(l)) {
-                            //System.out.println("ALEKARAS112="+event.getMmsi_1()+"-"+ev.getMmsi_2()+"-"+ev.getTimestamp()+"-(base event)"+base+"-(previterationEvenTime)"+currTime);
-                            //System.out.println("LENGTH IS1 ="+l.size());
-                            //allagi seiras,prota na mpei to mmsi check
+                    public boolean filter(CoTravelInfo event, Context<CoTravelInfo> ctx){
+                        try {
+                            int base = event.getTimestamp();
+                            int currTime = event.getTimestamp();
+                            List<CoTravelInfo> l = Lists.newArrayList(ctx.getEventsForPattern("msg_1"));
+                            for (CoTravelInfo ev : Lists.reverse(l)) {
+                                //System.out.println("ALEKARAS112="+event.getMmsi_1()+"-"+ev.getMmsi_2()+"-"+ev.getTimestamp()+"-(base event)"+base+"-(previterationEvenTime)"+currTime);
+                                //System.out.println("LENGTH IS1 ="+l.size());
+                                //allagi seiras,prota na mpei to mmsi check
 
-                            if((currTime-ev.getTimestamp())<coTravelTime) {
-                                if (event.getMmsi_2() == ev.getMmsi_2()) {
-                                    if ((base - ev.getTimestamp()) > coTravellingTotalTime) {
-                                        //String f = "";
-                                        //f = f + ev.getTimestamp();
+                                if ((currTime - ev.getTimestamp()) > 0 && (currTime - ev.getTimestamp()) < coTravelTime) {
+                                    //System.out.println("Base="+base+" CurrEvent="+currTime+" Ev="+ev.getTimestamp());
+                                    //System.out.println("Event="+event.getMmsi_1()+"-"+event.getMmsi_2());
+                                    if (event.getMmsi_2() == ev.getMmsi_2()) {
+                                        if ((base - ev.getTimestamp()) > coTravellingTotalTime) {
+                                            //System.out.println("EURIKA=" + base + "-" + currTime);
+                                            //String f = "";
+                                            //f = f + ev.getTimestamp();
                                         /*for (String m : s) {
                                             f = f + "-" + m;
                                         }
 
                                         System.out.println("ACCEPTED MALAKA=" + f);
                                         System.out.println("ALEKARAS123=" + event.getMmsi_1() + "-" + ev.getMmsi_2());*/
-                                        return true;
-                                    } else {
-                                        //System.out.println("ELSE INNER");
+                                            return true;
+                                        } else {
+                                            //System.out.println("ELSE INNER");
 
-                                        currTime = ev.getTimestamp();
+                                            currTime = ev.getTimestamp();
+                                        }
                                     }
+                                } else {
+                                    //isos prepei na vgei giati tha akirwnei an vrw ena akiro id endiamesa
+                                    //System.out.println("ELSE OUTER");
+                                    return false;
                                 }
                             }
-
-                            else{
-                                //isos prepei na vgei giati tha akirwnei an vrw ena akiro id endiamesa
-                                //System.out.println("ELSE OUTER");
-                                return false;
-                            }
+                            return false;
                         }
-                        return false;
+                        catch(Exception e){
+                            return false;
+                        }
                     }})
                 .within(Time.seconds(patternTime));
         return coTravelattern;

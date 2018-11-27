@@ -55,19 +55,28 @@ public class Acceleration {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         //System.out.println("accelaration");
-                        for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
-                            
-                         //high acceleration in less than 80secs and not near port, dont count out of order events
-                            if((event.getSpeed()-ev.getSpeed())>=maxSpeed &&
-                                    (event.getT()-ev.getT())<accelerationTime &&  
-                                    (event.getT()-ev.getT())>0 && 
-                                    listOfPorts.contains(GeoHash.encodeHash(event.getLat(),event.getLon(),indexNearPorts))==false && 
-                                    ev.getMmsi()==event.getMmsi()){
-                      
-                                return true;
+                        if(ctx!=null) {
+                            if (ctx.getEventsForPattern("start") != null) {
+                                for (AisMessage ev : ctx.getEventsForPattern("accelaration_start")) {
+
+                                    //high acceleration in less than 80secs and not near port, dont count out of order events
+                                    if ((event.getSpeed() - ev.getSpeed()) >= maxSpeed &&
+                                            (event.getT() - ev.getT()) < accelerationTime &&
+                                            (event.getT() - ev.getT()) > 0 &&
+                                            listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), indexNearPorts)) == false &&
+                                            ev.getMmsi() == event.getMmsi()) {
+
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            } else {
+                                return false;
                             }
                         }
-                        return false;
+                        else{
+                            return false;
+                        }
                     }})
                 .followedBy("accelaration_end")
                 .where(new IterativeCondition<AisMessage>() {

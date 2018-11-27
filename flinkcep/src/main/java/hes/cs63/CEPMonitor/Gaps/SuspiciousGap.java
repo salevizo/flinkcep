@@ -3,15 +3,14 @@ import com.github.davidmoten.geo.GeoHash;
 
 public class SuspiciousGap {
 
-    private Integer mmsi;
+    private int mmsi;
     private float lon;
     private float lat;
-    private Integer gapStart;
-    private Integer gapEnd;
+    private int gapStart;
+    private int gapEnd;
     private String geoHash;
-    private Integer thresholdGap=600;
 
-    public SuspiciousGap(Integer mmsi_,Float lon_,Float lat_,Integer gapStart_,Integer gapEnd_,String geoHash){
+    public SuspiciousGap(int mmsi_,float lon_,float lat_,Integer gapStart_,Integer gapEnd_,String geoHash){
         this.mmsi = mmsi_;
         this.lon=lon_;
         this.lat=lat_;
@@ -29,23 +28,23 @@ public class SuspiciousGap {
         this.geoHash = geoHash;
     }
 
-    public Integer getMmsi() {
+    public int getMmsi() {
         return mmsi;
     }
 
-    public void setMmsi(Integer mmsi) {
+    public void setMmsi(int mmsi) {
         this.mmsi = mmsi;
     }
 
-    public Integer getGapStart() {
+    public int getGapStart() {
         return gapStart;
     }
 
-    public void setGapStart(Integer gapStart) {
+    public void setGapStart(int gapStart) {
         this.gapStart = gapStart;
     }
 
-    public Integer getGapEnd() {
+    public int getGapEnd() {
         return gapEnd;
     }
 
@@ -55,29 +54,27 @@ public class SuspiciousGap {
 
     
     
-    public Float getLon() {
+    public float getLon() {
         return lon;
     }
 
-    public void setLon(Float lon) {
+    public void setLon(float lon) {
         this.lon = lon;
     }
     
     
-    public Float getLat() {
+    public float getLat() {
         return lat;
     }
 
-    public void setLat(Float lat) {
-        this.lat = lat;
-    }
-    
-    public String findGap(){
+    /*public String findGap(){
         int gap=gapEnd-gapStart;
         //String geoHash=GeoHash.encodeHash(getLat(),getLon(),4);
+        System.out.println("Writing this:"+"Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }");
         return "Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }";
-    }
+    }*/
     public SuspiciousGap getGapObj(){
         return this;
     }
+
 }

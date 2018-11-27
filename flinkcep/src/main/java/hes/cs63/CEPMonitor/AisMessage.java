@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class AisMessage {
     @SerializedName("mmsi")
-    private Integer mmsi;
+    private int mmsi;
 
     @SerializedName("status")
     private int status;

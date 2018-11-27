@@ -19,6 +19,7 @@ import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
+import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 
 /**
@@ -33,29 +34,22 @@ public class CEPMonitor {
 
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
 
-        // Use ingestion time => TimeCharacteristic == EventTime + IngestionTimeExtractor
-        env.enableCheckpointing(1000).
-            setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-        System.out.println("LOCO2");
-        // Input stream of monitoring events
-
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DataStream<GapMessage> gapMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                                     parameterTool.getRequired("topic_gap"),
                                     new GapMessageDeserializer(),
                                     parameterTool.getProperties()))
-                .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
+                .assignTimestampsAndWatermarks(new WatermarksGaps());
 
-
-        DataStream<GapMessage> gapPartitionedInput = gapMessageStream;
+        DataStream<GapMessage> gapNonPartitionedInput = gapMessageStream;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        DataStream<CoTravelInfo> coTravelMessageStream = env
+        /*DataStream<CoTravelInfo> coTravelMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                         parameterTool.getRequired("topic_co"),
                         new CoTravelDeserializer(),
-                        parameterTool.getProperties()))
-                .assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
+                        parameterTool.getProperties()));
+                //.assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
 
 
         DataStream<CoTravelInfo> coTravelPartitionedInput = coTravelMessageStream.keyBy(
@@ -65,6 +59,7 @@ public class CEPMonitor {
                         return value.getMmsi_1();
                     }
                 });
+                */
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
 
@@ -72,19 +67,19 @@ public class CEPMonitor {
          
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<GapMessage, ?> rendezvouzPattern = RendezVouz.patternRendezvouz();
-        PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapPartitionedInput,rendezvouzPattern);
+        PatternStream<GapMessage> rendezvouzPatternStream = CEP.pattern(gapNonPartitionedInput,rendezvouzPattern);
         DataStream<SuspiciousRendezVouz> rendezvouzStream = RendezVouz.rendevouzDatastream(rendezvouzPatternStream);
         rendezvouzStream.map(v -> v.findGap()).writeAsText("/home/cer/Desktop/temp/rendezvouz.txt", WriteMode.OVERWRITE);
       
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 	
 	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
-        Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
+        /*Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
         PatternStream<CoTravelInfo> coTravelPatternStream = CEP.pattern(coTravelPartitionedInput,coTravelpattern);
         DataStream<SuspiciousCoTravellingVessels> coTravelStream = coTravellingVessels.coTravellingDatastream(coTravelPatternStream);
         coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/temp/cotravel.txt", WriteMode.OVERWRITE);
 	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/temp/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
-	    
+	    */
         //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
     

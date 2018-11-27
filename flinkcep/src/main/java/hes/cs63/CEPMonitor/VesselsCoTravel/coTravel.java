@@ -4,6 +4,7 @@ import com.github.davidmoten.geo.GeoHash;
 import hes.cs63.CEPMonitor.AisMessage;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
+import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
@@ -15,26 +16,29 @@ import java.util.Map;
 
 public class coTravel {
     static int minSpeed=1;
-    static int geoHashLength=6; //1.2 km x 600m
-    static int timeBetweenVesselsMsgs=60;
-    static int patternTime=600;
+    static int geoHashLength=7; //1.2 km x 600m
+    static int timeBetweenVesselsMsgs=30;
+    static int patternTime=10;
     public static Pattern<AisMessage, ?> patternCoTravel(){
-        Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1")
+        Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1", AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(AisMessage.class)
-                .followedByAny("vessel_2")
+                .followedBy("vessel_2")
                 .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-                        int time=0;
+
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
+                            //System.out.println(event.getT()+"/time/"+ev.getT()+"//"+event.getMmsi()+"/mmsi/"+ev.getMmsi());
                             if(event.getT()-ev.getT()<timeBetweenVesselsMsgs
                             && (event.getT()-ev.getT())>0
                             && ev.getSpeed()>minSpeed
                             && event.getSpeed()>minSpeed
                             && ev.getMmsi()!=event.getMmsi()){
+                                //System.out.println("GEOHASHING");
                                 String geoHash1=GeoHash.encodeHash(ev.getLat(),ev.getLon(),geoHashLength);
                                 String geoHash2=GeoHash.encodeHash(event.getLat(),event.getLon(),geoHashLength);
+                                //System.out.println("");
                                  if(geoHash1.equals(geoHash2)==true){
                                      return true;
                                  }
