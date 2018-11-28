@@ -48,7 +48,6 @@ public class CEPMonitor {
 
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
         Properties props=parameterTool.getProperties();
-        // Use ingestion time => TimeCharacteristic == EventTime + IngestionTimeExtractor
         env.enableCheckpointing(1000).
                 setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
@@ -70,7 +69,7 @@ public class CEPMonitor {
 
         DataStream<AisMessage> nonPartitionedInput = messageStream;
      
-       /* 
+       
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
@@ -85,7 +84,7 @@ public class CEPMonitor {
                 parameterTool.getProperties());   // serialization schema
 
         topic_2_gap.addSink(gapProducer);
-        */
+        
         
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
@@ -101,8 +100,10 @@ public class CEPMonitor {
                 new coTravelSerializer(),
                 parameterTool.getProperties());
         topic_2_co.addSink(coProducer);
-            
+
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
+        
+        
 
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
@@ -115,14 +116,16 @@ public class CEPMonitor {
 		
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
+
+
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
-        /*Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
+        Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE);
+        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/temp/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);
 
-        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/fishing.txt", FileSystem.WriteMode.OVERWRITE);
-        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);*/
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         

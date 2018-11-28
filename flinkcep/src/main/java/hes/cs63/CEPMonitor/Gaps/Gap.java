@@ -18,9 +18,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Gap {
-    private static int gapTime=300;
+    private static int gapTime=600;
     private static int geoHashLen=5;
-    private static int patternTime=10;
 
     public  static HashSet <String> listOfPorts=ports();
 
@@ -63,7 +62,8 @@ public class Gap {
 
                            }
 
-                );
+                )
+                .within(Time.seconds(3600));
 
         return rendezvouzPattern;
     }

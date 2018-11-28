@@ -17,10 +17,9 @@ import java.util.Map;
 public class coTravel {
     static int minSpeed=1;
     static int geoHashLength=7; //1.2 km x 600m
-    static int timeBetweenVesselsMsgs=30;
-    static int patternTime=10;
+    static int timeBetweenVesselsMsgs=10;
     public static Pattern<AisMessage, ?> patternCoTravel(){
-        Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1", AfterMatchSkipStrategy.skipPastLastEvent())
+        Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1")
                 .subtype(AisMessage.class)
                 .followedBy("vessel_2")
                 .subtype(AisMessage.class)
@@ -29,16 +28,11 @@ public class coTravel {
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
 
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
-                            //System.out.println(event.getT()+"/time/"+ev.getT()+"//"+event.getMmsi()+"/mmsi/"+ev.getMmsi());
-                            if(event.getT()-ev.getT()<timeBetweenVesselsMsgs
-                            && (event.getT()-ev.getT())>0
-                            && ev.getSpeed()>minSpeed
+                            if(ev.getSpeed()>minSpeed
                             && event.getSpeed()>minSpeed
                             && ev.getMmsi()!=event.getMmsi()){
-                                //System.out.println("GEOHASHING");
                                 String geoHash1=GeoHash.encodeHash(ev.getLat(),ev.getLon(),geoHashLength);
                                 String geoHash2=GeoHash.encodeHash(event.getLat(),event.getLon(),geoHashLength);
-                                //System.out.println("");
                                  if(geoHash1.equals(geoHash2)==true){
                                      return true;
                                  }
@@ -52,7 +46,7 @@ public class coTravel {
                         }
                         return false;
                 }})
-                .within(Time.seconds(patternTime));
+                .within(Time.seconds(timeBetweenVesselsMsgs));
         return coTravelPattern;
     }
 

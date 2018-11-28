@@ -14,7 +14,9 @@ public class GapMessageSerializer implements KeyedSerializationSchema<Suspicious
         String value = "{\"MMSI\": "+ Integer.toString(element.getMmsi())+ ","+
                 "\"GapStart\": "+ Integer.toString(element.getGapStart()) + "," +
                 " \"GapEnd\": "+ Integer.toString(element.getGapEnd()) + ","+
-                " \"GeoHash\": "+ element.getGeoHash()+
+                " \"GeoHash\": "+ element.getGeoHash()+","+
+                " \"Lat\": "+ Float.toString(element.getLat()) + ","+
+                " \"Lon\": "+ Float.toString(element.getLon())+
 
         "}";
         return value.getBytes();
