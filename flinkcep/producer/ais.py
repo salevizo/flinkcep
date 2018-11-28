@@ -22,9 +22,9 @@ allOtherPass="2"
 def write_csv(x):
     db=('doi105281zenodo1167595')
     if(x==0):
-        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic LIMIT 500;"
+        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic LIMIT 1000;"
     else:
-        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic OFFSET "+ str(x*500)+" ROWS FETCH NEXT "+str(500)+"ROWS ONLY;"
+        query="SELECT lat, lon, status, turn, speed, heading, course, t , mmsi FROM public.nari_dynamic OFFSET "+ str(x*1000)+" ROWS FETCH NEXT "+str(1000)+"ROWS ONLY;"
     con = psycopg2.connect(database = "doi105281zenodo1167595", user = "postgres", password = avgerosPass, host = "127.0.0.1", port = "5432")
     with con:
         ais_data= pd.read_sql_query(query, con)
@@ -102,7 +102,7 @@ def main():
         #print "\nIntercepted user interruption ..\nBlock until all pending messages are sent.."
             producer.flush()
         print "Sleeping.."
-        sleep(5)
+        sleep(8)
 
 if __name__ == "__main__":
     main()

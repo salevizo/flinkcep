@@ -42,7 +42,7 @@ public class RendezVouz {
             public SuspiciousRendezVouz select(Map<String,List<GapMessage>> pattern) throws Exception {
                 GapMessage vessel_1 = (GapMessage) pattern.get("Vessel_1").get(0);
                 GapMessage vessel_2 = (GapMessage) pattern.get("Vessel_2").get(0);
-                return new SuspiciousRendezVouz(vessel_1.getMmsi(),vessel_2.getMmsi(),vessel_1.getGeoHash(),vessel_1.getGapEnd(),vessel_2.getGapEnd());
+                return new SuspiciousRendezVouz(vessel_1.getMmsi(),vessel_2.getMmsi(),vessel_1.getGeoHash(),vessel_1.getGapEnd(),vessel_2.getGapEnd(),vessel_1.getLon(),vessel_1.getLat(),vessel_2.getLon(),vessel_2.getLat());
             }
         });
 

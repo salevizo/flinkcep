@@ -62,7 +62,8 @@ public class Gap {
 
                            }
 
-                );
+                )
+                .within(Time.seconds(3600));
 
         return rendezvouzPattern;
     }

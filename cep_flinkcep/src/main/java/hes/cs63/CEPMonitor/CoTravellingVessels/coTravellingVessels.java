@@ -21,10 +21,10 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
-    static int coTravelTime=120;
+    static int coTravelTime=600;
     static int coTravellingTotalTime=60;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
-        Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1")
+        Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1",AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(CoTravelInfo.class)
                 .oneOrMore()
                 .followedBy("msg_2")
@@ -48,7 +48,8 @@ public class coTravellingVessels {
                                 }
                             }
                             return false;
-                    }});
+                    }})
+                .within(Time.seconds(3600));
         return coTravelattern;
     }
 
@@ -57,7 +58,13 @@ public class coTravellingVessels {
             @Override
             public SuspiciousCoTravellingVessels select(Map<String,List<CoTravelInfo>> pattern) throws Exception {
                 CoTravelInfo msg = (CoTravelInfo) pattern.get("msg_2").get(0);
-                return new SuspiciousCoTravellingVessels(msg.getMmsi_1(),msg.getMmsi_2(),msg.getLon1(),msg.getLat1(),msg.getLon2(),msg.getLon2(),msg.getTimestamp());
+                SuspiciousCoTravellingVessels coTravel=new SuspiciousCoTravellingVessels(msg.getMmsi_1(),msg.getMmsi_2(),msg.getLon1(),msg.getLat1(),msg.getLon2(),msg.getLon2(),msg.getTimestamp());
+
+                for(int i=0;i<pattern.get("msg_1").size();i++){
+                    CoTravelInfo in_msg=pattern.get("msg_1").get(i);
+                    coTravel.getMsgs().add(new SuspiciousCoTravellingVessels(in_msg.getMmsi_1(),in_msg.getMmsi_2(),in_msg.getLon1(),in_msg.getLat1(),in_msg.getLon2(),in_msg.getLon2(),in_msg.getTimestamp()));
+                }
+                return coTravel;
             }
         });
 

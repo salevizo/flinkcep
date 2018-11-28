@@ -69,7 +69,8 @@ public class IllegalFishing {
                             }
                         }
                         return false;
-                    }});
+                    }})
+                .within(Time.seconds(3600));
         return fishingPattern;
     }
 

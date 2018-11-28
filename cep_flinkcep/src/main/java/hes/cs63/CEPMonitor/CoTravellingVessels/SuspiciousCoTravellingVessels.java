@@ -2,6 +2,8 @@ package hes.cs63.CEPMonitor.CoTravellingVessels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.LinkedList;
+
 public class SuspiciousCoTravellingVessels {
 
     private Integer mmsi_1;
@@ -11,6 +13,7 @@ public class SuspiciousCoTravellingVessels {
     private float lon2;
     private float lat2;
     private Integer timestamp;
+    private LinkedList<SuspiciousCoTravellingVessels> msgs;
 
     public SuspiciousCoTravellingVessels(Integer mmsi_1, Integer mmsi_2, float lon1, float lat1, float lon2, float lat2, Integer timestamp) {
         this.mmsi_1 = mmsi_1;
@@ -20,6 +23,7 @@ public class SuspiciousCoTravellingVessels {
         this.lon2 = lon2;
         this.lat2 = lat2;
         this.timestamp = timestamp;
+        msgs=new LinkedList<SuspiciousCoTravellingVessels>();
     }
 
     public Integer getMmsi_1() {
@@ -78,10 +82,41 @@ public class SuspiciousCoTravellingVessels {
         this.timestamp = timestamp;
     }
 
-    public String findVessels(){
-        return "Suspicious RendezVous : { Vessel_1 : " + mmsi_1+", Vessel_2 : "+mmsi_2+" , time: "+timestamp+"}";
+    public LinkedList<SuspiciousCoTravellingVessels> getMsgs() {
+        return msgs;
     }
-    
+
+    public void setMsgs(LinkedList<SuspiciousCoTravellingVessels> msgs) {
+        this.msgs = msgs;
+    }
+
+    public String findVessels(){
+        String returnStr="----------------------------"+mmsi_1+" with "+mmsi_2+"-------------------------------------------------";
+        for(SuspiciousCoTravellingVessels e:this.msgs){
+            returnStr=returnStr+"\n"+"SuspiciousCoTravellingVessels{" +
+                "mmsi_1=" + e.getMmsi_1() +
+                        ", mmsi_2=" + e.getMmsi_2() +
+                        ", lon1=" + e.getLon1() +
+                        ", lat1=" + e.getLat1() +
+                        ", lon2=" + e.getLon2() +
+                        ", lat2=" + e.getLat2() +
+                        ", timestamp=" + e.getTimestamp()+
+                        '}';
+
+        }
+        returnStr=returnStr+"\n"+"SuspiciousCoTravellingVessels{" +
+                "mmsi_1=" + this.getMmsi_1() +
+                ", mmsi_2=" + this.getMmsi_2() +
+                ", lon1=" + this.getLon1() +
+                ", lat1=" + this.getLat1() +
+                ", lon2=" + this.getLon2() +
+                ", lat2=" + this.getLat2() +
+                ", timestamp=" + this.getTimestamp()+
+                '}';
+        returnStr=returnStr+"\n"+"----------------------------"+mmsi_1+" with "+mmsi_2+"-------------------------------------------------";
+        return returnStr;
+    }
+
     public String findVesselsQGIS(){
         return "" + mmsi_1+","+mmsi_2+","+timestamp+","+lon1+","+lat1+","+lon2+","+lat2+"}";
    }

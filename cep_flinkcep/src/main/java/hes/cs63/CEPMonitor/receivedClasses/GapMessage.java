@@ -16,6 +16,28 @@ public class GapMessage {
     @SerializedName("GeoHash")
     private String GeoHash;
 
+    @SerializedName("Lat")
+    private float lat;
+
+    @SerializedName("Lon")
+    private float Lon;
+
+    public float getLat() {
+        return lat;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+
+    public float getLon() {
+        return Lon;
+    }
+
+    public void setLon(float lon) {
+        Lon = lon;
+    }
+
     public int getMmsi() {
         return mmsi;
     }

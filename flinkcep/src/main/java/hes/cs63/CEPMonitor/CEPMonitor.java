@@ -47,7 +47,6 @@ public class CEPMonitor {
 
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
         Properties props=parameterTool.getProperties();
-        // Use ingestion time => TimeCharacteristic == EventTime + IngestionTimeExtractor
         env.enableCheckpointing(1000).
                 setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
