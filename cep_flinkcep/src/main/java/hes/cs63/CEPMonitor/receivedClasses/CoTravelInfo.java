@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class CoTravelInfo {
     @SerializedName("MMSI_1")
-    private Integer mmsi_1;
+    private int mmsi_1;
     @SerializedName("MMSI_2")
-    private Integer mmsi_2;
+    private int mmsi_2;
     @SerializedName("Lon_1")
     private float lon1;
     @SerializedName("lat_1")
@@ -16,9 +16,9 @@ public class CoTravelInfo {
     @SerializedName("lat_2")
     private float lat2;
     @SerializedName("time")
-    private Integer timestamp;
+    private int timestamp;
 
-    public CoTravelInfo(Integer mmsi_1, Integer mmsi_2, float lon1, float lat1, float lon2, float lat2, Integer timestamp) {
+    public CoTravelInfo(int mmsi_1, int mmsi_2, float lon1, float lat1, float lon2, float lat2, int timestamp) {
         this.mmsi_1 = mmsi_1;
         this.mmsi_2 = mmsi_2;
         this.lon1 = lon1;
@@ -28,19 +28,19 @@ public class CoTravelInfo {
         this.timestamp = timestamp;
     }
 
-    public Integer getMmsi_1() {
+    public int getMmsi_1() {
         return mmsi_1;
     }
 
-    public void setMmsi_1(Integer mmsi_1) {
+    public void setMmsi_1(int mmsi_1) {
         this.mmsi_1 = mmsi_1;
     }
 
-    public Integer getMmsi_2() {
+    public int getMmsi_2() {
         return mmsi_2;
     }
 
-    public void setMmsi_2(Integer mmsi_2) {
+    public void setMmsi_2(int mmsi_2) {
         this.mmsi_2 = mmsi_2;
     }
 
@@ -76,16 +76,15 @@ public class CoTravelInfo {
         this.lat2 = lat2;
     }
 
-    public Integer getTimestamp() {
+    public int getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 
     public CoTravelInfo getSuspiciousCoTravelInfo(){
         return this;
-        //return "Travelling Vessels:Vessel_1:"+mmsi_1+" Longitude_1:"+lon1+" Latitude_1:"+lat1+" Vessel_2:"+mmsi_2;
     }
 }

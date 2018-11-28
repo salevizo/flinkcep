@@ -44,12 +44,12 @@ public class CEPMonitor {
 
         DataStream<GapMessage> gapNonPartitionedInput = gapMessageStream;
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /*DataStream<CoTravelInfo> coTravelMessageStream = env
+        DataStream<CoTravelInfo> coTravelMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                         parameterTool.getRequired("topic_co"),
                         new CoTravelDeserializer(),
-                        parameterTool.getProperties()));
-                //.assignTimestampsAndWatermarks(new IngestionTimeExtractor<>());
+                        parameterTool.getProperties()))
+                .assignTimestampsAndWatermarks(new WatermarksCoTravel());
 
 
         DataStream<CoTravelInfo> coTravelPartitionedInput = coTravelMessageStream.keyBy(
@@ -59,7 +59,7 @@ public class CEPMonitor {
                         return value.getMmsi_1();
                     }
                 });
-                */
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       
 
@@ -74,12 +74,11 @@ public class CEPMonitor {
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 	
 	    //////////////////////////////////Co travelling vessels////////////////////////////////////////////
-        /*Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
+        Pattern<CoTravelInfo, ?>coTravelpattern = coTravellingVessels.patternSuspiciousCoTravel();
         PatternStream<CoTravelInfo> coTravelPatternStream = CEP.pattern(coTravelPartitionedInput,coTravelpattern);
         DataStream<SuspiciousCoTravellingVessels> coTravelStream = coTravellingVessels.coTravellingDatastream(coTravelPatternStream);
         coTravelStream.map(v -> v.findVessels()).writeAsText("/home/cer/Desktop/temp/cotravel.txt", WriteMode.OVERWRITE);
 	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/temp/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
-	    */
         //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
     

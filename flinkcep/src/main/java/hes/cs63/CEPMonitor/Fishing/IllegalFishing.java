@@ -16,8 +16,7 @@ import java.util.Map;
 
 public class IllegalFishing {
     static int headingChange=20;
-    static int gapTime=120;
-    static int patternTime=10;
+    static int gapTime=600;
     public static Pattern<AisMessage, ?> patternFishing(){
         Pattern<AisMessage, ?> fishingPattern = Pattern.<AisMessage>begin("start")
                 .subtype(AisMessage.class)
@@ -27,7 +26,7 @@ public class IllegalFishing {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("start")) {
-                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange && (event.getT()-ev.getT())>0){
+                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange){
                                 //System.out.println("CHANGE IN HEADING 1:"+event.getT());
                                 return true;
                             }
@@ -44,7 +43,7 @@ public class IllegalFishing {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
-                            if((event.getT()-ev.getT())>gapTime &&     (event.getT()-ev.getT())>0 ){
+                            if((event.getT()-ev.getT())>gapTime){
                              
                                 return true;
                             }
@@ -70,8 +69,7 @@ public class IllegalFishing {
                             }
                         }
                         return false;
-                    }})
-                .within(Time.seconds(patternTime));
+                    }});
         return fishingPattern;
     }
 

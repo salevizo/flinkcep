@@ -85,7 +85,7 @@ public class CEPMonitor {
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
-        /*Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
+        Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
         PatternStream<AisMessage> patternCoTravelStream = CEP.pattern(nonPartitionedInput,coTravelPattern);
         DataStream<coTravelInfo> coTravel = hes.cs63.CEPMonitor.VesselsCoTravel.coTravel.suspiciousCoTravelStream(patternCoTravelStream);
 
@@ -96,7 +96,6 @@ public class CEPMonitor {
                 new coTravelSerializer(),
                 parameterTool.getProperties());
         topic_2_co.addSink(coProducer);
-            */
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
 
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
@@ -112,12 +111,12 @@ public class CEPMonitor {
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
-        /*Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
+        Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
 
         fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE);
-        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/temp/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);*/
+        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/temp/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         
