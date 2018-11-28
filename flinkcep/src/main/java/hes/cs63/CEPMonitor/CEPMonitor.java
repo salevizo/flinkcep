@@ -33,7 +33,8 @@ import hes.cs63.CEPMonitor.Acceleration.Acceleration;
 import hes.cs63.CEPMonitor.Acceleration.SuspiciousAcceleration;
 
 import java.util.Properties;
-
+import hes.cs63.CEPMonitor.SpeedVesselType.*;
+import hes.cs63.CEPMonitor.CoGHeading.*;
 
 public class CEPMonitor {
 
@@ -68,6 +69,8 @@ public class CEPMonitor {
         });
 
         DataStream<AisMessage> nonPartitionedInput = messageStream;
+     
+       /* 
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
@@ -82,10 +85,12 @@ public class CEPMonitor {
                 parameterTool.getProperties());   // serialization schema
 
         topic_2_gap.addSink(gapProducer);
+        */
+        
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
 
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
-        /*Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
+        Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
         PatternStream<AisMessage> patternCoTravelStream = CEP.pattern(nonPartitionedInput,coTravelPattern);
         DataStream<coTravelInfo> coTravel = hes.cs63.CEPMonitor.VesselsCoTravel.coTravel.suspiciousCoTravelStream(patternCoTravelStream);
 
@@ -96,7 +101,7 @@ public class CEPMonitor {
                 new coTravelSerializer(),
                 parameterTool.getProperties());
         topic_2_co.addSink(coProducer);
-            */
+            
         ///////////////////////////////////Pairs of Vessels moving closely////////////////////////////////////////////
 
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
@@ -116,12 +121,33 @@ public class CEPMonitor {
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
 
-        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE);
-        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/temp/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);*/
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/fishing.txt", FileSystem.WriteMode.OVERWRITE);
+        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);*/
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         
       
+        
+        ///////////////////////////////////Suspicious speed in the messages of a single vessell////////////////////////////////////////////
+        Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
+        PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
+        DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
+
+        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/spacious_speed.csv", WriteMode.OVERWRITE);
+		System.out.print("edwwwww");
+    	
+        
+        ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
+        Pattern<AisMessage, ?> suspiciousHeadingPattern = CourseHeading.patternSpaciousHeading();
+        PatternStream<AisMessage> patternsuspiciouHeadingStream= CEP.pattern(partitionedInput,suspiciousHeadingPattern);
+        DataStream<SuspiciousCourseHeading> suspiciousHeading = CourseHeading.suspiciousSpeedVesselTypeStream(patternsuspiciouHeadingStream);
+        
+        suspiciousHeading.map(v -> v.findHeading()).writeAsText("/home/cer/Desktop/spacious_heading.csv", WriteMode.OVERWRITE);
+		
+
+        
+        
+        
         
         env.execute("Trajentory evens");
 

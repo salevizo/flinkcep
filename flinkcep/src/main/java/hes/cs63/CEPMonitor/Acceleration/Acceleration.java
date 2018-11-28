@@ -48,7 +48,6 @@ public class Acceleration {
 
     public static Pattern<AisMessage, ?> patternAcceleration(){
         Pattern<AisMessage, ?> fastForwardPattern = Pattern.<AisMessage>begin("accelaration_start")
-                .subtype(AisMessage.class)
                 .oneOrMore()
                 .followedBy("speed change")
                 .where(new IterativeCondition<AisMessage>() {
