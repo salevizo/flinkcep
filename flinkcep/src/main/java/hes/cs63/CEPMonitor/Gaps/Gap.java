@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Gap {
     private static int gapTime=600;
-    private static int geoHashLen=5;
+    private static int geoHashLen=6;
 
     public  static HashSet <String> listOfPorts=ports();
 
@@ -49,7 +49,6 @@ public class Gap {
                            @Override
                            public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                                    for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
-                                       //VARIABLE THINK:TIME
                                        if ((event.getT() - ev.getT()) > gapTime && (event.getT() - ev.getT()) > 0
                                        && listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), geoHashLen)) == false) {
                                            return true;

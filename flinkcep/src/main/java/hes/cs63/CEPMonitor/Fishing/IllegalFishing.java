@@ -15,19 +15,18 @@ import java.util.List;
 import java.util.Map;
 
 public class IllegalFishing {
-    static int headingChange=20;
+    static int headingChangeMin=15;
+    static int headingChangeMax=60;
     static int gapTime=600;
     public static Pattern<AisMessage, ?> patternFishing(){
         Pattern<AisMessage, ?> fishingPattern = Pattern.<AisMessage>begin("start")
-                .subtype(AisMessage.class)
                 .followedBy("gap_start")
-                .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("start")) {
-                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange){
-                                //System.out.println("CHANGE IN HEADING 1:"+event.getT());
+                            float headingDifference=Math.abs(ev.getHeading()-event.getHeading());
+                            if(headingDifference<headingChangeMax && headingDifference>headingChangeMin){
                                 return true;
                             }
                             else{
@@ -36,9 +35,7 @@ public class IllegalFishing {
                         }
                         return false;
                 }})
-                .subtype(AisMessage.class)
                 .followedBy("gap_end")
-                .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
@@ -54,14 +51,12 @@ public class IllegalFishing {
                         return false;
                     }})
                 .followedBy("change in heading  again")
-                .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                         for (AisMessage ev : ctx.getEventsForPattern("gap_end")) {
-                            //System.out.println("Final Event="+ev.getT());
-                            if(Math.abs(ev.getHeading()-event.getHeading())>headingChange){
-                                //System.out.println("change in heading again:"+event.getT());
+                            float headingDifference=Math.abs(ev.getHeading()-event.getHeading());
+                            if(headingDifference<headingChangeMax && headingDifference>headingChangeMin){
                                 return true;
                             }
                             else{

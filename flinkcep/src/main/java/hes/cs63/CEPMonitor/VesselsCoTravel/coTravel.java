@@ -26,7 +26,6 @@ public class coTravel {
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-
                         for (AisMessage ev : ctx.getEventsForPattern("vessel_1")) {
                             if(ev.getSpeed()>minSpeed
                             && event.getSpeed()>minSpeed

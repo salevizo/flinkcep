@@ -21,8 +21,8 @@ import java.util.Map;
 
 
 public class coTravellingVessels {
-    static int coTravelTime=600;
-    static int coTravellingTotalTime=60;
+    static int coTravelTime=30;
+    static int coTravellingTotalTime=300;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1",AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(CoTravelInfo.class)
