@@ -36,9 +36,9 @@ def main():
     for i in range(9) :
         ## Generate random measurements
         if(i==0):
-            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(209366000), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(1)}
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(209366000), "status":int(ais_data['status'][i]), "speed":float(1992),"turn":float(ais_data['turn'][i]),"heading":float(45), "course":float(1), "t":float(1)}
         elif(i==1):
-            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(209366000), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(29)}
+            ais = { "lat" : float(7.541122), "lon" : float(6.904849),"mmsi" : int(209366000), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(46), "course":float(2), "t":float(29)}
         elif(i==2):
             ais = { "lat" : float(2.541122), "lon" : float(3.90484),"mmsi" : int(209366000), "status":int(ais_data['status'][i]), "speed":float(1993),"turn":float(ais_data['turn'][i]),"heading":float(ais_data['heading'][i]), "course":float(ais_data['course'][i]), "t":float(39)}
 

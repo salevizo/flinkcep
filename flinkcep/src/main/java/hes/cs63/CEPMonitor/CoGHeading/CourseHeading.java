@@ -21,34 +21,35 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
+import org.apache.flink.cep.pattern.conditions.IterativeCondition.Context;
 public class CourseHeading {
 
 
 
 	
 	public static Pattern<AisMessage, ?> patternSpaciousHeading(){
-		Pattern<AisMessage, ?> spaciousHeading = Pattern.<AisMessage>begin("suspicious_heading_start")
-				.where(new SimpleCondition<AisMessage>() {
+		Pattern<AisMessage, ?> spaciousHeading = Pattern.<AisMessage>begin("suspicious_heading_start", AfterMatchSkipStrategy.skipPastLastEvent())
+        .followedBy("suspicious_heading_stop")
+        .where(new IterativeCondition<AisMessage>() {
 					@Override
-					public boolean filter(AisMessage ev) throws Exception {
-						//to check the difference
-						if  ((Math.abs(ev.getHeading()-ev.getCourse())> 30)) {
-
-									return true;
-								} else {
-									return false;
-								}
-							
-
+					 public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
+						   for (AisMessage ev : ctx.getEventsForPattern("suspicious_heading_start")) {
+							if  ((Math.abs(event.getHeading()-event.getCourse())> 10) && (Math.abs(event.getHeading()-event.getCourse()))>10
+								     && (event.getT() - ev.getT()) > 0) {
+										return true;
+									} else {
+										return false;
+									}
 						}
-					
+						   return false;
+					}
 
-				}
-
-						);
+				}).within(Time.seconds(30));
 
 		return spaciousHeading;
 	}
+	
+	
 
 	public static DataStream<SuspiciousCourseHeading> suspiciousSpeedVesselTypeStream(PatternStream<AisMessage> patternStream){
         DataStream<SuspiciousCourseHeading>  rendezvouz  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousCourseHeading>() {

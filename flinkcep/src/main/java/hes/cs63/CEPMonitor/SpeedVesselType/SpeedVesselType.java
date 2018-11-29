@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.apache.flink.cep.pattern.conditions.SimpleCondition;
+import org.apache.flink.cep.pattern.conditions.IterativeCondition.Context;
 public class SpeedVesselType {
 
 
@@ -89,14 +90,17 @@ public class SpeedVesselType {
 		return listOfVesselsType;
 	}
 
+	
+	
+	
 	//to followed de xerw an to thelei
 	public static Pattern<AisMessage, ?> patternSpeedVesselType(){
-		Pattern<AisMessage, ?> spaciousSpeedPattern = Pattern.<AisMessage>begin("speed_spacicious_start")
-				.where( new SimpleCondition<AisMessage>() {
-					@Override
-					public boolean filter(AisMessage ev) throws Exception {
-						
-							String mmsi_= String.valueOf(ev.getMmsi());
+		Pattern<AisMessage, ?> spaciousSpeedPattern = Pattern.<AisMessage>begin("speed_spacicious_start", AfterMatchSkipStrategy.skipPastLastEvent())
+		        .followedBy("speed_spacicious_stop")
+		        .where(new IterativeCondition<AisMessage>() {
+		        	 public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
+							   for (AisMessage ev : ctx.getEventsForPattern("suspicious_heading_start")) {
+							String mmsi_= String.valueOf(event.getMmsi());
 							String type="";
 
 							for (Object o : listOfVesselsType.keySet()) {
@@ -108,8 +112,8 @@ public class SpeedVesselType {
 							//we have info about the vessel type
 							if (type.equals("")==false) {
 								String speed [] = listOfVesselsMaxMinSpeed.get(type);
-								if ( ((ev.getSpeed()<Float.valueOf(speed[0]))
-										|| (ev.getSpeed()>Float.valueOf(speed[1]))) ) {
+								if ( ((event.getSpeed()<Float.valueOf(speed[0]))
+										|| (event.getSpeed()>Float.valueOf(speed[1])))   && (event.getT() - ev.getT()) > 0) {
 
 									return true;
 								} else {
@@ -118,14 +122,13 @@ public class SpeedVesselType {
 							}else {
 								return false;
 							}
-
-						
 						
 					}
 
-				}
+							   return false;
+						}
 
-						);
+					}).within(Time.seconds(30));
 
 		return spaciousSpeedPattern;
 	}
