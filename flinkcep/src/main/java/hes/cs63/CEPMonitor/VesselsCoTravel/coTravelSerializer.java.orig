@@ -1,0 +1,65 @@
+package hes.cs63.CEPMonitor.VesselsCoTravel;
+
+import org.apache.flink.streaming.util.serialization.KeyedSerializationSchema;
+
+public class coTravelSerializer implements KeyedSerializationSchema<coTravelInfo> {
+    @Override
+    public byte[] serializeKey(coTravelInfo element) {
+        if(element.getMmsi_1()<element.getMmsi_2()){
+            return ("\"" + element.getMmsi_1() + "\"").getBytes();
+        }
+        else{
+            return ("\"" + element.getMmsi_2() + "\"").getBytes();
+        }
+    }
+
+    @Override
+    public byte[] serializeValue(coTravelInfo element) {
+        String value="";
+        if(element.getMmsi_1()<element.getMmsi_2()){
+<<<<<<< HEAD
+            value = "{\"MMSI_1\": "+ element.getMmsi_1().toString() + ","+
+                    "\"Lon_1\": "+ element.getLon1()+ "," +
+                    " \"lat_1\": "+ element.getLat1()+ ","+
+                    "\"MMSI_2\": "+ element.getMmsi_2().toString() + ","+
+=======
+            value = "{\"MMSI_1\": "+ Integer.toString(element.getMmsi_1()) + ","+
+                    "\"Lon_1\": "+ element.getLon1()+ "," +
+                    " \"lat_1\": "+ element.getLat1()+ ","+
+                    "\"MMSI_2\": "+ Integer.toString(element.getMmsi_2()) + ","+
+>>>>>>> 6e3cb0cf7a370bd8dd2a80b8e163cc613c2d3378
+                    "\"Lon_2\": "+ element.getLon2()+ "," +
+                    " \"lat_2\": "+ element.getLat2() + ","+
+                    " \"time\": "+ element.getTimestamp()+
+                    "}";
+        }
+        else{
+<<<<<<< HEAD
+            value = "{\"MMSI_1\": "+ element.getMmsi_2().toString() + ","+
+                    "\"Lon_1\": "+ element.getLon2()+ "," +
+                    " \"lat_1\": "+ element.getLat2()+ ","+
+                    "\"MMSI_2\": "+ element.getMmsi_1().toString() + ","+
+=======
+            value = "{\"MMSI_1\": "+ Integer.toString(element.getMmsi_2()) + ","+
+                    "\"Lon_1\": "+ element.getLon2()+ "," +
+                    " \"lat_1\": "+ element.getLat2()+ ","+
+                    "\"MMSI_2\": "+ Integer.toString(element.getMmsi_1()) + ","+
+>>>>>>> 6e3cb0cf7a370bd8dd2a80b8e163cc613c2d3378
+                    "\"Lon_2\": "+ element.getLon1()+ "," +
+                    " \"lat_2\": "+ element.getLat1()+ ","+
+                    " \"time\": "+ element.getTimestamp()+
+                    "}";
+        }
+<<<<<<< HEAD
+        System.out.println("AVGEROS1992="+value);
+=======
+>>>>>>> 6e3cb0cf7a370bd8dd2a80b8e163cc613c2d3378
+        return value.getBytes();
+    }
+
+    @Override
+    public String getTargetTopic(coTravelInfo element) {
+        // use always the default topic
+        return "DEMOCP_CO";
+    }
+}

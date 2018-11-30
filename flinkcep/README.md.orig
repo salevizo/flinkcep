@@ -33,6 +33,12 @@ sudo /home/cer/Desktop/flink-1.6.2/bin/flink run  /home/cer/flinkcep/flinkcep/ce
 sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/flinkcep/flinkcep/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt --topic_output_acc DEMO_ACC --topic_output_gap DEMOCP2 --topic_output_co DEMOCP_CO
 
 
+<<<<<<< HEAD
+ sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt --topic_output_acc DEMO_ACC --topic_output_gap DEMOCP2 --topic_output_co DEMOCP_CO
+ 
+ To topic μπαινει σαν παράμετρος στο java Που έχουμε φτιάξει και παίρνει το ονομα του topic που εχουμε δημιουργήσει DEMOCP.To -out είναι το αρχείο που τρέχουμ.
+=======
+>>>>>>> 6e3cb0cf7a370bd8dd2a80b8e163cc613c2d3378
  
  8) Στην σελίδα http://localhost:8081/#/overview εχουμε τa job μας.
  
