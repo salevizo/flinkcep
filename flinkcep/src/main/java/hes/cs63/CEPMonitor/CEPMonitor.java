@@ -1,39 +1,33 @@
 package hes.cs63.CEPMonitor;
 
 
+import hes.cs63.CEPMonitor.Acceleration.SpeedNearPort;
+import hes.cs63.CEPMonitor.Acceleration.SuspiciousSpeedNearPort;
 import hes.cs63.CEPMonitor.Fishing.IllegalFishing;
 import hes.cs63.CEPMonitor.Fishing.SuspiciousFishing;
 import hes.cs63.CEPMonitor.Gaps.Gap;
 import hes.cs63.CEPMonitor.Gaps.GapMessageSerializer;
 import hes.cs63.CEPMonitor.Gaps.SuspiciousGap;
+import hes.cs63.CEPMonitor.SpeedVesselType.SpeedVesselType;
+import hes.cs63.CEPMonitor.SpeedVesselType.SuspiciousSpeedVesselType;
 import hes.cs63.CEPMonitor.VesselsCoTravel.coTravelInfo;
 import hes.cs63.CEPMonitor.VesselsCoTravel.coTravel;
 import hes.cs63.CEPMonitor.VesselsCoTravel.coTravelSerializer;
-import org.apache.flink.api.common.ExecutionConfig;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
 import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.core.fs.FileSystem;
-import org.apache.flink.core.fs.FileSystem.WriteMode;
-import org.apache.flink.shaded.jackson2.com.fasterxml.jackson.databind.node.ObjectNode;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
-import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
-import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor;
-import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
 
-import hes.cs63.CEPMonitor.Acceleration.Acceleration;
-import hes.cs63.CEPMonitor.Acceleration.SuspiciousAcceleration;
-
 import java.util.Properties;
-import hes.cs63.CEPMonitor.SpeedVesselType.*;
+
 import hes.cs63.CEPMonitor.CoGHeading.*;
 
 public class CEPMonitor {
@@ -41,7 +35,6 @@ public class CEPMonitor {
     public static void main(String[] args) throws Exception {
     	
     	String sql = "SELECT * FROM `stackoverflow`";
-        //Acceleration.readcsv();
         System.getenv("APP_HOME");
         StreamExecutionEnvironment env =
                 StreamExecutionEnvironment.getExecutionEnvironment();
@@ -54,7 +47,7 @@ public class CEPMonitor {
         // Input stream of monitoring events
         DataStream<AisMessage> messageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
-                                    parameterTool.getRequired("topic"),
+                                    parameterTool.getRequired("INPUT"),
                                     new AisMessageDeserializer(),
                                    props))
                 .assignTimestampsAndWatermarks(new Watermarks());
@@ -75,11 +68,11 @@ public class CEPMonitor {
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
         DataStream<SuspiciousGap> gaps = Gap.suspiciousGapsStream(patternGapStream);
 
-        final SingleOutputStreamOperator<SuspiciousGap> topic_2_gap = gaps.map(v -> v.getGapObj());
+        final SingleOutputStreamOperator<SuspiciousGap> topic_2_gap = gaps.map(v -> v.getGapObj()).uid("Suspicious");
 
         FlinkKafkaProducer09<SuspiciousGap> gapProducer = new FlinkKafkaProducer09<SuspiciousGap>(
 
-                parameterTool.getRequired("topic_output_gap"),    // target topic
+                parameterTool.getRequired("OUT_GAP"),    // target topic
                 new GapMessageSerializer(),
                 parameterTool.getProperties());   // serialization schema
 
@@ -92,11 +85,9 @@ public class CEPMonitor {
         Pattern<AisMessage, ?> coTravelPattern = coTravel.patternCoTravel();
         PatternStream<AisMessage> patternCoTravelStream = CEP.pattern(nonPartitionedInput,coTravelPattern);
         DataStream<coTravelInfo> coTravel = hes.cs63.CEPMonitor.VesselsCoTravel.coTravel.suspiciousCoTravelStream(patternCoTravelStream);
-
-        final SingleOutputStreamOperator<coTravelInfo> topic_2_co = coTravel.map(v -> v.getSuspiciousCoTravelInfo());
-
+        final SingleOutputStreamOperator<coTravelInfo> topic_2_co = coTravel.map(v -> v.getSuspiciousCoTravelInfo()).uid("Co Travelling");
         FlinkKafkaProducer09<coTravelInfo> coProducer = new FlinkKafkaProducer09<coTravelInfo>(
-                parameterTool.getRequired("topic_output_co"),    // target topic
+                parameterTool.getRequired("OUT_COTRAVEL"),    // target topic
                 new coTravelSerializer(),
                 parameterTool.getProperties());
         topic_2_co.addSink(coProducer);
@@ -107,26 +98,22 @@ public class CEPMonitor {
 
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
-        /*Pattern<AisMessage, ?> Accelarationattern= Acceleration.patternAcceleration();
+        Pattern<AisMessage, ?> Accelarationattern= SpeedNearPort.patternSpeedNearPort();
 		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
-		DataStream<SuspiciousAcceleration> accelerations = Acceleration.suspiciousAccelerationsStream(patternSAccelarationStream);
+		DataStream<SuspiciousSpeedNearPort> accelerations = SpeedNearPort.suspiciousSpeedNearPortStream(patternSAccelarationStream);
 
-		accelerations.map(v -> v.findAccelerationObjToString()).writeAsText("/home/cer/Desktop/temp/fast_approach.txt", WriteMode.OVERWRITE);
-     	accelerations.map(v -> v.findAccelerationObjQGIS()).writeAsText("/home/cer/Desktop/temp/fast_approachQGIS.csv", WriteMode.OVERWRITE);*/
+		accelerations.map(v -> v.findShip()).writeAsText("/home/cer/Desktop/temp/fast_approach.txt", FileSystem.WriteMode.OVERWRITE);
+
 		
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
 
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-
         Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
-        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE);
-        fishing.map(v -> v.findFishingQGIS()).writeAsText("/home/cer/Desktop/temp/fishingQGIS.csv", FileSystem.WriteMode.OVERWRITE);
-
-
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
         
       
@@ -135,24 +122,22 @@ public class CEPMonitor {
         Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
         DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
-
-        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/spacious_speed.csv", WriteMode.OVERWRITE);
-		System.out.print("edwwwww");
-    	
-        
+        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
         ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
+
         Pattern<AisMessage, ?> suspiciousHeadingPattern = CourseHeading.patternSpaciousHeading();
         PatternStream<AisMessage> patternsuspiciouHeadingStream= CEP.pattern(partitionedInput,suspiciousHeadingPattern);
         DataStream<SuspiciousCourseHeading> suspiciousHeading = CourseHeading.suspiciousSpeedVesselTypeStream(patternsuspiciouHeadingStream);
-        
-        suspiciousHeading.map(v -> v.findHeading()).writeAsText("/home/cer/Desktop/spacious_heading.csv", WriteMode.OVERWRITE);
-		
+        final SingleOutputStreamOperator<SuspiciousCourseHeading> topic_2_course = suspiciousHeading.map(v -> v.getObj());
 
-        
-        
-        
-        
-        env.execute("Trajentory evens");
+        FlinkKafkaProducer09<SuspiciousCourseHeading> courseProducer = new FlinkKafkaProducer09<SuspiciousCourseHeading>(
+                parameterTool.getRequired("OUT_COURSE"),    // target topic
+                new CourseDiffToHeadSerializer(),
+                parameterTool.getProperties());   // serialization schema
+
+        topic_2_course.addSink(courseProducer);
+
+        env.execute("Trajectory events");
 
     }
 }

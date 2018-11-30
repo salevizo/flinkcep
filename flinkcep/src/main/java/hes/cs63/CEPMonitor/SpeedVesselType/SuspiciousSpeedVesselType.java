@@ -12,7 +12,7 @@ public class SuspiciousSpeedVesselType {
         this.speed=speed_;
     }
 
-    
+
     public int getMmsi() {
         return mmsi;
     }
@@ -26,10 +26,10 @@ public class SuspiciousSpeedVesselType {
     }
 
     public String findSpeed(){
-     
+
         //System.out.println("Writing this:"+"Suspicious speed : { MMSI : " + getMmsi()+", speed : "+getSpeed()+" }");
         return "Suspicious Speed :{ MMSI : " + getMmsi()+", speed : "+getSpeed()+" }";
     }
-   
+
 
 }

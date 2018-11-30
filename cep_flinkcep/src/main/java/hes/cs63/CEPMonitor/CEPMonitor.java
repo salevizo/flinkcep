@@ -1,7 +1,10 @@
 package hes.cs63.CEPMonitor;
 import hes.cs63.CEPMonitor.CoTravellingVessels.SuspiciousCoTravellingVessels;
 import hes.cs63.CEPMonitor.CoTravellingVessels.coTravellingVessels;
+import hes.cs63.CEPMonitor.CourseHeadDiff.courseHeadDiff;
+import hes.cs63.CEPMonitor.CourseHeadDiff.vesselsInDanger;
 import hes.cs63.CEPMonitor.Deserializers.CoTravelDeserializer;
+import hes.cs63.CEPMonitor.Deserializers.CourseHeadDeserializer;
 import hes.cs63.CEPMonitor.Deserializers.GapMessageDeserializer;
 import hes.cs63.CEPMonitor.Rendezvouz.RendezVouz;
 import hes.cs63.CEPMonitor.Rendezvouz.SuspiciousRendezVouz;
@@ -9,6 +12,7 @@ import hes.cs63.CEPMonitor.Rendezvouz.SuspiciousRendezVouz;
 
 import hes.cs63.CEPMonitor.receivedClasses.CoTravelInfo;
 import hes.cs63.CEPMonitor.receivedClasses.GapMessage;
+import hes.cs63.CEPMonitor.receivedClasses.courseHead;
 import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.utils.ParameterTool;
 import org.apache.flink.cep.CEP;
@@ -37,7 +41,7 @@ public class CEPMonitor {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DataStream<GapMessage> gapMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
-                                    parameterTool.getRequired("topic_gap"),
+                                    parameterTool.getRequired("IN_GAP"),
                                     new GapMessageDeserializer(),
                                     parameterTool.getProperties()))
                 .assignTimestampsAndWatermarks(new WatermarksGaps());
@@ -46,7 +50,7 @@ public class CEPMonitor {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DataStream<CoTravelInfo> coTravelMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
-                        parameterTool.getRequired("topic_co"),
+                        parameterTool.getRequired("IN_COTRAVEL"),
                         new CoTravelDeserializer(),
                         parameterTool.getProperties()))
                 .assignTimestampsAndWatermarks(new WatermarksCoTravel());
@@ -61,8 +65,25 @@ public class CEPMonitor {
                 });
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        DataStream<courseHead> courseMessageStream = env
+                .addSource(new FlinkKafkaConsumer09<>(
+                        parameterTool.getRequired("IN_COURSE"),
+                        new CourseHeadDeserializer(),
+                        parameterTool.getProperties()))
+                .assignTimestampsAndWatermarks(new WatermarksCourse());
+
+
+        DataStream<courseHead> coursePartitionedInput = courseMessageStream.keyBy(
+                new KeySelector<courseHead, Integer>() {
+                    @Override
+                    public Integer getKey(courseHead value) throws Exception {
+                        return value.getMmsi();
+                    }
+                });
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
          
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
@@ -81,6 +102,14 @@ public class CEPMonitor {
 	    coTravelStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/temp/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
         //////////////////////////////////Co travelling vessels////////////////////////////////////////////
 
+
+        //////////////////////////////////Co travelling vessels////////////////////////////////////////////
+        Pattern<courseHead, ?>coursePatternStream = courseHeadDiff.patternSpaciousHeading();
+        PatternStream<courseHead> coursePattern = CEP.pattern(coursePartitionedInput,coursePatternStream);
+        DataStream<vesselsInDanger> courseStream = courseHeadDiff.suspiciousSpeedVesselTypeStream(coursePattern);
+        courseStream.map(v -> v.findHeading()).writeAsText("/home/cer/Desktop/temp/coursehead.txt", WriteMode.OVERWRITE);
+        //courseStream.map(v -> v.findVesselsQGIS()).writeAsText("/home/cer/temp/Desktop/cotravelQGIS.csv", WriteMode.OVERWRITE);
+        //////////////////////////////////Co travelling vessels////////////////////////////////////////////
     
         //messageStream.map(v -> v.toString()).print();
         env.execute("Suspicious RendezVouz");

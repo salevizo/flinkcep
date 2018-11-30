@@ -87,4 +87,5 @@ public class CoTravelInfo {
     public CoTravelInfo getSuspiciousCoTravelInfo(){
         return this;
     }
+
 }

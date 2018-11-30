@@ -1,25 +1,42 @@
-package hes.cs63.CEPMonitor.CoGHeading;
-import com.github.davidmoten.geo.GeoHash;
+package hes.cs63.CEPMonitor.receivedClasses;
 
-import java.util.LinkedList;
+import com.google.gson.annotations.SerializedName;
 
-public class SuspiciousCourseHeading {
-
+public class courseHead {
+    @SerializedName("MMSI")
     private int mmsi;
-    private float heading;
+    @SerializedName("Course")
     private float course;
-    private float lon;
-    private float lat;
+    @SerializedName("Heading")
+    private float heading;
+    @SerializedName("Timestamp")
     private int timestamp;
+    @SerializedName("Lat")
+    private float lat;
+    @SerializedName("Lon")
+    private float lon;
 
 
-    public SuspiciousCourseHeading(int mmsi, float heading, float course, float lon, float lat, int timestamp) {
+
+    public courseHead(int mmsi, float heading, float course, float lon, float lat, int timestamp) {
         this.mmsi = mmsi;
         this.heading = heading;
         this.course = course;
         this.lon = lon;
         this.lat = lat;
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public String toString() {
+        return "courseHead{" +
+                "mmsi=" + mmsi +
+                ", course=" + course +
+                ", heading=" + heading +
+                ", timestamp=" + timestamp +
+                ", lat=" + lat +
+                ", lon=" + lon +
+                '}';
     }
 
     public int getMmsi() {
@@ -33,7 +50,7 @@ public class SuspiciousCourseHeading {
     public float getCourse() {
         return course;
     }
-    
+
     public void setHeading(float heading) {
         this.heading = heading;
     }
@@ -69,7 +86,7 @@ public class SuspiciousCourseHeading {
     public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
-    public SuspiciousCourseHeading getObj(){
+    public courseHead getObj(){
         return this;
     }
 }

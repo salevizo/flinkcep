@@ -32,7 +32,7 @@ public class SpeedVesselType {
 
 	public static HashMap<String, String[]> vesselMaxMinSpeed(){
 		listOfVesselsMaxMinSpeed = new HashMap<>();
-		String csvFile = "/home/cer/Desktop/cer_2/flinkcep/flinkcep/producer/maxSpeedVesselType.csv";
+		String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/maxSpeedVesselType.csv";
 		String line = "";
 		String cvsSplitBy = ",";
 
@@ -63,7 +63,7 @@ public class SpeedVesselType {
 
 	public static HashMap<String, String[]> vesselTypes(){
 		listOfVesselsType = new HashMap<>();
-		String csvFile = "/home/cer/Desktop/cer_2/flinkcep/flinkcep/producer/vessel_type.csv";
+		String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/vessel_type.csv";
 		String line = "";
 		String cvsSplitBy = ",";
 

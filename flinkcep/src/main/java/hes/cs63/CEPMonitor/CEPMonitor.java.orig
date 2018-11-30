@@ -24,8 +24,8 @@ import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
 
-import hes.cs63.CEPMonitor.Acceleration.Acceleration;
-import hes.cs63.CEPMonitor.Acceleration.SuspiciousAcceleration;
+import hes.cs63.CEPMonitor.Acceleration.SpeedNearPort;
+import hes.cs63.CEPMonitor.Acceleration.SuspiciousSpeedNearPort;
 
 
 public class CEPMonitor {

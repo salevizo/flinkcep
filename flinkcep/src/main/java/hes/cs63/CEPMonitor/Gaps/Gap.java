@@ -49,7 +49,7 @@ public class Gap {
                            @Override
                            public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                                    for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
-                                       if ((event.getT() - ev.getT()) > gapTime && (event.getT() - ev.getT()) > 0
+                                       if ((event.getT() - ev.getT()) > gapTime
                                        && listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), geoHashLen)) == false) {
                                            return true;
                                        } else {

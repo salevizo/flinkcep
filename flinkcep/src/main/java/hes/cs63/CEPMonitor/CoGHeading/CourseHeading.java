@@ -9,6 +9,7 @@ import org.apache.flink.cep.PatternStream;
 import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
+import org.apache.flink.shaded.guava18.com.google.common.collect.Lists;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.windowing.time.Time;
 
@@ -24,27 +25,24 @@ import org.apache.flink.cep.pattern.conditions.SimpleCondition;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition.Context;
 public class CourseHeading {
 
-
-
-	
+	static int minDiff=10;
+	static int maxDiff=60;
+	static double max_speed=48.6;
+	static double min_speed=2.7;
 	public static Pattern<AisMessage, ?> patternSpaciousHeading(){
 		Pattern<AisMessage, ?> spaciousHeading = Pattern.<AisMessage>begin("suspicious_heading_start", AfterMatchSkipStrategy.skipPastLastEvent())
-        .followedBy("suspicious_heading_stop")
-        .where(new IterativeCondition<AisMessage>() {
+        .where(new SimpleCondition<AisMessage>() {
 					@Override
-					 public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-						   for (AisMessage ev : ctx.getEventsForPattern("suspicious_heading_start")) {
-							if  ((Math.abs(event.getHeading()-event.getCourse())> 10) && (Math.abs(event.getHeading()-event.getCourse()))>10
-								     && (event.getT() - ev.getT()) > 0) {
-										return true;
-									} else {
-										return false;
-									}
+					 public boolean filter(AisMessage event) throws Exception {
+						float courseDiffToHead=(Math.abs(event.getHeading()-event.getCourse()));
+						if (courseDiffToHead>minDiff && courseDiffToHead<maxDiff && event.getSpeed()>min_speed && event.getSpeed()<max_speed) {
+							return true;
+						} else {
+							return false;
 						}
-						   return false;
 					}
 
-				}).within(Time.seconds(30));
+				});
 
 		return spaciousHeading;
 	}
@@ -52,15 +50,14 @@ public class CourseHeading {
 	
 
 	public static DataStream<SuspiciousCourseHeading> suspiciousSpeedVesselTypeStream(PatternStream<AisMessage> patternStream){
-        DataStream<SuspiciousCourseHeading>  rendezvouz  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousCourseHeading>() {
+        DataStream<SuspiciousCourseHeading>  courseHeading  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousCourseHeading>() {
             @Override
             public SuspiciousCourseHeading select(Map<String,List<AisMessage>> pattern) throws Exception {
-                AisMessage suspicious_heading_start = (AisMessage) pattern.get("suspicious_heading_start").get(0);
-              
-                return new SuspiciousCourseHeading(suspicious_heading_start.getMmsi(),suspicious_heading_start.getHeading(),suspicious_heading_start.getCourse());
+				AisMessage msg = (AisMessage) pattern.get("suspicious_heading_start").get(0);
+				return new SuspiciousCourseHeading(msg.getMmsi(),msg.getHeading(),msg.getCourse(),msg.getLon(),msg.getLat(),msg.getT());
             }
         });
 
-        return rendezvouz;
+        return courseHeading;
     }
 }
