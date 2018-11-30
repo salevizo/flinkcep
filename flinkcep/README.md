@@ -56,6 +56,13 @@ flink-1.6.2$ bin/flink cancel 833958573e917dd87a42a7dec1f7310f
  
 An alalxeis kati sto prodcer/ais.py prepei an kanei delete to topic k meta plai create gai na parei thn allagh o consumer
 
+### NEW WAY TO RUN
+sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --INPUT AIS --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --OUT_GAP GAP --OUT_COTRAVEL COTRAVEL --OUT_COURSE COURSE
+
+sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/cep_flinkcep/target/flinkicu_cep-1.0-jar-with-dependencies.jar --IN_GAP GAP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --IN_COTRAVEL COTRAVEL --IN_COURSE COURSE 
+
+
+
 ############visualize################################
 Vazeis ta apotelesmata twn events se ena csv, oi diafores times xwrizontai me koma
 pas qgis Destop, sundeesai sth vash,kaneis drag and drop ena shapefile apo auta pou einai diathesima aristera
