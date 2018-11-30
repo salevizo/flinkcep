@@ -11,10 +11,12 @@ public class GapMessageSerializer implements KeyedSerializationSchema<Suspicious
 
     @Override
     public byte[] serializeValue(SuspiciousGap element) {
-        String value = "{\"MMSI\": "+ element.getMmsi().toString() + ","+
-                "\"GapStart\": "+ element.getGapStart().toString() + "," +
-                " \"GapEnd\": "+ element.getGapEnd().toString() + ","+
-                " \"GeoHash\": "+ element.getGeoHash()+
+        String value = "{\"MMSI\": "+ Integer.toString(element.getMmsi())+ ","+
+                "\"GapStart\": "+ Integer.toString(element.getGapStart()) + "," +
+                " \"GapEnd\": "+ Integer.toString(element.getGapEnd()) + ","+
+                " \"GeoHash\": "+ element.getGeoHash()+","+
+                " \"Lat\": "+ Float.toString(element.getLat()) + ","+
+                " \"Lon\": "+ Float.toString(element.getLon())+
 
         "}";
         return value.getBytes();
@@ -23,6 +25,6 @@ public class GapMessageSerializer implements KeyedSerializationSchema<Suspicious
     @Override
     public String getTargetTopic(SuspiciousGap element) {
         // use always the default topic
-        return "DEMOCP2";
+        return "DEMOCP22";
     }
 }

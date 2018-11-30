@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RendezVouz {
+    public static int gapTime=120;
     public static Pattern<GapMessage, ?> patternRendezvouz(){
         Pattern<GapMessage, ?> rendevouzPattern = Pattern.<GapMessage>begin("Vessel_1")
                 .subtype(GapMessage.class)
@@ -21,18 +22,17 @@ public class RendezVouz {
                 .where(new IterativeCondition<GapMessage>() {
                     @Override
                     public boolean filter(GapMessage event, Context<GapMessage> ctx) throws Exception {
-                        for (GapMessage ev : ctx.getEventsForPattern("Vessel_1")) {
-                            if(Math.abs(ev.getGapEnd()-event.getGapEnd())<60
-                            && ev.getGeoHash().equals(event.getGeoHash())){
-                                return true;
+                            for (GapMessage ev : ctx.getEventsForPattern("Vessel_1")) {
+                                if ((ev.getGeoHash().equals(event.getGeoHash()) == true)
+                                        && ev.getMmsi()!=event.getMmsi()) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
                             }
-                            else{
-                                return false;
-                            }
-                        }
-                        return false;
+                            return false;
                 }})
-                .within(Time.seconds(10));
+                .within(Time.seconds(gapTime));
         return rendevouzPattern;
     }
 
@@ -42,7 +42,7 @@ public class RendezVouz {
             public SuspiciousRendezVouz select(Map<String,List<GapMessage>> pattern) throws Exception {
                 GapMessage vessel_1 = (GapMessage) pattern.get("Vessel_1").get(0);
                 GapMessage vessel_2 = (GapMessage) pattern.get("Vessel_2").get(0);
-                return new SuspiciousRendezVouz(vessel_1.getMmsi(),vessel_2.getMmsi(),vessel_1.getGeoHash(),vessel_1.getGapEnd(),vessel_2.getGapEnd());
+                return new SuspiciousRendezVouz(vessel_1.getMmsi(),vessel_2.getMmsi(),vessel_1.getGeoHash(),vessel_1.getGapEnd(),vessel_2.getGapEnd(),vessel_1.getLon(),vessel_1.getLat(),vessel_2.getLon(),vessel_2.getLat());
             }
         });
 

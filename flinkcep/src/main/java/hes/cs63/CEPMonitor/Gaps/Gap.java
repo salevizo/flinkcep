@@ -4,34 +4,66 @@ import com.github.davidmoten.geo.GeoHash;
 import hes.cs63.CEPMonitor.AisMessage;
 import org.apache.flink.cep.PatternSelectFunction;
 import org.apache.flink.cep.PatternStream;
+import org.apache.flink.cep.nfa.aftermatch.AfterMatchSkipStrategy;
 import org.apache.flink.cep.pattern.Pattern;
 import org.apache.flink.cep.pattern.conditions.IterativeCondition;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.windowing.time.Time;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class Gap {
+    private static int gapTime=600;
+    private static int geoHashLen=6;
+
+    public  static HashSet <String> listOfPorts=ports();
+
+    public static HashSet<String> ports(){
+        listOfPorts = new HashSet<String>();
+        String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/wpi.csv";
+        String line = "";
+        String cvsSplitBy = ",";
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+            String gHash="";
+            while ((line = br.readLine()) != null) {
+                String[] coordinates = line.split(cvsSplitBy);
+                gHash=GeoHash.encodeHash(Float.valueOf(coordinates[0]),Float.valueOf(coordinates[1]),geoHashLen);
+                listOfPorts.add(gHash);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listOfPorts;
+    }
+
     public static Pattern<AisMessage, ?> patternGap(){
-        Pattern<AisMessage, ?> rendezvouzPattern = Pattern.<AisMessage>begin("gap_start")
-                .subtype(AisMessage.class)
+        Pattern<AisMessage, ?> rendezvouzPattern = Pattern.<AisMessage>begin("gap_start", AfterMatchSkipStrategy.skipPastLastEvent())
                 .followedBy("gap_end")
-                .subtype(AisMessage.class)
                 .where(new IterativeCondition<AisMessage>() {
-                    @Override
-                    public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-                        for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
-                            if(ev.getT()-event.getT()>600){
-                                return true;
-                            }
-                            else{
-                                return false;
-                            }
-                        }
-                        return false;
-                }})
-                .within(Time.seconds(10));
+                           @Override
+                           public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
+                                   for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
+                                       if ((event.getT() - ev.getT()) > gapTime && (event.getT() - ev.getT()) > 0
+                                       && listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), geoHashLen)) == false) {
+                                           return true;
+                                       } else {
+                                           return false;
+                                       }
+                                   }
+                                   return false;
+                               }
+
+                           }
+
+                )
+                .within(Time.seconds(3600));
+
         return rendezvouzPattern;
     }
 
@@ -44,7 +76,7 @@ public class Gap {
 
                 LinkedList<Float> tempList=new LinkedList<Float>();
                 tempList.add(Math.abs((gap_start.getTurn())));
-                String geoHash= GeoHash.encodeHash(gap_end.getLat(),gap_end.getLon());
+                String geoHash= GeoHash.encodeHash(gap_end.getLat(),gap_end.getLon(),geoHashLen);
                 return new SuspiciousGap(gap_start.getMmsi(),gap_end.getLat(),gap_end.getLon(),gap_start.getT(),gap_end.getT(),geoHash);
             }
         });

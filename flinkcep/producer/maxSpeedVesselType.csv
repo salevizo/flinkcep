@@ -1,0 +1,27 @@
+Anti-Pollution, 1, 8
+Cargo,1,20
+Cargo - Hazard A (Major),1,25
+Cargo - Hazard B,1,20
+Cargo - Hazard C (Minor),1,20
+Cargo - Hazard D (Recognizable),1,20
+Dive Vessel,1,17
+Dredger,1,13
+Fishing,1,18
+High-Speed Craft,1,25
+Law Enforce,1,17
+Local Vessel,1,40
+Military Ops,1,63
+Other,1,20
+Passenger,1,40
+Pilot Vessel,1,24
+Pleasure Craft,1,25
+SAR,1,45
+Sailing Vessel,1,22
+Special Craft,1,30
+Tanker,1,10
+Tanker - Hazard A (Major),1,10
+Tanker - Hazard B,1,10
+Tanker - Hazard C (Minor),1,10
+Tanker - Hazard D (Recognizable),1,10
+Tug,1,15
+Wing In Grnd,1,100
