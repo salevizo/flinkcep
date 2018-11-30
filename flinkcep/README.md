@@ -54,7 +54,7 @@ mvn clean install
 
 Αφού τελειώσει αυτό,εκτελούμε το 
 
- sudo /home/cer/Downloads/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkce/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt
+ sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer_2/flinkcep/target/flinkicu-1.0-jar-with-dependencies.jar --topic DEMOCP --bootstrap.servers localhost:9092 --zookeeper.connect localhost:2181 --out /home/cer/Desktop/out.txt --topic_output_acc DEMO_ACC --topic_output_gap DEMOCP2 --topic_output_co DEMOCP_CO
  
  To topic μπαινει σαν παράμετρος στο java Που έχουμε φτιάξει και παίρνει το ονομα του topic που εχουμε δημιουργήσει DEMOCP.To -out είναι το αρχείο που τρέχουμ.
  

@@ -36,7 +36,7 @@ public class Gap {
     }
 
     public static DataStream<SuspiciousGap> suspiciousGapsStream(PatternStream<AisMessage> patternStream){
-        DataStream<SuspiciousGap>  rendezvouz = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousGap>() {
+        DataStream<SuspiciousGap>  rendezvouz  = patternStream.select(new PatternSelectFunction<AisMessage, SuspiciousGap>() {
             @Override
             public SuspiciousGap select(Map<String,List<AisMessage>> pattern) throws Exception {
                 AisMessage gap_start = (AisMessage) pattern.get("gap_start").get(0);
