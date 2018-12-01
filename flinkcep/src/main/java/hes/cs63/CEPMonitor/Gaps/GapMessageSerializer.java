@@ -25,6 +25,6 @@ public class GapMessageSerializer implements KeyedSerializationSchema<Suspicious
     @Override
     public String getTargetTopic(SuspiciousGap element) {
         // use always the default topic
-        return "DEMOCP22";
+        return "GAP";
     }
 }

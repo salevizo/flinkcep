@@ -73,7 +73,8 @@ public class SuspiciousGap {
         System.out.println("Writing this:"+"Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }");
         return "Suspicious Gap : { MMSI : " + getMmsi()+", GapStart : "+getGapStart()+" , GapEnd : "+getGapEnd()+" , GapTime : "+gap+" GeoHash : "+geoHash+" }";
     }*/
-    public SuspiciousGap getGapObj(){
+    public SuspiciousGap getGapObj()
+    {
         return this;
     }
 

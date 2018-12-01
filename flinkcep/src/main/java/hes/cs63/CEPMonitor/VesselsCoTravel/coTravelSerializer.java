@@ -42,6 +42,6 @@ public class coTravelSerializer implements KeyedSerializationSchema<coTravelInfo
     @Override
     public String getTargetTopic(coTravelInfo element) {
         // use always the default topic
-        return "DEMOCP_CO";
+        return "COTRAVEL";
     }
 }
