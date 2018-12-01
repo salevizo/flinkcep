@@ -25,7 +25,7 @@ public class Gap {
 
     public static HashSet<String> ports(){
         listOfPorts = new HashSet<String>();
-        String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/wpi.csv";
+        String csvFile = "/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
         String line = "";
         String cvsSplitBy = ",";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -44,11 +44,12 @@ public class Gap {
 
     public static Pattern<AisMessage, ?> patternGap(){
         Pattern<AisMessage, ?> rendezvouzPattern = Pattern.<AisMessage>begin("gap_start", AfterMatchSkipStrategy.skipPastLastEvent())
-                .followedBy("gap_end")
+                .next("gap_end")
                 .where(new IterativeCondition<AisMessage>() {
                            @Override
                            public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
                                    for (AisMessage ev : ctx.getEventsForPattern("gap_start")) {
+                                       //System.out.println("EMPIKA");
                                        if ((event.getT() - ev.getT()) > gapTime
                                        && listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), geoHashLen)) == false) {
                                            return true;
@@ -62,7 +63,7 @@ public class Gap {
                            }
 
                 )
-                .within(Time.seconds(3600));
+                .within(Time.seconds(900));
 
         return rendezvouzPattern;
     }

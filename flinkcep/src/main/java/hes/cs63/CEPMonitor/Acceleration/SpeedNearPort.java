@@ -19,12 +19,10 @@ public class SpeedNearPort {
     static int maxSpeed=5;
     static int patternTime=300;
     public  static HashSet <String> listOfPorts=readCsv();
-
-    
     
     public static HashSet<String> readCsv(){
         listOfPorts = new HashSet<String>();
-        String csvFile = "/home/cer/Desktop/cer_2/flinkcep/producer/wpi.csv";
+        String csvFile = "/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
         String line = "";
         String cvsSplitBy = ",";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -52,7 +50,7 @@ public class SpeedNearPort {
                             }
                         return false;
                     }})
-                .times(10)
+                .times(5)
                 .consecutive()
                 .within(Time.seconds(patternTime));
         return fastForwardPattern;

@@ -5,38 +5,60 @@ import com.google.gson.annotations.SerializedName;
 
 public class GapMessage {
     @SerializedName("MMSI")
-    private Integer mmsi;
+    private int mmsi;
 
     @SerializedName("GapStart")
-    private Integer GapStart;
+    private int GapStart;
 
     @SerializedName("GapEnd")
-    private Integer GapEnd;
+    private int GapEnd;
 
     @SerializedName("GeoHash")
     private String GeoHash;
 
-    public Integer getMmsi() {
+    @SerializedName("Lat")
+    private float lat;
+
+    @SerializedName("Lon")
+    private float Lon;
+
+    public float getLat() {
+        return lat;
+    }
+
+    public void setLat(float lat) {
+        this.lat = lat;
+    }
+
+    public float getLon() {
+        return Lon;
+    }
+
+    public void setLon(float lon) {
+        Lon = lon;
+    }
+
+    public int getMmsi() {
         return mmsi;
     }
 
-    public void setMmsi(Integer mmsi) {
+    public void setMmsi(int mmsi) {
         this.mmsi = mmsi;
     }
 
-    public Integer getGapStart() {
+    public int getGapStart() {
         return GapStart;
     }
 
-    public void setGapStart(Integer gapStart) {
+    public void setGapStart(int gapStart) {
         GapStart = gapStart;
     }
 
-    public Integer getGapEnd() {
+    public int getGapEnd() {
         return GapEnd;
     }
 
-    public void setGapEnd(Integer gapEnd) {
+    public void setGapEnd(int gapEnd) {
         GapEnd = gapEnd;
     }
 

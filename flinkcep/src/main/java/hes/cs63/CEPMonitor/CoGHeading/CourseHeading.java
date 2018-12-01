@@ -28,9 +28,9 @@ public class CourseHeading {
 	static int minDiff=10;
 	static int maxDiff=60;
 	static double max_speed=48.6;
-	static double min_speed=2.7;
+	static double min_speed=1;
 	public static Pattern<AisMessage, ?> patternSpaciousHeading(){
-		Pattern<AisMessage, ?> spaciousHeading = Pattern.<AisMessage>begin("suspicious_heading_start", AfterMatchSkipStrategy.skipPastLastEvent())
+		Pattern<AisMessage, ?> spaciousHeading = Pattern.<AisMessage>begin("suspicious_heading_start")
         .where(new SimpleCondition<AisMessage>() {
 					@Override
 					 public boolean filter(AisMessage event) throws Exception {

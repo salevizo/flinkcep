@@ -54,7 +54,7 @@ public class courseHeadDiff {
                     }
 
                 })
-                .within(Time.seconds(600));
+                .within(Time.seconds(300));
 
         return spaciousHeading;
     }

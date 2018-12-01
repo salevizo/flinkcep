@@ -24,7 +24,7 @@ public class CourseDiffToHeadSerializer implements KeyedSerializationSchema<Susp
     @Override
     public String getTargetTopic(SuspiciousCourseHeading element) {
         // use always the default topic
-        return "DEMOCP_COURSE";
+        return "COURSE";
     }
 
 }
