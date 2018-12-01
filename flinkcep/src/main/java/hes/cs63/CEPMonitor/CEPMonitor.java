@@ -26,6 +26,17 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer09;
 
+
+import hes.cs63.CEPMonitor.FalseType.FalseType;
+import hes.cs63.CEPMonitor.FalseType.SuspiciousMovement;
+import hes.cs63.CEPMonitor.Loitering.Loitering;
+import hes.cs63.CEPMonitor.Loitering.SuspiciousLoitering;
+import hes.cs63.CEPMonitor.LongTermStops.Longtermstop;
+import hes.cs63.CEPMonitor.LongTermStops.SuspiciousLongStop;
+import hes.cs63.CEPMonitor.PackagePicking.Packagepick;
+import hes.cs63.CEPMonitor.PackagePicking.SuspiciousPackage;
+
+
 import java.util.Properties;
 
 import hes.cs63.CEPMonitor.CoGHeading.*;
