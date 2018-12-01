@@ -61,8 +61,14 @@ public class CEPMonitor {
         });
 
         DataStream<AisMessage> nonPartitionedInput = messageStream;
-     
-       
+        ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         ///////////////////////////////////Gaps in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> gapPattern = Gap.patternGap();
         PatternStream<AisMessage> patternGapStream = CEP.pattern(partitionedInput,gapPattern);
@@ -115,9 +121,57 @@ public class CEPMonitor {
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
         fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-        
-      
-        
+
+
+        //////////////////FALSE TYPE///////////////////////////////////////////////////////////////////////////////////////////
+
+        Pattern<AisMessage, ?> SuspiciousTypePattern= FalseType.patternFalseType();
+        PatternStream<AisMessage> patternFalseTypetream = CEP.pattern(partitionedInput,SuspiciousTypePattern);
+        DataStream<SuspiciousMovement> falsetypes = FalseType.suspiciousTypeStream(patternFalseTypetream);
+
+        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/false_speed.txt", FileSystem.WriteMode.OVERWRITE);
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////LOITERING/////////////////////////////////////////////////////////////////////////////////////////////
+
+        Pattern<AisMessage, ?> LoiteringPattern= Loitering.patternLoitering();
+        PatternStream<AisMessage> LoiteringStream = CEP.pattern(partitionedInput,LoiteringPattern);
+        DataStream<SuspiciousLoitering> loitering = Loitering.Loitering_Stream(LoiteringStream);
+
+        loitering.map(v -> v.SuspiciousLoitering()).writeAsText("/home/cer/Desktop/loitering.txt", FileSystem.WriteMode.OVERWRITE);
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        //////////////////LONG STOP OF VESSEL////////////////////////////////////////////////////////////////////////////////////
+
+        Pattern<AisMessage, ?> LongStopPattern= Longtermstop.patternLongStop();
+        PatternStream<AisMessage> LongStopStream = CEP.pattern(partitionedInput,LongStopPattern);
+        DataStream<SuspiciousLongStop> longstop = Longtermstop.LongStop_Stream(LongStopStream);
+
+        longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/longstop.txt", FileSystem.WriteMode.OVERWRITE);
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//        //////////////////FROM TOPIC//////////////PACKAGE PICKING///////////////////////////////////////////////////////////
+
+        DataStream<SuspiciousLongStop> packages = longstop.keyBy(
+                new KeySelector<SuspiciousLongStop, Integer>() {
+                    @Override
+                    public Integer getKey(SuspiciousLongStop value) throws Exception {
+                        return value.getMmsi();
+                    }
+                });
+
+
+        Pattern<SuspiciousLongStop, ?> PackgePickPattern= Packagepick.patternPackagePicking();
+        PatternStream<SuspiciousLongStop> PackagePickStream = CEP.pattern(longstop,PackgePickPattern);
+        DataStream<SuspiciousPackage> pack = Packagepick.package_pick_Stream(PackagePickStream);
+
+        pack.map(v -> v.getSuspiciousPackage()).writeAsText("/home/cer/Desktop/packages.txt", FileSystem.WriteMode.OVERWRITE);
+//        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
         ///////////////////////////////////Suspicious speed in the messages of a single vessell////////////////////////////////////////////
         Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
