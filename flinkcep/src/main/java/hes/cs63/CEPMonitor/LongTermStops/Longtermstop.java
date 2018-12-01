@@ -140,7 +140,7 @@ public class Longtermstop {
             public SuspiciousLongStop select(Map<String,List<AisMessage>> pattern) throws Exception {
                 AisMessage stop_vessel = (AisMessage) pattern.get("stop").get(0);
                 AisMessage stop_end_vessel = (AisMessage) pattern.get("stop_ends").get(0);
-                AisMessage stop_ends_vessel = (AisMessage) pattern.get("end_of").get(0);
+              //  AisMessage stop_ends_vessel = (AisMessage) pattern.get("end_of").get(0);
 
 
                 String geohash= GeoHash.encodeHash(stop_end_vessel.getLat(),stop_end_vessel.getLon(),6);
