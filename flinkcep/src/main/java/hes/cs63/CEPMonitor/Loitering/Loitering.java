@@ -24,7 +24,7 @@ public class Loitering {
     public static Pattern<AisMessage, ?> patternLoitering() {
         //CHECK PORTS
         List<String> Ports = new ArrayList<String>();
-        String csvFile ="/home/gtsiatsios/Documents/msc/yea_cep/flinkicu/src/main/java/hes/cs63/CEPMonitor/wpi.csv";
+        String csvFile ="/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
         String line = "";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -64,7 +64,6 @@ public class Loitering {
                         if((event.getSpeed() >2.87 && near_ports == false)){
                             if(event.getSpeed() < 8){
                                 //low speed away from ports
-                                System.out.printf("moving with low_speed by ship %s %d %f\n?", event.getMmsi(), event.getT(),event.getSpeed());
 
                                 return true;}
                             else{
@@ -99,8 +98,6 @@ public class Loitering {
                                 // added ev.speed() < 8
                                 if((geoHash1.equals(geoHash2)) && ev.getSpeed()< 8 && (event.getSpeed()< 8 && (event.getT()-ev.getT()>60))){
                                     if(event.getSpeed()>2.87 && ev.getSpeed() > 2.87){
-                                        System.out.printf("Loitering %s %d %f\n?", event.getMmsi(), event.getT(),event.getSpeed());
-
                                         return true;
                                     }
                                     else{

@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/acc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/aisSofia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/fishing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/gap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/speed.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/vessel_type.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/FalseType/FalseType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/FalseType/FalseType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,26 +56,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -123,15 +113,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="CEPMonitor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cep_flinkcep" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cep_flinkcep" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="CEPMonitor" type="462c0819:PsiDirectoryNode" />
-              <item name="CoTravellingVessels" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cep_flinkcep" type="b2602c69:ProjectViewProjectNode" />

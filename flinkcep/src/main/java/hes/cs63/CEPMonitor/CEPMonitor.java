@@ -160,34 +160,25 @@ public class CEPMonitor {
         DataStream<SuspiciousLongStop> longstop = Longtermstop.LongStop_Stream(LongStopStream);
 
         longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/temp/longstop.txt", FileSystem.WriteMode.OVERWRITE);
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//        //////////////////FROM TOPIC//////////////PACKAGE PICKING///////////////////////////////////////////////////////////
+        //////////////////FROM TOPIC//////////////PACKAGE PICKING///////////////////////////////////////////////////////////////////////
 
-        DataStream<SuspiciousLongStop> packages = longstop.keyBy(
-                new KeySelector<SuspiciousLongStop, Integer>() {
-                    @Override
-                    public Integer getKey(SuspiciousLongStop value) throws Exception {
-                        return value.getMmsi();
-                    }
-                });
-
-
-        Pattern<SuspiciousLongStop, ?> PackgePickPattern= Packagepick.patternPackagePicking();
+        /*Pattern<SuspiciousLongStop, ?> PackgePickPattern= Packagepick.patternPackagePicking();
         PatternStream<SuspiciousLongStop> PackagePickStream = CEP.pattern(longstop,PackgePickPattern);
         DataStream<SuspiciousPackage> pack = Packagepick.package_pick_Stream(PackagePickStream);
 
-        pack.map(v -> v.getSuspiciousPackage()).writeAsText("/home/cer/Desktop/temp/packages.txt", FileSystem.WriteMode.OVERWRITE);
-//        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+        pack.map(v -> v.getSuspiciousPackage()).writeAsText("/home/cer/Desktop/temp/packages.txt", FileSystem.WriteMode.OVERWRITE);*/
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////Suspicious speed in the messages of a single vessell////////////////////////////////////////////
+
         Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
         DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
         suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
+
         ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
 
         Pattern<AisMessage, ?> suspiciousHeadingPattern = CourseHeading.patternSpaciousHeading();

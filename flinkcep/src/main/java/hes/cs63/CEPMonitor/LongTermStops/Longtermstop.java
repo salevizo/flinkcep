@@ -24,7 +24,7 @@ public class Longtermstop {
     public static Pattern<AisMessage, ?> patternLongStop() {
         //CHECK PORTS
         List<String> Ports = new ArrayList<String>();
-        String csvFile ="/home/gtsiatsios/Documents/msc/yea_cep/flinkicu/src/main/java/hes/cs63/CEPMonitor/wpi.csv";
+        String csvFile ="/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
         String line = "";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
@@ -99,8 +99,6 @@ public class Longtermstop {
 
                                 // m conservative events ev.getSpeed() < 2
                                 if((geoHash1.equals(geoHash2)) && (event.getSpeed()<2) && ev.getSpeed()<2  && (Math.abs(event.getT() - ev.getT()) > longterm)){
-                                   System.out.printf("LongStop %s %d %f\n?", event.getMmsi(), event.getT(),event.getSpeed());
-
                                     return true;
                                 }
                                 else{
