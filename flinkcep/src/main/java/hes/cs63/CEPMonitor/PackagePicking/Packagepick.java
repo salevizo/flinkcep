@@ -47,7 +47,6 @@ public class Packagepick {
                                 //System.out.printf("ship ship %s %s %s?\n",ev.getMmsi(),ev.getGapEnd(),geoHash2);
                                 // m conservative events ev.getSpeed() < 2
                                 if((geoHash1.equals(geoHash2)) && (event.getGapEnd() - ev.getGapEnd())<60){
-                                    System.out.printf("Package Picking %s %s %s %d\n?", event.getMmsi(),ev.getMmsi(),geoHash1,event.getGapEnd());
 
                                     return true;
                                 }

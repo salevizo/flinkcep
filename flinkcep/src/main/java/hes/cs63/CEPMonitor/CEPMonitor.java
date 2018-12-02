@@ -140,7 +140,7 @@ public class CEPMonitor {
         PatternStream<AisMessage> patternFalseTypetream = CEP.pattern(partitionedInput,SuspiciousTypePattern);
         DataStream<SuspiciousMovement> falsetypes = FalseType.suspiciousTypeStream(patternFalseTypetream);
 
-        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/false_speed.txt", FileSystem.WriteMode.OVERWRITE);
+        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/temp/false_speed.txt", FileSystem.WriteMode.OVERWRITE);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //////////////////LOITERING/////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,7 +149,7 @@ public class CEPMonitor {
         PatternStream<AisMessage> LoiteringStream = CEP.pattern(partitionedInput,LoiteringPattern);
         DataStream<SuspiciousLoitering> loitering = Loitering.Loitering_Stream(LoiteringStream);
 
-        loitering.map(v -> v.SuspiciousLoitering()).writeAsText("/home/cer/Desktop/loitering.txt", FileSystem.WriteMode.OVERWRITE);
+        loitering.map(v -> v.SuspiciousLoitering()).writeAsText("/home/cer/Desktop/temp/loitering.txt", FileSystem.WriteMode.OVERWRITE);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -159,7 +159,7 @@ public class CEPMonitor {
         PatternStream<AisMessage> LongStopStream = CEP.pattern(partitionedInput,LongStopPattern);
         DataStream<SuspiciousLongStop> longstop = Longtermstop.LongStop_Stream(LongStopStream);
 
-        longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/longstop.txt", FileSystem.WriteMode.OVERWRITE);
+        longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/temp/longstop.txt", FileSystem.WriteMode.OVERWRITE);
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -178,7 +178,7 @@ public class CEPMonitor {
         PatternStream<SuspiciousLongStop> PackagePickStream = CEP.pattern(longstop,PackgePickPattern);
         DataStream<SuspiciousPackage> pack = Packagepick.package_pick_Stream(PackagePickStream);
 
-        pack.map(v -> v.getSuspiciousPackage()).writeAsText("/home/cer/Desktop/packages.txt", FileSystem.WriteMode.OVERWRITE);
+        pack.map(v -> v.getSuspiciousPackage()).writeAsText("/home/cer/Desktop/temp/packages.txt", FileSystem.WriteMode.OVERWRITE);
 //        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

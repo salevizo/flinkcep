@@ -22,20 +22,16 @@ public class FalseType {
 
                         if ((event.getStatus() == 1 || event.getStatus() == 5)) {
                             if (event.getSpeed() > 5) {
-                                System.out.printf("False Ship Type: %s %d %f\n?", event.getMmsi(), event.getT(), event.getSpeed());
                                 return true;
                             } else
                                 return false;
-                            //Ports.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), 5)) == false
 
                         } else {
                             return false;
                         }
                     }
 
-                })
-                .within(Time.seconds(10));
-
+                });
         return alarmPattern;
     }
 
