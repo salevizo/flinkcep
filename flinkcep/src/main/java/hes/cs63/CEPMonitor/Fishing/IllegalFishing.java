@@ -20,7 +20,7 @@ public class IllegalFishing {
     static int gapTime=600;
     public static Pattern<AisMessage, ?> patternFishing(){
         Pattern<AisMessage, ?> fishingPattern = Pattern.<AisMessage>begin("start")
-                .followedBy("gap_start")
+                .next("gap_start")
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
@@ -35,7 +35,7 @@ public class IllegalFishing {
                         }
                         return false;
                 }})
-                .followedBy("gap_end")
+                .next("gap_end")
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
@@ -50,7 +50,7 @@ public class IllegalFishing {
                         }
                         return false;
                     }})
-                .followedBy("change in heading  again")
+                .next("change in heading  again")
                 .where(new IterativeCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
@@ -65,7 +65,7 @@ public class IllegalFishing {
                         }
                         return false;
                     }})
-                .within(Time.seconds(3600));
+                .within(Time.seconds(1200));
         return fishingPattern;
     }
 

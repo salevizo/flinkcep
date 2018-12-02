@@ -102,7 +102,7 @@ public class CEPMonitor {
 		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
 		DataStream<SuspiciousSpeedNearPort> accelerations = SpeedNearPort.suspiciousSpeedNearPortStream(patternSAccelarationStream);
 
-		accelerations.map(v -> v.findShip()).writeAsText("/home/cer/Desktop/temp/fast_approach.txt", FileSystem.WriteMode.OVERWRITE);
+		accelerations.map(v -> v.findShip()).writeAsText("/home/cer/Desktop/temp/speed_near_port.txt", FileSystem.WriteMode.OVERWRITE);
 
 		
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
@@ -122,7 +122,7 @@ public class CEPMonitor {
         Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
         DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
-        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
+        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
         ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
 
         Pattern<AisMessage, ?> suspiciousHeadingPattern = CourseHeading.patternSpaciousHeading();
