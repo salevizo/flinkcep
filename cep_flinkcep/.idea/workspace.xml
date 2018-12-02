@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/acc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/aisSofia.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/coTravelVessel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/fishing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/gap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/speed.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/producer/vessel_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" afterDir="false" />
-    </list>
+    <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

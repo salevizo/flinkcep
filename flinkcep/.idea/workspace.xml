@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cep_flinkcep/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/acc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/aisSofia.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/coTravel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/coTravelVessel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/fishing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/gap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/speed.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/producer/vessel_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Loitering/Loitering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/LongTermStops/Longtermstop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/PackagePicking/Packagepick.java" afterDir="false" />
-    </list>
+    <list default="true" id="8e14a380-f4bb-4195-bc7a-328a8c68a230" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -425,7 +410,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543750152886" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543752120157" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
