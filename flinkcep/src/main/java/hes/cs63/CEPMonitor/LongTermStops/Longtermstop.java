@@ -48,7 +48,7 @@ public class Longtermstop {
 
         int longterm = 60;
         Pattern<AisMessage, ?> LongTermStopPattern = Pattern.<AisMessage>begin("stop", AfterMatchSkipStrategy.skipPastLastEvent())
-                .subtype(AisMessage.class)
+                //.subtype(AisMessage.class)
                 .where(new SimpleCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event) throws Exception {
