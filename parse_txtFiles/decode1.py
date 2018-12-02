@@ -18,7 +18,7 @@ def main(argv):
             line_=line_.replace("}", "")
             line_=line_.replace("\n", "")
         
-            line_withouttags=line_.split(',')
+            line_withouttags=line_.split(' ')
             values=[]
             for i in line_withouttags:
                  txt= re.sub(r'[^0-9.-]', ' ', i)
