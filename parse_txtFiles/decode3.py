@@ -53,6 +53,7 @@ def main(argv):
                 text.append(lines[i][8]) #lat
                 text.append(lines[i][4]) #geohash
                 text.append(lines[i][3]) #gapend
+                w.writerow(text)
     print len(lines)*2
 #x=lon, y=lat
 

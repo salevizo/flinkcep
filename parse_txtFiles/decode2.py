@@ -45,6 +45,7 @@ def main(argv):
                 text.append(lines[i][4])
                 text.append(lines[i][5])
                 text.append(lines[i][6])
+                w.writerow(text)
     print len(lines)*2
 #x=lon, y=lat
 
