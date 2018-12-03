@@ -50,7 +50,7 @@ public class SpeedNearPort {
                             }
                         return false;
                     }})
-                .times(5)
+                .times(10)
                 .consecutive()
                 .within(Time.seconds(patternTime));
         return fastForwardPattern;

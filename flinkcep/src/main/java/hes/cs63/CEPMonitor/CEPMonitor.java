@@ -116,7 +116,7 @@ public class CEPMonitor {
         //////////////////////////////////Fast Approach//////////////////////////////////////////////////////////////
 
         Pattern<AisMessage, ?> Accelarationattern= SpeedNearPort.patternSpeedNearPort();
-		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(nonPartitionedInput,Accelarationattern);
+		PatternStream<AisMessage> patternSAccelarationStream = CEP.pattern(partitionedInput,Accelarationattern);
 		DataStream<SuspiciousSpeedNearPort> accelerations = SpeedNearPort.suspiciousSpeedNearPortStream(patternSAccelarationStream);
 
 		accelerations.map(v -> v.findShip()).writeAsText("/home/cer/Desktop/temp/speed_near_port.txt", FileSystem.WriteMode.OVERWRITE);

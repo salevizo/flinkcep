@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="" />
+    <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +19,8 @@
         <counts>
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.134" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.98" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -41,7 +46,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -66,6 +71,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -140,7 +146,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -232,9 +237,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="28" width="1922" height="899" extended-state="6" />
+    <frame x="-1" y="28" width="1922" height="947" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25506938" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -269,10 +275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
-          <folding>
-            <element signature="e#1449#2503#0" expanded="true" />
-            <element signature="e#2502#2503#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
