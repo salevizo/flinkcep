@@ -9,7 +9,7 @@
 
 3)kafka2.2:bin/kafka-server-start.sh config/server.properties
 
-4)kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic DEMOCP
+4)kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic AIS
 kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic OUT_GAP
 kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic  OUT_COTRAVEL
 kafka2.2:bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic  OUT_COURSE
@@ -24,10 +24,10 @@ sudo /home/cer/Desktop/flink-1.6.2/bin/flink run /home/cer/Desktop/cer/flinkcep/
 
 8) Check the running jobs onhttp://localhost:8081/#/overview εχουμε τa job μας.
  
-9)Check consumer context for a kafka topic Kafka2.2:bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic DEMOCP 
+9)Check consumer context for a kafka topic Kafka2.2:bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic AIS 
  
  
-10)Inside the project go at producer and run teh script for ais messages ./ais.py DEMOCP --topic_output DEMOCP2
+10)Inside the project go at producer and run teh script for ais messages ./ais.py AIS 
 
 
 
