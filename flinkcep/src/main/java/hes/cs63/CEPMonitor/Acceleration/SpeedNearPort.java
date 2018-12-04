@@ -17,7 +17,7 @@ import java.util.*;
 public class SpeedNearPort {
     static int indexNearPorts=6;
     static int maxSpeed=5;
-    static int patternTime=600;
+    static int patternTime=450;
     public  static HashSet <String> listOfPorts=readCsv();
     
     public static HashSet<String> readCsv(){

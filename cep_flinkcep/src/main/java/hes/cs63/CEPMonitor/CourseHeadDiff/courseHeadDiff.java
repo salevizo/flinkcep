@@ -27,7 +27,7 @@ import org.apache.flink.cep.pattern.conditions.IterativeCondition.Context;
 public class courseHeadDiff {
 
     static int messagesTimeGap=20;
-    static int problematicRouteTime=180;
+    static int problematicRouteTime=120;
 
     public static Pattern<courseHead, ?> patternSpaciousHeading(){
         Pattern<courseHead, ?> spaciousHeading = Pattern.<courseHead>begin("suspicious_heading_start", AfterMatchSkipStrategy.skipPastLastEvent())

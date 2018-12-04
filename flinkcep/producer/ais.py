@@ -83,7 +83,7 @@ def main():
     print "*** Starting measurements stream on " + server + ", topic : " + topic
     csv_ctx=[]
     counter=0
-    while(counter<10000):
+    while(counter<600):
         print "counter="+str(counter)
         csv_ctx=write_csv(counter)
         counter=counter+1
@@ -102,7 +102,7 @@ def main():
         #print "\nIntercepted user interruption ..\nBlock until all pending messages are sent.."
             producer.flush()
         print "Sleeping.."
-        sleep(8)
+        sleep(2)
 
 if __name__ == "__main__":
     main()

@@ -136,30 +136,30 @@ public class CEPMonitor {
 
         //////////////////FALSE TYPE///////////////////////////////////////////////////////////////////////////////////////////
 
-        Pattern<AisMessage, ?> SuspiciousTypePattern= FalseType.patternFalseType();
+        /*Pattern<AisMessage, ?> SuspiciousTypePattern= FalseType.patternFalseType();
         PatternStream<AisMessage> patternFalseTypetream = CEP.pattern(partitionedInput,SuspiciousTypePattern);
         DataStream<SuspiciousMovement> falsetypes = FalseType.suspiciousTypeStream(patternFalseTypetream);
 
-        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/temp/false_speed.txt", FileSystem.WriteMode.OVERWRITE);
+        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/temp/false_speed.txt", FileSystem.WriteMode.OVERWRITE);*/
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //////////////////LOITERING/////////////////////////////////////////////////////////////////////////////////////////////
 
-        Pattern<AisMessage, ?> LoiteringPattern= Loitering.patternLoitering();
+        /*Pattern<AisMessage, ?> LoiteringPattern= Loitering.patternLoitering();
         PatternStream<AisMessage> LoiteringStream = CEP.pattern(partitionedInput,LoiteringPattern);
         DataStream<SuspiciousLoitering> loitering = Loitering.Loitering_Stream(LoiteringStream);
 
-        loitering.map(v -> v.SuspiciousLoitering()).writeAsText("/home/cer/Desktop/temp/loitering.txt", FileSystem.WriteMode.OVERWRITE);
+        loitering.map(v -> v.SuspiciousLoitering()).writeAsText("/home/cer/Desktop/temp/loitering.txt", FileSystem.WriteMode.OVERWRITE);*/
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         //////////////////LONG STOP OF VESSEL////////////////////////////////////////////////////////////////////////////////////
 
-        Pattern<AisMessage, ?> LongStopPattern= Longtermstop.patternLongStop();
+       /* Pattern<AisMessage, ?> LongStopPattern= Longtermstop.patternLongStop();
         PatternStream<AisMessage> LongStopStream = CEP.pattern(partitionedInput,LongStopPattern);
         DataStream<SuspiciousLongStop> longstop = Longtermstop.LongStop_Stream(LongStopStream);
 
-        longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/temp/longstop.txt", FileSystem.WriteMode.OVERWRITE);
+        longstop.map(v -> v.getSuspiciousLongStop()).writeAsText("/home/cer/Desktop/temp/longstop.txt", FileSystem.WriteMode.OVERWRITE);*/
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -174,10 +174,10 @@ public class CEPMonitor {
 
         ///////////////////////////////////Suspicious speed in the messages of a single vessell////////////////////////////////////////////
 
-        Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
+        /*Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
         DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
-        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
+        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");*/
 
         ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
 

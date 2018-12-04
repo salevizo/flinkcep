@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class coTravellingVessels {
     static int coTravelTime=35;
-    static int coTravellingTotalTime=300;
+    static int coTravellingTotalTime=120;
     public static Pattern<CoTravelInfo, ?> patternSuspiciousCoTravel(){
         Pattern<CoTravelInfo, ?> coTravelattern = Pattern.<CoTravelInfo>begin("msg_1",AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(CoTravelInfo.class)
@@ -49,7 +49,7 @@ public class coTravellingVessels {
                             }
                             return false;
                     }})
-                .within(Time.seconds(600));
+                .within(Time.seconds(300));
         return coTravelattern;
     }
 
