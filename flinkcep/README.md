@@ -37,7 +37,7 @@ Notes:
 2) delete jobId
        flink-1.6.2$ bin/flink cancel 833958573e917dd87a42a7dec1f7310f 
 3) Delete kafka topic:
-        Kafka2.2:bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic DEMOCP
+        Kafka2.2:bin/kafka-topics.sh --zookeeper localhost:2181 --delete --topic AIS
  
 4)At the path /parse_txtFiles there are some python scripts used to parse .txt files (outcome of jobs in flinkcep)
 
