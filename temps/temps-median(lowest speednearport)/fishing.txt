@@ -1,0 +1,5 @@
+SuspiciousFishing{mmsi=236509000, gapStart=1452143016{  gapStartLot=-4.3152966, gapStartLat=48.11261} S, gapEnd=1452143736{  gapEndLot=-4.3152666, gapEndLat=48.11266} , geoHash='gbscty9u0dzg'}
+SuspiciousFishing{mmsi=236509000, gapStart=1452145896{  gapStartLot=-4.31493, gapStartLat=48.1124} S, gapEnd=1452146615{  gapEndLot=-4.31347, gapEndLat=48.112392} , geoHash='gbscf3n3znt6'}
+SuspiciousFishing{mmsi=226263000, gapStart=1452142432{  gapStartLot=-5.0483, gapStartLat=48.4684} S, gapEnd=1452146033{  gapEndLot=-5.048345, gapEndLat=48.468388} , geoHash='gbsepbe4jqqs'}
+SuspiciousFishing{mmsi=228208700, gapStart=1452805127{  gapStartLot=-3.7366583, gapStartLat=47.706295} S, gapEnd=1452807195{  gapEndLot=-3.740155, gapEndLat=47.708878} , geoHash='gbmpx0umehe5'}
+SuspiciousFishing{mmsi=226263000, gapStart=1455064734{  gapStartLot=-5.04837, gapStartLat=48.46832} S, gapEnd=1455065634{  gapEndLot=-5.04839, gapEndLat=48.468254} , geoHash='gbs7tp7dze08'}

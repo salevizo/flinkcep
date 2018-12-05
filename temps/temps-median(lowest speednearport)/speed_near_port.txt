@@ -1,0 +1,126 @@
+----------------------------227016100-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227016100, lon=-4.4818783, lat=48.37918, timestamp=1452260714}
+SuspiciousSpeedNearPort{mmsi_1=227016100, lon=-4.4817934, lat=48.379265, timestamp=1452260717}
+SuspiciousSpeedNearPort{mmsi_1=227016100, lon=-4.481705, lat=48.37936, timestamp=1452260721}
+SuspiciousSpeedNearPort{mmsi_1=227016100, lon=-4.481665, lat=48.379402, timestamp=1452260724}
+SuspiciousSpeedNearPort{mmsi_1=227016100, lon=-4.482015, lat=48.37906, timestamp=1452260707}
+----------------------------227016100-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8475685, lat=48.04294, timestamp=1455788741}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8476434, lat=48.04284, timestamp=1455788743}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847787, lat=48.042633, timestamp=1455788747}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847892, lat=48.042427, timestamp=1455788751}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847443, lat=48.04307, timestamp=1455788738}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479767, lat=48.042046, timestamp=1455788758}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479834, lat=48.041935, timestamp=1455788760}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479533, lat=48.04154, timestamp=1455788767}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479285, lat=48.04138, timestamp=1455788770}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479266, lat=48.04232, timestamp=1455788753}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8477182, lat=48.040405, timestamp=1455788791}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847688, lat=48.04027, timestamp=1455788794}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8476715, lat=48.040134, timestamp=1455788796}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84768, lat=48.03996, timestamp=1455788801}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8478985, lat=48.041225, timestamp=1455788773}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847725, lat=48.03972, timestamp=1455788807}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847777, lat=48.03958, timestamp=1455788811}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8478265, lat=48.03948, timestamp=1455788814}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847882, lat=48.03937, timestamp=1455788817}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847697, lat=48.039837, timestamp=1455788804}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848057, lat=48.039066, timestamp=1455788825}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8481684, lat=48.03887, timestamp=1455788830}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848233, lat=48.03871, timestamp=1455788834}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848242, lat=48.03868, timestamp=1455788837}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479466, lat=48.03926, timestamp=1455788820}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848252, lat=48.038353, timestamp=1455788846}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848233, lat=48.03818, timestamp=1455788851}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84822, lat=48.03808, timestamp=1455788854}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848212, lat=48.037987, timestamp=1455788857}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848255, lat=48.03842, timestamp=1455788844}
+----------------------------227002630-------------------------------------------------
+----------------------------228267700-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=228267700, lon=-4.482135, lat=48.379383, timestamp=1455788824}
+SuspiciousSpeedNearPort{mmsi_1=228267700, lon=-4.4820786, lat=48.379433, timestamp=1455788826}
+SuspiciousSpeedNearPort{mmsi_1=228267700, lon=-4.4819684, lat=48.379528, timestamp=1455788829}
+SuspiciousSpeedNearPort{mmsi_1=228267700, lon=-4.480975, lat=48.38093, timestamp=1455788883}
+SuspiciousSpeedNearPort{mmsi_1=228267700, lon=-4.48237, lat=48.379196, timestamp=1455788815}
+----------------------------228267700-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84837, lat=48.038334, timestamp=1456235928}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8483315, lat=48.038185, timestamp=1456235933}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8483086, lat=48.038097, timestamp=1456235935}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848245, lat=48.037754, timestamp=1456235946}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.848385, lat=48.038387, timestamp=1456235926}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8479133, lat=48.03845, timestamp=1456239833}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847717, lat=48.03953, timestamp=1456239862}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84761, lat=48.039715, timestamp=1456239866}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8475685, lat=48.03979, timestamp=1456239869}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.847965, lat=48.038025, timestamp=1456239822}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8475986, lat=48.042206, timestamp=1456239916}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8474984, lat=48.042534, timestamp=1456239922}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8473315, lat=48.042767, timestamp=1456239926}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8472366, lat=48.042847, timestamp=1456239929}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84745, lat=48.04008, timestamp=1456239876}
+----------------------------227002630-------------------------------------------------
+----------------------------227002630-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.846805, lat=48.04304, timestamp=1456239936}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.84651, lat=48.0431, timestamp=1456239940}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.846355, lat=48.043118, timestamp=1456239941}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8461084, lat=48.04314, timestamp=1456239945}
+SuspiciousSpeedNearPort{mmsi_1=227002630, lon=-4.8471284, lat=48.04291, timestamp=1456239931}
+----------------------------227002630-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.47355, lat=48.37954, timestamp=1456879123}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.473678, lat=48.37945, timestamp=1456879127}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.473678, lat=48.37945, timestamp=1456879128}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.473728, lat=48.37942, timestamp=1456879130}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4735017, lat=48.379574, timestamp=1456879121}
+----------------------------227006750-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.473935, lat=48.379295, timestamp=1456879137}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4740167, lat=48.379253, timestamp=1456879140}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4741035, lat=48.379208, timestamp=1456879143}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4741683, lat=48.37919, timestamp=1456879145}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.473935, lat=48.379295, timestamp=1456879136}
+----------------------------227006750-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4744315, lat=48.37908, timestamp=1456879153}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.47457, lat=48.37905, timestamp=1456879157}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4746385, lat=48.379032, timestamp=1456879160}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.474785, lat=48.379, timestamp=1456879163}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.474335, lat=48.37913, timestamp=1456879150}
+----------------------------227006750-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.475052, lat=48.37896, timestamp=1456879170}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.475167, lat=48.37895, timestamp=1456879173}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4752464, lat=48.378937, timestamp=1456879175}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.47544, lat=48.37892, timestamp=1456879180}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4749365, lat=48.37898, timestamp=1456879167}
+----------------------------227006750-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4757466, lat=48.378914, timestamp=1456879187}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4758415, lat=48.37892, timestamp=1456879189}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4760385, lat=48.378925, timestamp=1456879193}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4762383, lat=48.37894, timestamp=1456879196}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4755235, lat=48.378914, timestamp=1456879182}
+----------------------------227006750-------------------------------------------------
+----------------------------227006750-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4764867, lat=48.378967, timestamp=1456879202}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4766884, lat=48.378983, timestamp=1456879205}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.476888, lat=48.37901, timestamp=1456879210}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4770365, lat=48.379032, timestamp=1456879213}
+SuspiciousSpeedNearPort{mmsi_1=227006750, lon=-4.4763885, lat=48.378952, timestamp=1456879200}
+----------------------------227006750-------------------------------------------------

@@ -1,0 +1,10 @@
+----------------------------228051000-------------------------------------------------
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.481672, lat=48.379894, timestamp=1450369320}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.4803615, lat=48.37966, timestamp=1450369351}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.4795833, lat=48.379566, timestamp=1450369369}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.4791, lat=48.379494, timestamp=1450369381}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.477755, lat=48.379265, timestamp=1450369411}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.4773583, lat=48.379196, timestamp=1450369420}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.47696, lat=48.379135, timestamp=1450369429}
+SuspiciousSpeedNearPort{mmsi_1=228051000, lon=-4.482138, lat=48.379955, timestamp=1450369309}
+----------------------------228051000-------------------------------------------------
