@@ -1,18 +1,19 @@
 package hes.cs63.CEPMonitor.CourseHeadDiff;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class vesselsInDanger {
 
-    private Integer mmsi;
+    private int mmsi;
     private float lon;
     private float lat;
     private float course;
     private float heading;
-    private Integer timestamp;
+    private int timestamp;
     private LinkedList<vesselsInDanger> msgs=new LinkedList<vesselsInDanger>();
 
-    public vesselsInDanger(Integer mmsi, float heading,float course, float lon, float lat,  Integer timestamp) {
+    public vesselsInDanger(int mmsi, float heading,float course, float lon, float lat,  int timestamp) {
         this.mmsi = mmsi;
         this.lon = lon;
         this.lat = lat;
@@ -21,11 +22,30 @@ public class vesselsInDanger {
         this.timestamp = timestamp;
     }
 
-    public Integer getMmsi() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        vesselsInDanger that = (vesselsInDanger) o;
+        return mmsi == that.mmsi &&
+                Float.compare(that.lon, lon) == 0 &&
+                Float.compare(that.lat, lat) == 0 &&
+                Float.compare(that.course, course) == 0 &&
+                Float.compare(that.heading, heading) == 0 &&
+                timestamp == that.timestamp &&
+                Objects.equals(msgs, that.msgs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, lon, lat, course, heading, timestamp, msgs);
+    }
+
+    public int getMmsi() {
         return mmsi;
     }
 
-    public void setMmsi(Integer mmsi) {
+    public void setMmsi(int mmsi) {
         this.mmsi = mmsi;
     }
 
@@ -61,11 +81,11 @@ public class vesselsInDanger {
         this.heading = heading;
     }
 
-    public Integer getTimestamp() {
+    public int getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Integer timestamp) {
+    public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 

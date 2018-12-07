@@ -49,7 +49,7 @@ public class coTravellingVessels {
                             }
                             return false;
                     }})
-                .within(Time.seconds(300));
+                .within(Time.seconds(600));
         return coTravelattern;
     }
 
@@ -62,7 +62,7 @@ public class coTravellingVessels {
 
                 for(int i=0;i<pattern.get("msg_1").size();i++){
                     CoTravelInfo in_msg=pattern.get("msg_1").get(i);
-                    coTravel.getMsgs().add(new SuspiciousCoTravellingVessels(in_msg.getMmsi_1(),in_msg.getMmsi_2(),in_msg.getLon1(),in_msg.getLat1(),in_msg.getLon2(),in_msg.getLon2(),in_msg.getTimestamp()));
+                    coTravel.getMsgs().add(new SuspiciousCoTravellingVessels(in_msg.getMmsi_1(),in_msg.getMmsi_2(),in_msg.getLon1(),in_msg.getLat1(),in_msg.getLon2(),in_msg.getLat2(),in_msg.getTimestamp()));
                 }
                 return coTravel;
             }

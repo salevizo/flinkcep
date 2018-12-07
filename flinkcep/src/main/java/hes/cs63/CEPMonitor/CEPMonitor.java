@@ -45,13 +45,12 @@ public class CEPMonitor {
 
     public static void main(String[] args) throws Exception {
     	
-    	String sql = "SELECT * FROM `stackoverflow`";
-        System.getenv("APP_HOME");
         StreamExecutionEnvironment env =
                 StreamExecutionEnvironment.getExecutionEnvironment();
 
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
         Properties props=parameterTool.getProperties();
+	    props.setProperty("auto.offset.reset", "earliest"); 
         env.enableCheckpointing(1000).
                 setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
 
@@ -127,20 +126,20 @@ public class CEPMonitor {
 
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-        Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
+        /*Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
-        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");*/
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
 
         //////////////////FALSE TYPE///////////////////////////////////////////////////////////////////////////////////////////
 
-        /*Pattern<AisMessage, ?> SuspiciousTypePattern= FalseType.patternFalseType();
+        Pattern<AisMessage, ?> SuspiciousTypePattern= FalseType.patternFalseType();
         PatternStream<AisMessage> patternFalseTypetream = CEP.pattern(partitionedInput,SuspiciousTypePattern);
         DataStream<SuspiciousMovement> falsetypes = FalseType.suspiciousTypeStream(patternFalseTypetream);
 
-        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/temp/false_speed.txt", FileSystem.WriteMode.OVERWRITE);*/
+        falsetypes.map(v -> v.movement()).writeAsText("/home/cer/Desktop/temp/false_speed.txt", FileSystem.WriteMode.OVERWRITE);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //////////////////LOITERING/////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,7 +154,7 @@ public class CEPMonitor {
 
         //////////////////LONG STOP OF VESSEL////////////////////////////////////////////////////////////////////////////////////
 
-       /* Pattern<AisMessage, ?> LongStopPattern= Longtermstop.patternLongStop();
+        /*Pattern<AisMessage, ?> LongStopPattern= Longtermstop.patternLongStop();
         PatternStream<AisMessage> LongStopStream = CEP.pattern(partitionedInput,LongStopPattern);
         DataStream<SuspiciousLongStop> longstop = Longtermstop.LongStop_Stream(LongStopStream);
 
@@ -174,10 +173,10 @@ public class CEPMonitor {
 
         ///////////////////////////////////Suspicious speed in the messages of a single vessell////////////////////////////////////////////
 
-        /*Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
+        Pattern<AisMessage, ?> suspiciousSpeedPattern = SpeedVesselType.patternSpeedVesselType();
         PatternStream<AisMessage> patternsuspiciousSpeedStream= CEP.pattern(partitionedInput,suspiciousSpeedPattern);
         DataStream<SuspiciousSpeedVesselType> suspiciousspeed = SpeedVesselType.suspiciousSpeedVesselTypeStream(patternsuspiciousSpeedStream);
-        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");*/
+        suspiciousspeed.map(v -> v.findSpeed()).writeAsText("/home/cer/Desktop/temp/suspicious_speed.csv", FileSystem.WriteMode.OVERWRITE).uid("Speed");
 
         ///////////////////////////////////Suspicious heading in the messages of a single vessell////////////////////////////////////////////
 

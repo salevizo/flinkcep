@@ -1,5 +1,7 @@
 package hes.cs63.CEPMonitor.VesselsCoTravel;
 
+import java.util.Objects;
+
 public class coTravelInfo {
 
     private int mmsi_1;
@@ -18,6 +20,25 @@ public class coTravelInfo {
         this.lon2 = lon2;
         this.lat2 = lat2;
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        coTravelInfo that = (coTravelInfo) o;
+        return mmsi_1 == that.mmsi_1 &&
+                mmsi_2 == that.mmsi_2 &&
+                Float.compare(that.lon1, lon1) == 0 &&
+                Float.compare(that.lat1, lat1) == 0 &&
+                Float.compare(that.lon2, lon2) == 0 &&
+                Float.compare(that.lat2, lat2) == 0 &&
+                timestamp == that.timestamp;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi_1, mmsi_2, lon1, lat1, lon2, lat2, timestamp);
     }
 
     public int getMmsi_1() {

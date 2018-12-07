@@ -16,8 +16,8 @@ import java.util.Map;
 
 public class coTravel {
     static int minSpeed=1;
-    static int geoHashLength=6; //1.2 km x 600m
-    static int timeBetweenVesselsMsgs=15;
+    static int geoHashLength=6;
+    static int timeBetweenVesselsMsgs=10;
     public static Pattern<AisMessage, ?> patternCoTravel(){
         Pattern<AisMessage, ?> coTravelPattern = Pattern.<AisMessage>begin("vessel_1",AfterMatchSkipStrategy.skipPastLastEvent())
                 .subtype(AisMessage.class)

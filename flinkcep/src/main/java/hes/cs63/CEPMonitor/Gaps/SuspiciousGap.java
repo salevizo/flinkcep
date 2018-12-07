@@ -1,6 +1,8 @@
 package hes.cs63.CEPMonitor.Gaps;
 import com.github.davidmoten.geo.GeoHash;
 
+import java.util.Objects;
+
 public class SuspiciousGap {
 
     private int mmsi;
@@ -10,7 +12,7 @@ public class SuspiciousGap {
     private int gapEnd;
     private String geoHash;
 
-    public SuspiciousGap(int mmsi_,float lon_,float lat_,Integer gapStart_,Integer gapEnd_,String geoHash){
+    public SuspiciousGap(int mmsi_,float lon_,float lat_,int gapStart_,int gapEnd_,String geoHash){
         this.mmsi = mmsi_;
         this.lon=lon_;
         this.lat=lat_;
@@ -18,6 +20,24 @@ public class SuspiciousGap {
         this.geoHash=geoHash;
         this.gapStart=gapStart_;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuspiciousGap that = (SuspiciousGap) o;
+        return mmsi == that.mmsi &&
+                Float.compare(that.lon, lon) == 0 &&
+                Float.compare(that.lat, lat) == 0 &&
+                gapStart == that.gapStart &&
+                gapEnd == that.gapEnd &&
+                Objects.equals(geoHash, that.geoHash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, lon, lat, gapStart, gapEnd, geoHash);
     }
 
     public String getGeoHash() {
@@ -48,7 +68,7 @@ public class SuspiciousGap {
         return gapEnd;
     }
 
-    public void setGapEnd(Integer gapEnd) {
+    public void setGapEnd(int gapEnd) {
         this.gapEnd = gapEnd;
     }
 

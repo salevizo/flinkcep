@@ -1,1 +1,0 @@
-SuspiciousFishing{mmsi=228208800, gapStart=1455123444{  gapStartLot=-4.393212, gapStartLat=48.19654} S, gapEnd=1455123774{  gapEndLot=-4.3898935, gapEndLat=48.187748} , geoHash='gbsf4gk7wcv0'}

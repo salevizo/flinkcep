@@ -1,6 +1,7 @@
 package hes.cs63.CEPMonitor.Acceleration;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class SuspiciousSpeedNearPort {
 
@@ -15,6 +16,22 @@ public class SuspiciousSpeedNearPort {
         this.lat=lat_;
         this.t=t;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuspiciousSpeedNearPort that = (SuspiciousSpeedNearPort) o;
+        return mmsi == that.mmsi &&
+                Float.compare(that.lon, lon) == 0 &&
+                Float.compare(that.lat, lat) == 0 &&
+                t == that.t;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, lon, lat, t, msgs);
     }
 
     public LinkedList<SuspiciousSpeedNearPort> getMsgs() {

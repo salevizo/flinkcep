@@ -15,9 +15,9 @@ import java.io.FileReader;
 import java.util.*;
 
 public class SpeedNearPort {
-    static int indexNearPorts=6;
+    static int indexNearPorts=5;
     static int maxSpeed=5;
-    static int patternTime=450;
+    static int patternTime=300;
     public  static HashSet <String> listOfPorts=readCsv();
     
     public static HashSet<String> readCsv(){
@@ -50,7 +50,7 @@ public class SpeedNearPort {
                             }
                         return false;
                     }})
-                .times(10)
+                .times(6)
                 .consecutive()
                 .within(Time.seconds(patternTime));
         return fastForwardPattern;

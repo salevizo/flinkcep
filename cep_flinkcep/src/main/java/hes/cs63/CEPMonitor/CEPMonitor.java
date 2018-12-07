@@ -9,6 +9,7 @@ import hes.cs63.CEPMonitor.Deserializers.GapMessageDeserializer;
 import hes.cs63.CEPMonitor.Rendezvouz.RendezVouz;
 import hes.cs63.CEPMonitor.Rendezvouz.SuspiciousRendezVouz;
 
+import org.apache.flink.streaming.api.TimeCharacteristic;
 
 import hes.cs63.CEPMonitor.receivedClasses.CoTravelInfo;
 import hes.cs63.CEPMonitor.receivedClasses.GapMessage;
@@ -26,6 +27,8 @@ import org.apache.flink.streaming.api.functions.IngestionTimeExtractor;
 import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09;
 
+
+import java.util.Properties;
 /**
  * Created by sahbi on 5/7/16.
  */
@@ -33,17 +36,20 @@ public class CEPMonitor {
 
     public static void main(String[] args) throws Exception {
         System.getenv("APP_HOME");
+	
+        
         StreamExecutionEnvironment env =
                 StreamExecutionEnvironment.getExecutionEnvironment();
-
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         ParameterTool parameterTool = ParameterTool.fromArgs(args);
-
+        Properties props=parameterTool.getProperties();
+        props.setProperty("auto.offset.reset", "earliest"); 
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         DataStream<GapMessage> gapMessageStream = env
                 .addSource(new FlinkKafkaConsumer09<>(
                                     parameterTool.getRequired("IN_GAP"),
                                     new GapMessageDeserializer(),
-                                    parameterTool.getProperties()))
+                                    props))
                 .assignTimestampsAndWatermarks(new WatermarksGaps());
 
         DataStream<GapMessage> gapNonPartitionedInput = gapMessageStream;
@@ -52,7 +58,7 @@ public class CEPMonitor {
                 .addSource(new FlinkKafkaConsumer09<>(
                         parameterTool.getRequired("IN_COTRAVEL"),
                         new CoTravelDeserializer(),
-                        parameterTool.getProperties()))
+			props))
                 .assignTimestampsAndWatermarks(new WatermarksCoTravel());
 
 
@@ -63,7 +69,6 @@ public class CEPMonitor {
                         return value.getMmsi_1();
                     }
                 });
-
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +76,7 @@ public class CEPMonitor {
                 .addSource(new FlinkKafkaConsumer09<>(
                         parameterTool.getRequired("IN_COURSE"),
                         new CourseHeadDeserializer(),
-                        parameterTool.getProperties()))
+                        props))
                 .assignTimestampsAndWatermarks(new WatermarksCourse());
 
 
@@ -82,7 +87,7 @@ public class CEPMonitor {
                         return value.getMmsi();
                     }
                 });
-
+	
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
          
@@ -112,7 +117,7 @@ public class CEPMonitor {
         //////////////////////////////////Co travelling vessels////////////////////////////////////////////
     
         //messageStream.map(v -> v.toString()).print();
-        env.execute("Suspicious RendezVouz");
+        env.execute("Complex Events");
 
     }
 }

@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class Gap {
     private static int gapTime=600;
-    private static int geoHashLen=6;
+    private static int geoHashLen=8;
 
     public  static HashSet <String> listOfPorts=ports();
 

@@ -2,6 +2,8 @@ package hes.cs63.CEPMonitor;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Objects;
+
 public class AisMessage {
     @SerializedName("mmsi")
     private int mmsi;
@@ -29,6 +31,27 @@ public class AisMessage {
 
     @SerializedName("t")
     private int t;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AisMessage that = (AisMessage) o;
+        return mmsi == that.mmsi &&
+                status == that.status &&
+                Float.compare(that.turn, turn) == 0 &&
+                Float.compare(that.course, course) == 0 &&
+                Float.compare(that.speed, speed) == 0 &&
+                Float.compare(that.heading, heading) == 0 &&
+                Float.compare(that.lon, lon) == 0 &&
+                Float.compare(that.lat, lat) == 0 &&
+                t == that.t;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, status, turn, course, speed, heading, lon, lat, t);
+    }
 
     public int getMmsi() {
         return mmsi;

@@ -3,14 +3,42 @@
   <component name="ChangeListManager">
     <list default="true" id="bd38750b-fae2-407e-8eb4-f2e9da840430" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/courseHeadDiff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/courseHeadDiff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/vesselsInDanger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/vesselsInDanger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/producer/ais.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/producer/ais.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SpeedNearPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SuspiciousSpeedNearPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Acceleration/SuspiciousSpeedNearPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/AisMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/IllegalFishing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CoGHeading/SuspiciousCourseHeading.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/CoGHeading/SuspiciousCourseHeading.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousFishing.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Fishing/SuspiciousFishing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/Gap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/Gaps/SuspiciousGap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../flinkcep/src/main/java/hes/cs63/CEPMonitor/VesselsCoTravel/coTravelInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/cotravel.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/coursehead.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/false_speed.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/fishing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/loitering.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/longstop.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/rendezvouz.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/speed_near_port.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/suspicious_speed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/cotravel.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/coursehead.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/false_speed.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/fishing.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/loitering.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/longstop.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/rendezvouz.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/speed_near_port.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../temp/temp/suspicious_speed.csv" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,43 +51,58 @@
     <session id="204073594">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.124" value="1" />
           <entry key="project.open.time.134" value="1" />
           <entry key="project.open.time.214" value="1" />
+          <entry key="project.open.time.39" value="1" />
           <entry key="project.open.time.98" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="14" />
+          <entry key="java" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="38" />
+          <entry key="java" value="74" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="38" />
+          <entry key="JAVA" value="74" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+            <state relative-caret-position="135">
+              <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-560">
+              <caret line="33" column="76" lean-forward="true" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
+              <folding>
+                <element signature="e#1514#1515#0" expanded="true" />
+                <element signature="e#1606#1607#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,10 +121,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-              <folding>
-                <element signature="e#1449#2503#0" expanded="true" />
-                <element signature="e#2502#2503#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -95,20 +134,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+            <state relative-caret-position="465">
+              <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+              <folding>
+                <element signature="e#1599#1600#0" expanded="true" />
+                <element signature="e#1703#1704#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/receivedClasses/CoTravelInfo.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            <state relative-caret-position="210">
+              <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/vesselsInDanger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="235">
+              <caret line="40" column="73" lean-forward="true" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -121,8 +173,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/vesselsInDanger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java" />
+        <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java" />
         <option value="$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/courseHeadDiff.java" />
       </list>
     </option>
@@ -130,8 +186,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="101" />
     <option name="y" value="53" />
-    <option name="width" value="1384" />
-    <option name="height" value="856" />
+    <option name="width" value="1376" />
+    <option name="height" value="855" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -139,6 +195,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -221,12 +278,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543847162751" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544093892190" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../flinkcep" />
   </component>
   <component name="RunDashboard">
@@ -315,10 +371,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="28" width="1922" height="899" extended-state="6" />
-    <editor active="true" />
+    <frame x="-1" y="28" width="1922" height="947" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25773746" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26307365" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -363,17 +418,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/WatermarksCoTravel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state relative-caret-position="60">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -384,10 +432,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        <state relative-caret-position="210">
+          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -398,21 +446,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/courseHeadDiff.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/SuspiciousCoTravellingVessels.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        <state relative-caret-position="-560">
+          <caret line="33" column="76" lean-forward="true" selection-start-line="33" selection-start-column="76" selection-end-line="33" selection-end-column="76" />
           <folding>
-            <element signature="e#1449#2503#0" expanded="true" />
-            <element signature="e#2502#2503#0" expanded="true" />
+            <element signature="e#1514#1515#0" expanded="true" />
+            <element signature="e#1606#1607#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CEPMonitor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/vesselsInDanger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+        <state relative-caret-position="235">
+          <caret line="40" column="73" lean-forward="true" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/SuspiciousRendezVouz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
+          <folding>
+            <element signature="e#1599#1600#0" expanded="true" />
+            <element signature="e#1703#1704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/Rendezvouz/RendezVouz.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CourseHeadDiff/courseHeadDiff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="29" column="39" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/hes/cs63/CEPMonitor/CoTravellingVessels/coTravellingVessels.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
         </state>
       </provider>
     </entry>

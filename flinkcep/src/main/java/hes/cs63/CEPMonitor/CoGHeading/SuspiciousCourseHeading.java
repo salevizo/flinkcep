@@ -2,6 +2,7 @@ package hes.cs63.CEPMonitor.CoGHeading;
 import com.github.davidmoten.geo.GeoHash;
 
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class SuspiciousCourseHeading {
 
@@ -20,6 +21,24 @@ public class SuspiciousCourseHeading {
         this.lon = lon;
         this.lat = lat;
         this.timestamp = timestamp;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuspiciousCourseHeading that = (SuspiciousCourseHeading) o;
+        return mmsi == that.mmsi &&
+                Float.compare(that.heading, heading) == 0 &&
+                Float.compare(that.course, course) == 0 &&
+                Float.compare(that.lon, lon) == 0 &&
+                Float.compare(that.lat, lat) == 0 &&
+                timestamp == that.timestamp;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, heading, course, lon, lat, timestamp);
     }
 
     public int getMmsi() {

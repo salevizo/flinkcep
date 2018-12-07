@@ -1,5 +1,7 @@
 package hes.cs63.CEPMonitor.Rendezvouz;
 
+import java.util.Objects;
+
 public class SuspiciousRendezVouz {
 
     private int mmsi_1;
@@ -24,6 +26,27 @@ public class SuspiciousRendezVouz {
         this.lon2=lon2_;
         this.lat2=lat2_;
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuspiciousRendezVouz that = (SuspiciousRendezVouz) o;
+        return mmsi_1 == that.mmsi_1 &&
+                mmsi_2 == that.mmsi_2 &&
+                gapEnd_1 == that.gapEnd_1 &&
+                gapEnd_2 == that.gapEnd_2 &&
+                Float.compare(that.lon1, lon1) == 0 &&
+                Float.compare(that.lat1, lat1) == 0 &&
+                Float.compare(that.lon2, lon2) == 0 &&
+                Float.compare(that.lat2, lat2) == 0 &&
+                Objects.equals(geoHash, that.geoHash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi_1, mmsi_2, geoHash, gapEnd_1, gapEnd_2, lon1, lat1, lon2, lat2);
     }
 
     public int getMmsi_1() {

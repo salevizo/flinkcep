@@ -1,9 +1,11 @@
 package hes.cs63.CEPMonitor.Fishing;
 import com.github.davidmoten.geo.GeoHash;
 
+import java.util.Objects;
+
 public class SuspiciousFishing {
 
-    private Integer mmsi;
+    private int mmsi;
     private float gapStartLot;
     private float gapStartLat;
     private float gapEndLot;
@@ -13,7 +15,7 @@ public class SuspiciousFishing {
     private int gapEnd;
 
 
-    public SuspiciousFishing(Integer mmsi, float gapStartLot, float gapStartLat, float gapEndLot, float gapEndLat, String geoHash, int gapStart, int gapEnd) {
+    public SuspiciousFishing(int mmsi, float gapStartLot, float gapStartLat, float gapEndLot, float gapEndLat, String geoHash, int gapStart, int gapEnd) {
         this.mmsi = mmsi;
         this.gapStartLot = gapStartLot;
         this.gapStartLat = gapStartLat;
@@ -46,6 +48,26 @@ public class SuspiciousFishing {
         
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuspiciousFishing that = (SuspiciousFishing) o;
+        return mmsi == that.mmsi &&
+                Float.compare(that.gapStartLot, gapStartLot) == 0 &&
+                Float.compare(that.gapStartLat, gapStartLat) == 0 &&
+                Float.compare(that.gapEndLot, gapEndLot) == 0 &&
+                Float.compare(that.gapEndLat, gapEndLat) == 0 &&
+                gapStart == that.gapStart &&
+                gapEnd == that.gapEnd &&
+                Objects.equals(geoHash, that.geoHash);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mmsi, gapStartLot, gapStartLat, gapEndLot, gapEndLat, geoHash, gapStart, gapEnd);
+    }
+
     public int getGapStart() {
         return gapStart;
     }
@@ -62,11 +84,11 @@ public class SuspiciousFishing {
         this.gapEnd = gapEnd;
     }
 
-    public Integer getMmsi() {
+    public int getMmsi() {
         return mmsi;
     }
 
-    public void setMmsi(Integer mmsi) {
+    public void setMmsi(int mmsi) {
         this.mmsi = mmsi;
     }
 
