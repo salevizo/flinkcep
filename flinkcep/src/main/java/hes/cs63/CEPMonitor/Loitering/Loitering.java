@@ -16,54 +16,50 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 
 public class Loitering {
-    public static Pattern<AisMessage, ?> patternLoitering() {
-        //CHECK PORTS
-        List<String> Ports = new ArrayList<String>();
-        String csvFile ="/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
+
+
+    public  static HashSet<String> listOfPorts=ports();
+
+    public static HashSet<String> ports(){
+        listOfPorts = new HashSet<String>();
+        String csvFile = "/home/cer/Desktop/cer/flinkcep/flinkcep/producer/wpi.csv";
         String line = "";
-
+        String cvsSplitBy = ",";
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-
+            String gHash="";
             while ((line = br.readLine()) != null) {
-
-                // use comma as separator
-                String[] coords = line.split(",");
-
-                System.out.println("Coords [lat= " + coords[0] + " , Lon=" + coords[1] + "]");
-                String geoHash1=GeoHash.encodeHash(Double.parseDouble(coords[0]),Double.parseDouble(coords[1]),6);
-                System.out.println(geoHash1);
-                Ports.add(geoHash1);
-
-
+                String[] coordinates = line.split(cvsSplitBy);
+                gHash=GeoHash.encodeHash(Float.valueOf(coordinates[0]),Float.valueOf(coordinates[1]),6);
+                listOfPorts.add(gHash);
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        return listOfPorts;
+    }
 
+    public static Pattern<AisMessage, ?> patternLoitering() {
+
+        int ltrtime = 1800;
+        int window= 3600;
         Pattern<AisMessage, ?> Loitering = Pattern.<AisMessage>begin("stop")
                 .subtype(AisMessage.class)
                 .where(new SimpleCondition<AisMessage>() {
                     @Override
                     public boolean filter(AisMessage event) throws Exception {
-                        boolean near_ports = false;
-                        for(String str: Ports) {
-                            String ship_geohash = GeoHash.encodeHash(event.getLat(),event.getLon(),6);
-                            if(str.equals(ship_geohash))
-                                near_ports = true;
-                            //System.out.printf("Ship near Port\n");
-
-                        }
-                        //System.out.printf("ships: %d %d %f\n", event.getMmsi(), event.getT(),event.getSpeed());
-
-                        if((event.getSpeed() >2.87 && near_ports == false)){
+                        if((event.getSpeed() >2.87 && listOfPorts.contains(GeoHash.encodeHash(event.getLat(), event.getLon(), 6)) == false)){
                             if(event.getSpeed() < 8){
                                 //low speed away from ports
+                                String geohash1=GeoHash.encodeHash(event.getLat(),event.getLon(),6);
+
+                                System.out.printf("moving with low_speed by ship %s %d %f %s\n?", event.getMmsi(), event.getT(),event.getSpeed(),geohash1);
 
                                 return true;}
                             else{
@@ -73,31 +69,21 @@ public class Loitering {
                         return false;
                     }
                 })
-                //.oneOrMore() //times could be also used
                 .followedByAny("stop_ends")
                 .where(new IterativeCondition<AisMessage>() {
 
                     @Override
                     public boolean filter(AisMessage event, Context<AisMessage> ctx) throws Exception {
-                        boolean near_ports = false;
-//                        for(String str: Ports) {
-//                            String ship_geohash = GeoHash.encodeHash(event.getLat(),event.getLon(),6);
-//                            if(str.equals(ship_geohash))
-//                                near_ports = true;
-//                            //System.out.printf("Ship near Port\n");
-//
-//                        }
                         for (AisMessage ev : ctx.getEventsForPattern("stop")) {
                             String geoHash1=GeoHash.encodeHash(event.getLat(),event.getLon(),6);
-                            // System.out.printf("events ship %s %d %s %f?\n",event.getMmsi(),event.getT(),geoHash1,event.getSpeed());
+                            //System.out.printf("events ship %s %d %s %f?\n",event.getMmsi(),event.getT(),geoHash1,event.getSpeed());
                             if ( ev.getMmsi() == event.getMmsi()) {
 
 
                                 String geoHash2=GeoHash.encodeHash(ev.getLat(),ev.getLon(),6);
-                                //System.out.printf("eventszssss ship %s %d %s %f?\n",ev.getMmsi(),ev.getT(),geoHash2,ev.getSpeed());
-                                // added ev.speed() < 8
-                                if((geoHash1.equals(geoHash2)) && ev.getSpeed()< 8 && (event.getSpeed()< 8 && (event.getT()-ev.getT()>60))){
+                                if((geoHash1.equals(geoHash2)) && ev.getSpeed()< 8 && (event.getSpeed()< 8 && (event.getT()-ev.getT()>ltrtime))){
                                     if(event.getSpeed()>2.87 && ev.getSpeed() > 2.87){
+
                                         return true;
                                     }
                                     else{
@@ -114,8 +100,7 @@ public class Loitering {
 
                         }
                         return false;
-                    }})
-                .within(Time.seconds(1800));
+                    }});
 
 
         return Loitering;
@@ -139,3 +124,4 @@ public class Loitering {
     }
 
 }
+
