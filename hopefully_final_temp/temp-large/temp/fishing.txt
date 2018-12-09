@@ -1,9 +1,0 @@
-SuspiciousFishing{mmsi=227008170, gapStart=1443762891{  gapStartLot=-4.485315, gapStartLat=48.38025} S, gapEnd=1443765317{  gapEndLot=-4.484998, gapEndLat=48.38035} , geoHash='gbsg1zq5u8zu'}
-SuspiciousFishing{mmsi=228017700, gapStart=1444208545{  gapStartLot=-5.037133, gapStartLat=48.470753} S, gapEnd=1444231482{  gapEndLot=-4.95019, gapEndLat=48.413387} , geoHash='gbs7rk6p0r15'}
-SuspiciousFishing{mmsi=227318010, gapStart=1444265583{  gapStartLot=-4.746715, gapStartLat=47.879665} S, gapEnd=1444267724{  gapEndLot=-4.7824483, gapEndLat=47.883766} , geoHash='gbs8efj78zky'}
-SuspiciousFishing{mmsi=227142200, gapStart=1444348900{  gapStartLot=-4.765015, gapStartLat=47.907093} S, gapEnd=1444349839{  gapEndLot=-4.76338, gapEndLat=47.907772} , geoHash='gbs8e96qzk6w'}
-SuspiciousFishing{mmsi=228160000, gapStart=1444349220{  gapStartLot=-4.800375, gapStartLat=47.915367} S, gapEnd=1444350891{  gapEndLot=-4.7948165, gapEndLat=47.900574} , geoHash='gbs86zvrp96v'}
-SuspiciousFishing{mmsi=227008170, gapStart=1444379614{  gapStartLot=-5.0381484, gapStartLat=48.4708} S, gapEnd=1444390443{  gapEndLot=-4.9899817, gapEndLat=48.455284} , geoHash='gbs7ws3zj0p2'}
-SuspiciousFishing{mmsi=228017700, gapStart=1444461718{  gapStartLot=-4.786403, gapStartLat=48.3556} S, gapEnd=1444463330{  gapEndLot=-4.7901983, gapEndLat=48.35831} , geoHash='gbse4gw022x3'}
-SuspiciousFishing{mmsi=228017700, gapStart=1444474581{  gapStartLot=-4.7888284, gapStartLat=48.35734} S, gapEnd=1444478621{  gapEndLot=-4.7914834, gapEndLat=48.35952} , geoHash='gbse4guu508n'}
-SuspiciousFishing{mmsi=227003050, gapStart=1444152153{  gapStartLot=-4.485735, gapStartLat=48.38076} S, gapEnd=1444544747{  gapEndLot=-4.483423, gapEndLat=48.378845} , geoHash='gbsg1zp31p4g'}

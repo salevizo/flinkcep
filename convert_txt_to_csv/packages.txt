@@ -1,0 +1,5 @@
+Package Picking Vessels:Vessel_1:227705102 Longitude_1:-4.496588 Latitude_1:48.382435 Vessel_2:227574020Longitude_2:-4.4953966 Latitude_2:48.383667Time:1443652234
+Package Picking Vessels:Vessel_1:227369960 Longitude_1:-4.4880433 Latitude_1:48.377422 Vessel_2:211232180Longitude_2:-4.489275 Latitude_2:48.377182Time:1443652569
+Package Picking Vessels:Vessel_1:226263000 Longitude_1:-4.48579 Latitude_1:48.379837 Vessel_2:228017700Longitude_2:-4.4858065 Latitude_2:48.381012Time:1443652555
+Package Picking Vessels:Vessel_1:228017700 Longitude_1:-4.4858065 Latitude_1:48.381012 Vessel_2:227002330Longitude_2:-4.4859633 Latitude_2:48.380653Time:1443652608
+Package Picking Vessels:Vessel_1:227002330 Longitude_1:-4.4859633 Latitude_1:48.380653 Vessel_2:227003050Longitude_2:-4.4859333 Latitude_2:48.38078Time:1443652648
