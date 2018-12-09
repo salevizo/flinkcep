@@ -1,7 +1,0 @@
-Vessel Long Stop:245257000Lat: 48.382477Lon: -4.465727geohash: gbsg4r
-Vessel Long Stop:228051000Lat: 48.38135Lon: -4.4850965geohash: gbsg1z
-Vessel Long Stop:227705102Lat: 48.382435Lon: -4.496588geohash: gbsg1x
-Vessel Long Stop:227574020Lat: 48.383667Lon: -4.4953966geohash: gbsg1x
-Vessel Long Stop:228190600Lat: 48.098667Lon: -4.326823geohash: gbscts
-Vessel Long Stop:228064900Lat: 48.369534Lon: -4.51486geohash: gbsg1m
-Vessel Long Stop:228791000Lat: 48.36835Lon: -4.5161633geohash: gbsg1j
