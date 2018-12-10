@@ -30,6 +30,7 @@ def main(argv):
             lines.append(values)
     fh.close()
     print len(lines)
+    mmsis=[]
     name=path.split('/')
     name_csv=name[-1].split('.')
     name_csv=name_csv[0] + '.csv'
@@ -37,6 +38,11 @@ def main(argv):
             for i in range(len(lines)) :
                 w = csv.writer(f, ['mmsi', 'heading', 'lon', 'lat', 'course','timestamp'])
                 w.writerow(lines[i])
+                mmsis.append(lines[i][0])
+
+    mmsis=set(mmsis)
+    print "mmsis are:" + str(mmsis)
+    print len(mmsis)
 
 #x=lon, y=lat
 

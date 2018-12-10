@@ -27,7 +27,7 @@ def main(argv):
             lines.append(l)
             
     fh.close()
- 
+    mmsis=[]
     name=path.split('/')
     name_csv=name[-1].split('.')
     name_csv=name_csv[0] + '.csv'
@@ -46,6 +46,12 @@ def main(argv):
                 text.append(lines[i][5])
                 text.append(lines[i][6])
                 w.writerow(text)
+                mmsis.append(lines[i][0])
+                mmsis.append(lines[i][3])
+
+    mmsis=set(mmsis)
+    print "mmsis are:" + str(mmsis)
+    print len(mmsis)
     print len(lines)*2
 #x=lon, y=lat
 

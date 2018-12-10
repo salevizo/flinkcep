@@ -37,6 +37,7 @@ def main(argv):
     name=path.split('/')
     name_csv=name[-1].split('.')
     name_csv=name_csv[0] + '.csv'
+    mmsis=[]
     with open(name_csv, 'wb') as f:  # Just use 'w' mode in 3.x
             for i in range(len(lines)) :
                 w = csv.writer(f, ['mmsi', 'lon', 'lat', 'geohash','gap_end'])
@@ -54,6 +55,12 @@ def main(argv):
                 text.append(lines[i][4]) #geohash
                 text.append(lines[i][3]) #gapend
                 w.writerow(text)
+                mmsis.append(lines[i][0])
+                mmsis.append(lines[i][1])
+
+    mmsis=set(mmsis)
+    print "mmsis are:" + str(mmsis)
+    print len(mmsis)
     print len(lines)*2
 #x=lon, y=lat
 

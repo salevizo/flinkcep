@@ -45,6 +45,7 @@ def main(argv):
     name=path.split('/')
     name_csv=name[-1].split('.')
     name_csv=name_csv[0] + '.csv'
+    mmsis=[]
     with open(name_csv, 'wb') as f:  # Just use 'w' mode in 3.x
             for i in range(len(lines)) :
                 w = csv.writer(f, ['mmsi', 'lon', 'lat'])
@@ -59,6 +60,11 @@ def main(argv):
                 text.append(lines[i][5])
                 text.append(lines[i][6])
                 w.writerow(text)
+                mmsis.append(lines[i][0])
+
+    mmsis=set(mmsis)
+    print "mmsis are:" + str(mmsis)
+    print len(mmsis)
 #x=lon, y=lat
 
 if __name__ == "__main__":
