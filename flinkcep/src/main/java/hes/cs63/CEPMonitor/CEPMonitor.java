@@ -126,10 +126,10 @@ public class CEPMonitor {
 
 
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
-        /*Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
+        Pattern<AisMessage, ?> fishingPattern= IllegalFishing.patternFishing();
         PatternStream<AisMessage> patternFishingStream = CEP.pattern(partitionedInput,fishingPattern);
         DataStream<SuspiciousFishing> fishing = IllegalFishing.suspiciousFishingStream(patternFishingStream);
-        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");*/
+        fishing.map(v -> v.findFishing()).writeAsText("/home/cer/Desktop/temp/fishing.txt", FileSystem.WriteMode.OVERWRITE).uid("Fishing ");
         //////////////////////////////////Fishing//////////////////////////////////////////////////////////////
 
 
